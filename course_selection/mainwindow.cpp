@@ -72,7 +72,7 @@ void MainWindow::initScheduleTable()
     ui->scheduleTableWidget->setHorizontalHeaderLabels(headers);
     
     // 将表头移到下方
-    ui->scheduleTableWidget->horizontalHeader()->setSectionPosition(QHeaderView::Bottom);
+    ui->scheduleTableWidget->horizontalHeader()->setStyleSheet("QHeaderView { qproperty-sectionPosition: QHeaderView::South; }");
     
     // 添加滚动条
     ui->scheduleTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
