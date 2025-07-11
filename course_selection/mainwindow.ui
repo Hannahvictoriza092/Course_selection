@@ -50,6 +50,12 @@
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <widget class="QTableWidget" name="scheduleTableWidget">
+          <property name="rowCount">
+           <number>14</number>
+          </property>
+          <property name="columnCount">
+           <number>7</number>
+          </property>
           <property name="styleSheet">
            <string notr="true">QHeaderView::section { background-color: #ade6c5; padding: 4px; border: 1px solid #dddddd; } QTableWidget { background-color: white; alternate-background-color: #f5f5f5; }</string>
           </property>

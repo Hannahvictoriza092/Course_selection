@@ -60,10 +60,26 @@ void MainWindow::initCourseTable()
 
 void MainWindow::initScheduleTable()
 {
-    QStringList headers = {"课程ID", "名称", "选课学期", "上课时间", "教师"};
-    ui->scheduleTableWidget->setColumnCount(headers.size());
+    // 设置行标签（1-14节课）
+    QStringList rowLabels;
+    for (int i = 1; i <= 14; ++i) {
+        rowLabels << QString::number(i);
+    }
+    ui->scheduleTableWidget->setVerticalHeaderLabels(rowLabels);
+    
+    // 设置列标签（周一到周日）
+    QStringList headers = {"周一", "周二", "周三", "周四", "周五", "周六", "周日"};
     ui->scheduleTableWidget->setHorizontalHeaderLabels(headers);
-    ui->scheduleTableWidget->horizontalHeader()->setStretchLastSection(true);
+    
+    // 将表头移到下方
+    ui->scheduleTableWidget->horizontalHeader()->setSectionPosition(QHeaderView::Bottom);
+    
+    // 添加滚动条
+    ui->scheduleTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    ui->scheduleTableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    
+    // 设置列宽自适应
+    ui->scheduleTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void MainWindow::loadCourseData(const QString &filePath)
