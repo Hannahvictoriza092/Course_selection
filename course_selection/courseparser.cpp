@@ -76,8 +76,8 @@ bool CourseParser::validateCourseStructure(const QJsonObject &courseObj)
     if (!courseObj.contains("id") || !courseObj["id"].isString()) return false;
     if (!courseObj.contains("name") || !courseObj["name"].isString()) return false;
     if (!courseObj.contains("credit") || !courseObj["credit"].isDouble()) return false;
-    if (!courseObj.contains("semester") || !courseObj["semester"].isDouble()) return false;
-    if (!courseObj.contains("required") || !courseObj["required"].isBool()) return false;
+    if (!courseObj.contains("semester") || !courseObj["semester"].isString()) return false;
+    if (!courseObj.contains("required") || !courseObj["required"].isString()) return false;
     if (!courseObj.contains("offerings") || !courseObj["offerings"].isArray()) return false;
     if (!courseObj.contains("prerequisites") || !courseObj["prerequisites"].isArray()) return false;
 
@@ -98,23 +98,18 @@ bool CourseParser::validateOfferingStructure(const QJsonObject &classObj)
     if (!classObj.contains("times") || !classObj["times"].isArray()) return false;
     if (!classObj.contains("weeks") || !classObj["weeks"].isDouble()) return false;
 
-    // 验证时间数组元素类型
+    // 修改时间数组验证：验证是否是7个数值
     QJsonArray timesArray = classObj["times"].toArray();
-    for (int k = 0; k < timesArray.size(); ++k) {
-        QJsonObject timeObj = timesArray[k].toObject();
-        if (!timeObj.contains("day") || !timeObj["day"].isDouble()) {
+    if (timesArray.size() != 7) {
+        qWarning() << "错误: times数组长度应为7，实际为" << timesArray.size();
+        return false;
+    }
+    
+    for (const auto &timeVal : timesArray) {
+        if (!timeVal.isDouble()) {
+            qWarning() << "错误: times数组元素不是数值类型";
             return false;
-        }
-        if (!timeObj.contains("weeks") || !timeObj["weeks"].isArray()) {
-            return false;
-        }
-        QJsonArray weeksArray = timeObj["weeks"].toArray();
-        for (const auto &week : weeksArray) {
-            if (!week.isDouble()) {
-                return false;
-            }
         }
     }
-
     return true;
 }
