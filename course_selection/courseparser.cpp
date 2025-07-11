@@ -25,7 +25,6 @@ QJsonObject CourseParser::parseCourseFile(const QString &filePath)
         return QJsonObject();
     }
 
-    QJsonObject rootObj;
     QJsonArray coursesArray;
     if (doc.isObject()) {
         rootObj = doc.object();
