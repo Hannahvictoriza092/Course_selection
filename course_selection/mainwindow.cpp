@@ -28,11 +28,34 @@ MainWindow::~MainWindow()
 
 void MainWindow::initCourseTable()
 {
-    QStringList headers = {"课程ID", "名称", "学分(两倍)", "开课学期", "类型", "前置课程", "教师", "上课时间"};
+    // 修改表头顺序和内容
+    QStringList headers = {"开课学期", "课程ID", "课程名称", "课程类别", "教师", "上课时间", "学分(两倍)", "前置课程"};
     ui->courseTableWidget->setColumnCount(headers.size());
     ui->courseTableWidget->setHorizontalHeaderLabels(headers);
-    ui->courseTableWidget->horizontalHeader()->setStretchLastSection(true);
-    ui->courseTableWidget->resizeColumnsToContents();
+    
+    // 设置列宽均衡
+    ui->courseTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
+    ui->courseTableWidget->horizontalHeader()->setMinimumSectionSize(100);
+    // 设置上课时间列(索引7)宽度为其他列的1.5倍
+    ui->courseTableWidget->horizontalHeader()->resizeSection(7, 200);
+    ui->courseTableWidget->horizontalHeader()->resizeSection(8, 80);
+    ui->courseTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    // 设置像素级滚动以提高流畅度
+    ui->courseTableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->courseTableWidget->horizontalHeader()->setStretchLastSection(false);
+    // 启用单元格文本自动换行
+    ui->courseTableWidget->setWordWrap(true);
+    // 设置行高根据内容自动调整
+    ui->courseTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    
+    // 设置交替行背景色和表头样式
+      ui->courseTableWidget->setAlternatingRowColors(true);
+      ui->courseTableWidget->setStyleSheet(
+          "QTableWidget { color: #333333; font-weight: 500; }"
+          "QTableWidget::item { background-color:rgb(153, 181, 222); }"
+          "QTableWidget::item:alternate { background-color:rgb(179, 198, 222); }"
+          "QHeaderView::section { background-color: #f0f0f0; color: #333333; padding: 4px; border: 1px solid #dddddd; }"
+      );
 }
 
 void MainWindow::initScheduleTable()
@@ -60,43 +83,101 @@ void MainWindow::displayCourseData()
     if (!courseData.contains("courses") || !courseData["courses"].isArray()) return;
 
     QJsonArray courses = courseData["courses"].toArray();
+    int currentRow = 0;
+    
     for (int i = 0; i < courses.size(); ++i) {
         QJsonObject course = courses[i].toObject();
-        ui->courseTableWidget->insertRow(i);
-        ui->courseTableWidget->setItem(i, 0, new QTableWidgetItem(course["id"].toString()));
-        ui->courseTableWidget->setItem(i, 1, new QTableWidgetItem(course["name"].toString()));
-        ui->courseTableWidget->setItem(i, 2, new QTableWidgetItem(QString::number(course["credit"].toInt())));
-        ui->courseTableWidget->setItem(i, 3, new QTableWidgetItem(QString::number(course["semester"].toInt())));
-        ui->courseTableWidget->setItem(i, 4, new QTableWidgetItem(course["required"].toBool() ? "必修" : "选修"));
-
-        QJsonArray prereqs = course["prerequisites"].toArray();
-        QString prereqStr;
-        for (const auto &prereq : prereqs) {
-            prereqStr += prereq.toString() + ", ";
-        }
-        if (!prereqStr.isEmpty()) prereqStr.chop(2);
-        ui->courseTableWidget->setItem(i, 5, new QTableWidgetItem(prereqStr));
-
-        // 获取教师信息
         QJsonArray offerings = course["offerings"].toArray();
-        QString teacher = offerings.size() > 0 ? offerings[0].toObject()["teacher"].toString() : "";
-        ui->courseTableWidget->setItem(i, 6, new QTableWidgetItem(teacher));
-
-
-        // 格式化上课时间
-        if (offerings.size() > 0) {
-            QJsonArray times = offerings[0].toObject()["times"].toArray();
-            QString timeStr;
-            for (const auto &time : times) {
-                timeStr += QString::number(time.toInt()) + ", ";
+        
+        // 为每个教学班添加一行
+        for (int j = 0; j < offerings.size(); ++j) {
+            ui->courseTableWidget->insertRow(currentRow);
+            QJsonObject offering = offerings[j].toObject();
+            
+            // 开课学期 (第0列) - 只在第一行设置
+            if (j == 0) {
+                ui->courseTableWidget->setItem(currentRow, 0, new QTableWidgetItem(course["semester"].toString()));
             }
-            if (!timeStr.isEmpty()) timeStr.chop(2);
-            ui->courseTableWidget->setItem(i, 7, new QTableWidgetItem(timeStr));
-
-        } else {
-            ui->courseTableWidget->setItem(i, 7, new QTableWidgetItem(""));
+            
+            // 课程ID (第1列) - 只在第一行设置
+            if (j == 0) {
+                ui->courseTableWidget->setItem(currentRow, 1, new QTableWidgetItem(course["id"].toString()));
+            }
+            
+            // 课程名称 (第2列) - 只在第一行设置
+            if (j == 0) {
+                ui->courseTableWidget->setItem(currentRow, 2, new QTableWidgetItem(course["name"].toString()));
+            }
+            
+            // 课程类别 (第3列) - 只在第一行设置
+            if (j == 0) {
+                QString required = course["required"].toString();
+                ui->courseTableWidget->setItem(currentRow, 3, new QTableWidgetItem(
+                    required == "Compulsory" ? "必修" : 
+                    required == "Elective" ? "选修" : required));
+            }
+            
+            // 教师信息 (第4列) - 每个教学班单独设置
+            ui->courseTableWidget->setItem(currentRow, 4, new QTableWidgetItem(offering["teacher"].toString()));
+            
+            // 上课时间 (第5列) - 每个教学班单独设置
+            QJsonArray times = offering["times"].toArray();
+            QStringList dayStrings = {"周一", "周二", "周三", "周四", "周五", "周六", "周日"};
+            QStringList timeStrings;
+            
+            for (int k = 0; k < times.size(); k++) {
+                int timeMask = times[k].toInt();
+                if (timeMask != 0) {
+                    QStringList periods;
+                    for (int m = 0; m < 14; m++) { // 每天14节课
+                        if (timeMask & (1 << m)) {
+                            periods << QString::number(m + 1);
+                        }
+                    }
+                    timeStrings << dayStrings[k] + ": 第" + periods.join(",") + "节";
+                }
+            }
+            ui->courseTableWidget->setItem(currentRow, 5, new QTableWidgetItem(timeStrings.join("\n")));
+            
+            // 学分(两倍) (第6列) - 只在第一行设置
+            if (j == 0) {
+                ui->courseTableWidget->setItem(currentRow, 6, new QTableWidgetItem(QString::number(course["credit"].toInt())));
+            }
+            
+            // 前置课程 (第7列) - 只在第一行设置
+            if (j == 0) {
+                QJsonArray prereqs = course["prerequisites"].toArray();
+                QStringList prereqList;
+                for (const auto &prereq : prereqs) {
+                    prereqList << prereq.toString();
+                }
+                ui->courseTableWidget->setItem(currentRow, 7, new QTableWidgetItem(prereqList.join(", ")));
+            }
+            
+            // 设置行高适应内容 - 使用固定行高
+            ui->courseTableWidget->setRowHeight(currentRow, 60); // 设置为60像素
+            
+            currentRow++;
+        }
+        
+        // 合并课程基本信息单元格
+        if (offerings.size() > 1) {
+            int startRow = currentRow - offerings.size();
+            for (int col : {0, 1, 2, 3, 6, 7}) { // 需要合并的列
+                ui->courseTableWidget->setSpan(startRow, col, offerings.size(), 1);
+            }
+            
+            // 调整合并单元格的行高
+            int totalHeight = 0;
+            for (int r = startRow; r < startRow + offerings.size(); r++) {
+                totalHeight += ui->courseTableWidget->rowHeight(r);
+            }
+            ui->courseTableWidget->setRowHeight(startRow, totalHeight);
         }
     }
+    
+    // 调整列宽以适应内容
+    ui->courseTableWidget->resizeColumnsToContents();
 }
 
 void MainWindow::displayScheduleData()
