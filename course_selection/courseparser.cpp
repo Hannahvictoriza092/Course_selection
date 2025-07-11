@@ -1,0 +1,121 @@
+#include "courseparser.h"
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QDebug>
+
+CourseParser::CourseParser(QObject *parent) : QObject(parent)
+{
+}
+
+QJsonObject CourseParser::parseCourseFile(const QString &filePath)
+{
+    QJsonObject rootObj;
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "无法打开课程文件: " << filePath;
+        return QJsonObject();
+    }
+
+    QByteArray data = file.readAll();
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if (doc.isNull()) {
+        qWarning() << "课程文件解析失败: 无效的JSON格式";
+        return QJsonObject();
+    }
+
+    QJsonObject rootObj;
+    QJsonArray coursesArray;
+    if (doc.isObject()) {
+        rootObj = doc.object();
+        if (!rootObj.contains("courses") || !rootObj["courses"].isArray()) {
+            qWarning() << "课程文件解析失败: 缺少courses数组";
+            return QJsonObject();
+        }
+        coursesArray = rootObj["courses"].toArray();
+    } else if (doc.isArray()) {
+        coursesArray = doc.array();
+        rootObj["courses"] = coursesArray;
+    } else {
+        qWarning() << "课程文件解析失败: 根节点不是对象或数组";
+        return QJsonObject();
+    }
+    for (int i = 0; i < coursesArray.size(); ++i) {
+        if (!coursesArray[i].isObject()) {
+            qWarning() << "课程文件解析失败: 课程项不是对象，索引:" << i;
+            return QJsonObject();
+        }
+
+        QJsonObject courseObj = coursesArray[i].toObject();
+        if (!validateCourseStructure(courseObj)) {
+            qWarning() << "课程文件解析失败: 课程结构验证失败，索引:" << i;
+            return QJsonObject();
+        }
+
+        QJsonArray offeringsArray = courseObj["offerings"].toArray();
+        for (int j = 0; j < offeringsArray.size(); ++j) {
+            if (!offeringsArray[j].isObject()) {
+                qWarning() << "课程文件解析失败: 上课时间项不是对象，课程索引:" << i << "，时间索引:" << j;
+                return QJsonObject();
+            }
+
+            QJsonObject classObj = offeringsArray[j].toObject();
+            if (!validateOfferingStructure(classObj)) {
+                qWarning() << "课程文件解析失败: 上课时间结构验证失败，课程索引:" << i << "，时间索引:" << j;
+                return QJsonObject();
+            }
+        }
+    }
+
+    return rootObj;
+}
+
+bool CourseParser::validateCourseStructure(const QJsonObject &courseObj)
+{
+    // 验证课程基本字段
+    if (!courseObj.contains("id") || !courseObj["id"].isString()) return false;
+    if (!courseObj.contains("name") || !courseObj["name"].isString()) return false;
+    if (!courseObj.contains("credit") || !courseObj["credit"].isDouble()) return false;
+    if (!courseObj.contains("semester") || !courseObj["semester"].isDouble()) return false;
+    if (!courseObj.contains("required") || !courseObj["required"].isBool()) return false;
+    if (!courseObj.contains("offerings") || !courseObj["offerings"].isArray()) return false;
+    if (!courseObj.contains("prerequisites") || !courseObj["prerequisites"].isArray()) return false;
+
+    // 验证前置课程数组元素类型
+    QJsonArray prereqs = courseObj["prerequisites"].toArray();
+    for (const auto &prereq : prereqs) {
+        if (!prereq.isString()) return false;
+    }
+
+    return true;
+}
+
+bool CourseParser::validateOfferingStructure(const QJsonObject &classObj)
+{
+    // 验证上课时间字段
+    if (!classObj.contains("id") || !classObj["id"].isString()) return false;
+    if (!classObj.contains("teacher") || !classObj["teacher"].isString()) return false;
+    if (!classObj.contains("times") || !classObj["times"].isArray()) return false;
+    if (!classObj.contains("weeks") || !classObj["weeks"].isDouble()) return false;
+
+    // 验证时间数组元素类型
+    QJsonArray timesArray = classObj["times"].toArray();
+    for (int k = 0; k < timesArray.size(); ++k) {
+        QJsonObject timeObj = timesArray[k].toObject();
+        if (!timeObj.contains("day") || !timeObj["day"].isDouble()) {
+            return false;
+        }
+        if (!timeObj.contains("weeks") || !timeObj["weeks"].isArray()) {
+            return false;
+        }
+        QJsonArray weeksArray = timeObj["weeks"].toArray();
+        for (const auto &week : weeksArray) {
+            if (!week.isDouble()) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}

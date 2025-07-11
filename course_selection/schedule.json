@@ -1,0 +1,362 @@
+[
+  {
+    "class_id": "04",
+    "course_id": "COEN0031112043",
+    "semester": 7
+  },
+  {
+    "class_id": "",
+    "course_id": "COEN0031111003",
+    "semester": -1
+  },
+  {
+    "class_id": "04",
+    "course_id": "SHKX0031111008",
+    "semester": 1
+  },
+  {
+    "class_id": "24",
+    "course_id": "SHKX0031111016",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031161000",
+    "semester": 1
+  },
+  {
+    "class_id": "04",
+    "course_id": "COEN0031161992",
+    "semester": 0
+  },
+  {
+    "class_id": "",
+    "course_id": "COMS0031132994",
+    "semester": -1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132991",
+    "semester": 1
+  },
+  {
+    "class_id": "13",
+    "course_id": "COEN0031111109",
+    "semester": 1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132126",
+    "semester": 5
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132120",
+    "semester": 7
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132118",
+    "semester": 5
+  },
+  {
+    "class_id": "05",
+    "course_id": "COEN0031161991",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132111",
+    "semester": 5
+  },
+  {
+    "class_id": "02",
+    "course_id": "COMS0031132096",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132087",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132076",
+    "semester": 5
+  },
+  {
+    "class_id": "20",
+    "course_id": "SHKX0031111015",
+    "semester": 2
+  },
+  {
+    "class_id": "02",
+    "course_id": "COMS0031132110",
+    "semester": 1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132050",
+    "semester": 5
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132033",
+    "semester": 7
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132011",
+    "semester": 7
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131048",
+    "semester": 7
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132106",
+    "semester": 1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132077",
+    "semester": 1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131043",
+    "semester": 1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131039",
+    "semester": 5
+  },
+  {
+    "class_id": "03",
+    "course_id": "COEN0031111058",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031121014",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031232000",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132104",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031161001",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "COEN0031162002",
+    "semester": 4
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132121",
+    "semester": 7
+  },
+  {
+    "class_id": "",
+    "course_id": "COMS0031132993",
+    "semester": -1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132102",
+    "semester": 7
+  },
+  {
+    "class_id": "",
+    "course_id": "COMS0031132128",
+    "semester": -1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132059",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131990",
+    "semester": 5
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132125",
+    "semester": 0
+  },
+  {
+    "class_id": "04",
+    "course_id": "SHKX0031111017",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132113",
+    "semester": 6
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132112",
+    "semester": 2
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132107",
+    "semester": 2
+  },
+  {
+    "class_id": "",
+    "course_id": "COMS0031132095",
+    "semester": -1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131049",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132105",
+    "semester": 6
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132080",
+    "semester": 6
+  },
+  {
+    "class_id": "05",
+    "course_id": "COEN0031111997",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132123",
+    "semester": 1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131032",
+    "semester": 1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131051",
+    "semester": 6
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131050",
+    "semester": 6
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131047",
+    "semester": 6
+  },
+  {
+    "class_id": "",
+    "course_id": "COMS0031131037",
+    "semester": -1
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131042",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131036",
+    "semester": 6
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131026",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "STAT0031121004",
+    "semester": 4
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131022",
+    "semester": 4
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132103",
+    "semester": 6
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132041",
+    "semester": 4
+  },
+  {
+    "class_id": "02",
+    "course_id": "COMS0031131013",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031121015",
+    "semester": 2
+  },
+  {
+    "class_id": "20",
+    "course_id": "SHKX00311611000",
+    "semester": 3
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031121013",
+    "semester": 2
+  },
+  {
+    "class_id": "04",
+    "course_id": "COEN0031112046",
+    "semester": 6
+  },
+  {
+    "class_id": "",
+    "course_id": "COMS0031132127",
+    "semester": -1
+  },
+  {
+    "class_id": "02",
+    "course_id": "COMS0031121009",
+    "semester": 4
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031132060",
+    "semester": 4
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031131046",
+    "semester": 0
+  },
+  {
+    "class_id": "01",
+    "course_id": "COMS0031121004",
+    "semester": 0
+  }
+]
