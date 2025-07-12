@@ -42,7 +42,7 @@ private:
     CourseAlgorithm *courseAlgorithm;
     QJsonObject courseData;
     QJsonObject scheduleData;
-    QString currentEditingCourseId; 
+    QString currentEditingCourseId;  // 用于编辑课程时记录当前编辑的课程ID
 
     void initCourseTable();
     void initScheduleTable();
