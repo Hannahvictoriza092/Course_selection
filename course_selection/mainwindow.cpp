@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "coursedialog.h"
 #include "ui_mainwindow.h"
 #include "courseparser.h"
 #include "scheduleexporter.h"
@@ -19,6 +20,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initCourseTable();
     initScheduleTable();
+    // 设置垂直表头右键菜单
+    ui->courseTableWidget->verticalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->courseTableWidget->verticalHeader(), &QHeaderView::customContextMenuRequested,
+            this, &MainWindow::onCourseTableContextMenu);
+    // 连接菜单动作
+    connect(ui->actionAddCourse, &QAction::triggered, this, &MainWindow::showAddCourseDialog);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -221,20 +230,138 @@ void MainWindow::on_actionExportSchedule_triggered()
         }
     }
 }
-
-void MainWindow::on_actionAddCourse_triggered()
+// 右键菜单处理
+void MainWindow::onCourseTableContextMenu(const QPoint &pos)
 {
-    // 待实现：打开添加课程对话框
+    // 获取右键点击的行号
+    int row = ui->courseTableWidget->verticalHeader()->logicalIndexAt(pos);
+    if (row < 0) return; // 未点击有效行
+    
+    QMenu menu(this);
+    QAction *editAction = menu.addAction("编辑课程");
+    QAction *deleteAction = menu.addAction("删除课程");
+    
+    connect(editAction, &QAction::triggered, this, [this, row]() {
+        showEditCourseDialog(row);
+    });
+    connect(deleteAction, &QAction::triggered, this, [this, row]() {
+        ui->courseTableWidget->selectRow(row);
+        onDeleteCourseAction();
+    });
+    
+    // 在表头点击位置显示菜单
+    menu.exec(ui->courseTableWidget->verticalHeader()->mapToGlobal(pos));
+}
+// 显示添加课程对话框
+void MainWindow::showAddCourseDialog()
+{
+    CourseDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+        addCourseToData(dialog.getCourseData());
+        displayCourseData();
+    }
 }
 
-void MainWindow::on_actionEditCourse_triggered()
+// 显示编辑课程对话框
+void MainWindow::showEditCourseDialog(int row)
 {
-    // 待实现：打开编辑课程对话框
+    QString courseId = ui->courseTableWidget->item(row, 1)->text();
+    
+    // 从数据结构中获取课程完整信息
+    QJsonObject course = findCourseById(courseId);
+    
+    CourseDialog dialog(this);
+    dialog.setCourseData(course);
+    
+    if (dialog.exec() == QDialog::Accepted) {
+        updateCourseInData(dialog.getCourseData());
+        displayCourseData();
+    }
 }
 
-void MainWindow::on_actionDeleteCourse_triggered()
+void MainWindow::onAddCourseDialogAccepted()
 {
-    // 待实现：删除选中课程
+    CourseDialog *dialog = qobject_cast<CourseDialog*>(sender());
+    if (dialog)
+    {
+        addCourseToData(dialog->getCourseData());
+        displayCourseData();
+        dialog->deleteLater();
+    }
+}
+
+void MainWindow::onEditCourseAction()
+{
+    int row = ui->courseTableWidget->currentRow();
+    if (row >= 0) showEditCourseDialog(row);
+}
+
+void MainWindow::onDeleteCourseAction()
+{
+    int row = ui->courseTableWidget->currentRow();
+    if (row < 0) return;
+    
+    QString courseId = ui->courseTableWidget->item(row, 1)->text();
+    QString courseName = ui->courseTableWidget->item(row, 2)->text();
+    
+    if (QMessageBox::question(this, "确认删除", 
+        "确定要删除课程 '" + courseName + "' 吗？", 
+        QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+        
+        removeCourseFromData(courseId);
+        displayCourseData();
+    }
+}
+// 添加到数据结构
+void MainWindow::addCourseToData(const QJsonObject &newCourse)
+{
+    QJsonArray courses = courseData["courses"].toArray();
+    courses.append(newCourse);
+    courseData["courses"] = courses;
+}
+
+// 更新数据结构
+void MainWindow::updateCourseInData(const QJsonObject &updatedCourse)
+{
+    QString courseId = updatedCourse["id"].toString();
+    QJsonArray courses = courseData["courses"].toArray();
+    
+    for (int i = 0; i < courses.size(); i++) {
+        if (courses[i].toObject()["id"].toString() == courseId) {
+            courses[i] = updatedCourse;
+            break;
+        }
+    }
+    
+    courseData["courses"] = courses;
+}
+
+// 从数据结构删除
+void MainWindow::removeCourseFromData(const QString &courseId)
+{
+    QJsonArray courses = courseData["courses"].toArray();
+    QJsonArray newCourses;
+    
+    for (int i = 0; i < courses.size(); i++) {
+        if (courses[i].toObject()["id"].toString() != courseId) {
+            newCourses.append(courses[i]);
+        }
+    }
+    
+    courseData["courses"] = newCourses;
+}
+
+// 根据ID查找课程
+QJsonObject MainWindow::findCourseById(const QString &id)
+{
+    QJsonArray courses = courseData["courses"].toArray();
+    for (const auto &courseRef : courses) {
+        QJsonObject course = courseRef.toObject();
+        if (course["id"].toString() == id) {
+            return course;
+        }
+    }
+    return QJsonObject();
 }
 
 void MainWindow::on_actionGenerateSchedule_triggered()

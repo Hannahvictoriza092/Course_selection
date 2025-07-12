@@ -25,10 +25,15 @@ public:
 private slots:
     void on_actionImportCourse_triggered();
     void on_actionExportSchedule_triggered();
-    void on_actionAddCourse_triggered();
-    void on_actionEditCourse_triggered();
-    void on_actionDeleteCourse_triggered();
+
     void on_actionGenerateSchedule_triggered();
+    // 添加右键菜单槽函数
+    void onCourseTableContextMenu(const QPoint &pos);
+    void onEditCourseAction();
+    void onDeleteCourseAction();
+    
+    // 添加课程对话框槽函数
+    void onAddCourseDialogAccepted();
 
 private:
     Ui::MainWindow *ui;
@@ -43,6 +48,15 @@ private:
     void loadCourseData(const QString &filePath);
     void displayCourseData();
     void displayScheduleData();
+    // 添加课程对话框
+    void showAddCourseDialog();
+    void showEditCourseDialog(int row);
+    
+    // 课程操作函数
+    void addCourseToData(const QJsonObject &newCourse);
+    void updateCourseInData(const QJsonObject &updatedCourse);
+    void removeCourseFromData(const QString &courseId);
+    QJsonObject findCourseById(const QString &id);
 };
 
 #endif // MAINWINDOW_H

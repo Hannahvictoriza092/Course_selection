@@ -127,13 +127,11 @@
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuCourse">
-    <property name="title">
-     <string>课程</string>
-    </property>
-    <addaction name="actionAddCourse"/>
-    <addaction name="actionEditCourse"/>
-    <addaction name="actionDeleteCourse"/>
-   </widget>
+     <property name="title">
+      <string>课程</string>
+     </property>
+     <addaction name="actionAddCourse"/>
+    </widget>
    <widget class="QMenu" name="menuSchedule">
     <property name="title">
      <string>选课</string>

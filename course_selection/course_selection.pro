@@ -10,13 +10,16 @@ SOURCES += main.cpp \
     courseparser.cpp \
     scheduleexporter.cpp \
     coursealgorithm.cpp \
+    coursedialog.cpp \
 
 HEADERS  += mainwindow.h \
     courseparser.h \
     scheduleexporter.h \
-    coursealgorithm.h
+    coursealgorithm.h \
+    coursedialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    coursedialog.ui
 
 RESOURCES += 
 
