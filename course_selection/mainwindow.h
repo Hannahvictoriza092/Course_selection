@@ -42,6 +42,7 @@ private:
     CourseAlgorithm *courseAlgorithm;
     QJsonObject courseData;
     QJsonObject scheduleData;
+    QString currentEditingCourseId; 
 
     void initCourseTable();
     void initScheduleTable();
@@ -52,10 +53,12 @@ private:
     void showAddCourseDialog();
     void showEditCourseDialog(int row);
     
+    
     // 课程操作函数
     void addCourseToData(const QJsonObject &newCourse);
     void updateCourseInData(const QJsonObject &updatedCourse);
-    void removeCourseFromData(const QString &courseId);
+    void removeOfferingFromData(const QString &courseId, const QString &teacher);
+    int findActualCourseRow(int row) const;
     QJsonObject findCourseById(const QString &id);
 };
 

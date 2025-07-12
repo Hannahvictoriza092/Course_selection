@@ -1,5 +1,6 @@
 // coursedialog.h
 #include <QDialog>
+#include <QMessageBox>
 #include <QJsonObject>
 
 namespace Ui {
@@ -15,6 +16,8 @@ public:
     
     void setCourseData(const QJsonObject &course);
     QJsonObject getCourseData() const;
+
+    void accept() override;  // 重写 accept 函数
 
 private slots:
     void on_pushButton_addClass_clicked();

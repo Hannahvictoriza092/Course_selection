@@ -94,7 +94,7 @@
        <item>
         <widget class="QTableWidget" name="tableWidget_classes">
          <property name="columnCount">
-          <number>3</number>
+          <number>2</number>
          </property>
          <column>
           <property name="text">
@@ -104,11 +104,6 @@
          <column>
           <property name="text">
            <string>上课时间</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>操作</string>
           </property>
          </column>
         </widget>
@@ -168,16 +163,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_ok">
-       <property name="text">
-        <string>确定</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_cancel">
-       <property name="text">
-        <string>取消</string>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Ok|QDialogButtonBox::Cancel</set>
        </property>
       </widget>
      </item>
@@ -188,20 +176,16 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_cancel</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>CourseDialog</receiver>
+   <slot>accept()</slot>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>CourseDialog</receiver>
    <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>516</x>
-     <y>474</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>589</x>
-     <y>499</y>
-    </hint>
-   </hints>
   </connection>
  </connections>
 </ui>

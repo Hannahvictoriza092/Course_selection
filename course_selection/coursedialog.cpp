@@ -18,6 +18,10 @@ CourseDialog::CourseDialog(QWidget *parent) :
     
     // 设置课程类型选项
     ui->comboBox_courseType->addItems({"必修", "选修"});
+    
+    // 确保按钮连接正确
+    connect(ui->buttonBox, &QDialogButtonBox::accepted, this, &CourseDialog::accept);
+    connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &CourseDialog::reject);
 }
 
 CourseDialog::~CourseDialog()
@@ -32,6 +36,32 @@ void CourseDialog::setupTimeSlotWidgets()
     
     // 添加初始行
     on_pushButton_addClass_clicked();
+}
+
+void CourseDialog::accept()
+{
+    // 验证必填字段
+    if (ui->lineEdit_courseId->text().isEmpty()) {
+        QMessageBox::warning(this, "错误", "课程ID不能为空");
+        return;
+    }
+    
+    if (ui->lineEdit_courseName->text().isEmpty()) {
+        QMessageBox::warning(this, "错误", "课程名称不能为空");
+        return;
+    }
+    
+    // 验证教学班
+    for (int i = 0; i < ui->tableWidget_classes->rowCount(); i++) {
+        QTableWidgetItem* teacherItem = ui->tableWidget_classes->item(i, 0);
+        if (!teacherItem || teacherItem->text().isEmpty()) {
+            QMessageBox::warning(this, "错误", "教师名称不能为空");
+            return;
+        }
+    }
+    
+    // 调用基类 accept 关闭对话框
+    QDialog::accept();
 }
 
 void CourseDialog::setCourseData(const QJsonObject &course)
@@ -58,19 +88,29 @@ void CourseDialog::setCourseData(const QJsonObject &course)
     
     for (const auto &offering : offerings) {
         QJsonObject obj = offering.toObject();
-        on_pushButton_addClass_clicked();
+        int row = ui->tableWidget_classes->rowCount();
+        ui->tableWidget_classes->insertRow(row);
         
-        int row = ui->tableWidget_classes->rowCount() - 1;
-        ui->tableWidget_classes->item(row, 0)->setText(obj["teacher"].toString());
+        // 教师
+        QTableWidgetItem *teacherItem = new QTableWidgetItem(obj["teacher"].toString());
+        ui->tableWidget_classes->setItem(row, 0, teacherItem);
         
-        // 设置时间数据（简化示例）
+        // 上课时间
         QString timeStr;
         QJsonArray times = obj["times"].toArray();
         for (const auto &time : times) {
             timeStr += QString::number(time.toInt()) + ",";
         }
         if (!timeStr.isEmpty()) timeStr.chop(1);
-        ui->tableWidget_classes->item(row, 1)->setText(timeStr);
+        QTableWidgetItem *timeItem = new QTableWidgetItem(timeStr);
+        ui->tableWidget_classes->setItem(row, 1, timeItem);
+        
+        // 删除按钮
+        QPushButton *deleteButton = new QPushButton("删除");
+        ui->tableWidget_classes->setCellWidget(row, 2, deleteButton);
+        connect(deleteButton, &QPushButton::clicked, [this, row]() {
+            ui->tableWidget_classes->removeRow(row);
+        });
     }
 }
 
@@ -130,8 +170,11 @@ void CourseDialog::on_pushButton_addClass_clicked()
     QPushButton *deleteButton = new QPushButton("删除");
     ui->tableWidget_classes->setCellWidget(row, 2, deleteButton);
     
+    // 连接删除信号
     connect(deleteButton, &QPushButton::clicked, [this, row]() {
-        ui->tableWidget_classes->removeRow(row);
+        if (row >= 0 && row < ui->tableWidget_classes->rowCount()) {
+            ui->tableWidget_classes->removeRow(row);
+        }
     });
 }
 

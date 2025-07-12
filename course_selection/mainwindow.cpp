@@ -15,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     courseParser(new CourseParser(this)),
     scheduleExporter(new ScheduleExporter(this)),
-    courseAlgorithm(new CourseAlgorithm(this))
+    courseAlgorithm(new CourseAlgorithm(this)),
+    currentEditingCourseId("") // 初始化为空字符串
 {
     ui->setupUi(this);
     initCourseTable();
@@ -37,6 +38,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::initCourseTable()
 {
+    // 禁用双击编辑
+    ui->courseTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     // 修改表头顺序和内容
     QStringList headers = {"开课学期", "课程ID", "课程名称", "课程类别", "教师", "上课时间", "学分(两倍)", "前置课程"};
     ui->courseTableWidget->setColumnCount(headers.size());
@@ -265,18 +268,82 @@ void MainWindow::showAddCourseDialog()
 // 显示编辑课程对话框
 void MainWindow::showEditCourseDialog(int row)
 {
-    QString courseId = ui->courseTableWidget->item(row, 1)->text();
+    if (row < 0) return;
+    
+    // 获取合并单元格中的实际课程行
+    int actualRow = findActualCourseRow(row);
+    if (actualRow < 0) return;
+    
+    // 获取课程ID
+    QTableWidgetItem* idItem = ui->courseTableWidget->item(actualRow, 1);
+    if (!idItem) return;
+    QString courseId = idItem->text();
+    
+    // 保存当前编辑的课程ID
+    currentEditingCourseId = courseId;
     
     // 从数据结构中获取课程完整信息
     QJsonObject course = findCourseById(courseId);
+    if (course.isEmpty()) {
+        qWarning() << "编辑失败: 未找到课程" << courseId;
+        return;
+    }
     
     CourseDialog dialog(this);
     dialog.setCourseData(course);
     
     if (dialog.exec() == QDialog::Accepted) {
-        updateCourseInData(dialog.getCourseData());
+        QJsonObject updatedCourse = dialog.getCourseData();
+        QString newCourseId = updatedCourse["id"].toString();
+        
+        // 检查ID是否被修改
+        if (currentEditingCourseId != newCourseId) {
+            qDebug() << "课程ID已修改:" << currentEditingCourseId << "->" << newCourseId;
+            
+            // 检查新ID是否已存在
+            QJsonObject existingCourse = findCourseById(newCourseId);
+            if (!existingCourse.isEmpty()) {
+                QMessageBox::warning(this, "错误", 
+                    "课程ID " + newCourseId + " 已存在，请使用不同的ID");
+                return;
+            }
+        }
+        
+        updateCourseInData(updatedCourse);
         displayCourseData();
+        qDebug() << "课程更新成功";
+    } else {
+        qDebug() << "用户取消了编辑";
     }
+}
+
+// 添加辅助函数：查找实际课程行
+int MainWindow::findActualCourseRow(int row) const
+{
+    if (row < 0 || row >= ui->courseTableWidget->rowCount()) {
+        return -1;
+    }
+    
+    // 检查当前行是否有课程ID
+    if (ui->courseTableWidget->item(row, 1)) {
+        return row;
+    }
+    
+    // 向上查找直到找到有课程ID的行
+    for (int i = row; i >= 0; i--) {
+        if (ui->courseTableWidget->item(i, 1)) {
+            return i;
+        }
+    }
+    
+    // 向下查找作为后备方案
+    for (int i = row + 1; i < ui->courseTableWidget->rowCount(); i++) {
+        if (ui->courseTableWidget->item(i, 1)) {
+            return i;
+        }
+    }
+    
+    return -1;
 }
 
 void MainWindow::onAddCourseDialogAccepted()
@@ -301,17 +368,86 @@ void MainWindow::onDeleteCourseAction()
     int row = ui->courseTableWidget->currentRow();
     if (row < 0) return;
     
-    QString courseId = ui->courseTableWidget->item(row, 1)->text();
-    QString courseName = ui->courseTableWidget->item(row, 2)->text();
+    // 获取当前行的教师名称 - 直接从第4列获取
+    QTableWidgetItem* teacherItem = ui->courseTableWidget->item(row, 4);
+    if (!teacherItem) {
+        qWarning() << "无法获取教师名称: 行" << row;
+        return;
+    }
+    QString teacher = teacherItem->text();
     
+    // 获取课程ID - 使用 findActualCourseRow 函数
+    int actualRow = findActualCourseRow(row);
+    if (actualRow < 0) {
+        qWarning() << "无法找到实际课程行: 行" << row;
+        return;
+    }
+    
+    QTableWidgetItem* idItem = ui->courseTableWidget->item(actualRow, 1);
+    if (!idItem) {
+        qWarning() << "无法获取课程ID: 行" << actualRow;
+        return;
+    }
+    QString courseId = idItem->text();
+    
+    QTableWidgetItem* nameItem = ui->courseTableWidget->item(actualRow, 2);
+    QString courseName = nameItem ? nameItem->text() : "未知课程";
+    
+    // 确认对话框
     if (QMessageBox::question(this, "确认删除", 
-        "确定要删除课程 '" + courseName + "' 吗？", 
+        "确定要删除 " + teacher + " 老师的教学班吗？\n课程: " + courseName, 
         QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
         
-        removeCourseFromData(courseId);
+        // 从数据结构中删除指定教学班
+        removeOfferingFromData(courseId, teacher);
         displayCourseData();
     }
 }
+
+void MainWindow::removeOfferingFromData(const QString &courseId, const QString &teacher)
+{
+    QJsonArray courses = courseData["courses"].toArray();
+    
+    for (int i = 0; i < courses.size(); i++) {
+        QJsonObject course = courses[i].toObject();
+        if (course["id"].toString() == courseId) {
+            QJsonArray offerings = course["offerings"].toArray();
+            QJsonArray newOfferings;
+            bool found = false;
+            
+            // 过滤掉要删除的教学班
+            for (const auto &offering : offerings) {
+                QJsonObject obj = offering.toObject();
+                if (obj["teacher"].toString() != teacher) {
+                    newOfferings.append(obj);
+                } else {
+                    found = true;
+                }
+            }
+            
+            if (!found) {
+                qWarning() << "未找到匹配的教学班: 课程" << courseId << "教师" << teacher;
+                return;
+            }
+            
+            // 如果删除后没有教学班，则删除整个课程
+            if (newOfferings.size() == 0) {
+                courses.removeAt(i);
+                qDebug() << "删除整个课程:" << courseId;
+            } else {
+                course["offerings"] = newOfferings;
+                courses[i] = course;
+                qDebug() << "删除教学班:" << courseId << "教师" << teacher;
+            }
+            
+            courseData["courses"] = courses;
+            return;
+        }
+    }
+    
+    qWarning() << "未找到课程:" << courseId;
+}
+
 // 添加到数据结构
 void MainWindow::addCourseToData(const QJsonObject &newCourse)
 {
@@ -323,44 +459,97 @@ void MainWindow::addCourseToData(const QJsonObject &newCourse)
 // 更新数据结构
 void MainWindow::updateCourseInData(const QJsonObject &updatedCourse)
 {
-    QString courseId = updatedCourse["id"].toString();
-    QJsonArray courses = courseData["courses"].toArray();
+    if (!updatedCourse.contains("id") || !updatedCourse["id"].isString()) {
+        qWarning() << "更新失败: 无效的课程数据";
+        return;
+    }
     
+    QString newCourseId = updatedCourse["id"].toString();
+    QJsonArray courses = courseData["courses"].toArray();
+    bool found = false;
+    int foundIndex = -1;
+    
+    // 首先尝试用原始ID查找课程
     for (int i = 0; i < courses.size(); i++) {
-        if (courses[i].toObject()["id"].toString() == courseId) {
-            courses[i] = updatedCourse;
+        QJsonObject course = courses[i].toObject();
+        if (course.contains("id") && course["id"].isString() && 
+            course["id"].toString() == currentEditingCourseId) {
+            found = true;
+            foundIndex = i;
+            qDebug() << "找到课程(原始ID):" << currentEditingCourseId;
             break;
         }
     }
     
-    courseData["courses"] = courses;
-}
-
-// 从数据结构删除
-void MainWindow::removeCourseFromData(const QString &courseId)
-{
-    QJsonArray courses = courseData["courses"].toArray();
-    QJsonArray newCourses;
-    
-    for (int i = 0; i < courses.size(); i++) {
-        if (courses[i].toObject()["id"].toString() != courseId) {
-            newCourses.append(courses[i]);
+    // 如果原始ID没找到，尝试用新ID查找
+    if (!found) {
+        for (int i = 0; i < courses.size(); i++) {
+            QJsonObject course = courses[i].toObject();
+            if (course.contains("id") && course["id"].isString() && 
+                course["id"].toString() == newCourseId) {
+                found = true;
+                foundIndex = i;
+                qDebug() << "找到课程(新ID):" << newCourseId;
+                break;
+            }
         }
     }
     
-    courseData["courses"] = newCourses;
+    if (found) {
+        // 更新现有课程
+        courses[foundIndex] = updatedCourse;
+        qDebug() << "更新课程:" << (currentEditingCourseId != newCourseId ? 
+                  currentEditingCourseId + " -> " + newCourseId : newCourseId);
+    } else {
+        // 添加为新课程
+        courses.append(updatedCourse);
+        qDebug() << "添加为新课程:" << newCourseId;
+    }
+    
+    // 如果ID发生变化，需要确保没有重复的旧ID
+    if (currentEditingCourseId != newCourseId) {
+        // 再次遍历删除旧ID的课程（如果有）
+        for (int i = 0; i < courses.size(); i++) {
+            QJsonObject course = courses[i].toObject();
+            if (course.contains("id") && course["id"].isString() && 
+                course["id"].toString() == currentEditingCourseId && i != foundIndex) {
+                courses.removeAt(i);
+                qDebug() << "移除重复的旧ID课程:" << currentEditingCourseId;
+                break;
+            }
+        }
+    }
+    
+    courseData["courses"] = courses;
+    qDebug() << "课程数据已更新";
 }
 
+
+
+
 // 根据ID查找课程
-QJsonObject MainWindow::findCourseById(const QString &id)
+QJsonObject MainWindow::findCourseById(const QString &courseId)
 {
+    if (courseId.isEmpty()) {
+        return QJsonObject();
+    }
+    
+    if (!courseData.contains("courses") || !courseData["courses"].isArray()) {
+        return QJsonObject();
+    }
+    
     QJsonArray courses = courseData["courses"].toArray();
-    for (const auto &courseRef : courses) {
-        QJsonObject course = courseRef.toObject();
-        if (course["id"].toString() == id) {
+    
+    for (int i = 0; i < courses.size(); i++) {
+        if (!courses[i].isObject()) continue;
+        
+        QJsonObject course = courses[i].toObject();
+        if (course.contains("id") && course["id"].isString() && 
+            course["id"].toString() == courseId) {
             return course;
         }
     }
+    
     return QJsonObject();
 }
 
