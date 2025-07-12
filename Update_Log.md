@@ -39,6 +39,8 @@
     查找结果如果没有会提示无匹配结果。
     解决了没有查找结果时，表格会显示所有课程的问题：问题在于displayCourseData 函数逻辑有误。当 filterCourses 为空时，使用了 courseData["courses"].toArray()，这导致即使过滤结果为0，函数仍然显示全部课程。
 
+7/13 增加了.vscode目录，帮助可怜的陈杰斌在vscode开发更方遍、debug更方便
+
 
 
 

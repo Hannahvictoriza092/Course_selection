@@ -153,7 +153,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName("menuBar");
-        menuBar->setGeometry(QRect(0, 0, 1024, 21));
+        menuBar->setGeometry(QRect(0, 0, 1024, 17));
         menuBar->setStyleSheet(QString::fromUtf8("background-color: #438b73; color: white;"));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName("menuFile");
@@ -183,7 +183,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
