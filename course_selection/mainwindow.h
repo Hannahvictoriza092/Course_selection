@@ -1,4 +1,6 @@
 #ifndef MAINWINDOW_H
+#include <QJsonArray>
+#include <QJsonObject>
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -34,6 +36,8 @@ private slots:
     
     // 添加课程对话框槽函数
     void onAddCourseDialogAccepted();
+    void on_pushButton_search_clicked();
+    void filterCourseData(const QString &id, const QString &teacher, const QString &name);
 
 private:
     Ui::MainWindow *ui;
@@ -47,7 +51,7 @@ private:
     void initCourseTable();
     void initScheduleTable();
     void loadCourseData(const QString &filePath);
-    void displayCourseData();
+    void displayCourseData(const QJsonArray &courses = QJsonArray());
     void displayScheduleData();
     // 添加课程对话框
     void showAddCourseDialog();

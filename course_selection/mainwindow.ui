@@ -35,6 +35,90 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
+         <layout class="QHBoxLayout" name="searchLayout">
+          <item>
+           <widget class="QLineEdit" name="lineEdit_searchId">
+            <property name="minimumHeight">
+             <number>30</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: #333333;</string>
+            </property>
+            <property name="placeholderText">
+             <string>课程ID</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_searchTeacher">
+            <property name="minimumHeight">
+             <number>30</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: #333333;</string>
+            </property>
+            <property name="placeholderText">
+             <string>教师</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_searchName">
+            <property name="minimumHeight">
+             <number>30</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: #333333;</string>
+            </property>
+            <property name="placeholderText">
+             <string>课程名</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_search">
+            <property name="minimumHeight">
+             <number>30</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: #333333;</string>
+            </property>
+            <property name="text">
+             <string>查询</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_noResults">
+            <property name="text">
+             <string>无匹配结果</string>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: #e74c3c;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="visible">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QTableWidget" name="courseTableWidget">
           <property name="styleSheet">
            <string notr="true">QHeaderView::section { background-color: #ade6c5; padding: 4px; border: 1px solid #dddddd; } QTableWidget { background-color: white; alternate-background-color: #f5f5f5; }</string>

@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include <QJsonArray>
+#include <QJsonObject>
 #include "coursedialog.h"
 #include "ui_mainwindow.h"
 #include "courseparser.h"
@@ -60,6 +62,12 @@ void MainWindow::initCourseTable()
     // 设置行高根据内容自动调整
     ui->courseTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     
+    //初始化无搜索结果时的标签
+    ui->label_noResults->setVisible(false);
+    ui->label_noResults->setText("无匹配结果");
+    ui->label_noResults->setStyleSheet("font-size: 16pt; color: red; font-weight: bold;");
+    ui->label_noResults->setAlignment(Qt::AlignCenter);
+
     // 设置交替行背景色和表头样式
       ui->courseTableWidget->setAlternatingRowColors(true);
       ui->courseTableWidget->setStyleSheet(
@@ -105,16 +113,54 @@ void MainWindow::loadCourseData(const QString &filePath)
     }
 }
 
-void MainWindow::displayCourseData()
+void MainWindow::displayCourseData(const QJsonArray &filterCourses)
 {
+    // 1. 确定要显示的课程数据 - 修复逻辑错误
+    QJsonArray displayCourses;
+    
+    // 如果有过滤结果，使用过滤结果
+    if (!filterCourses.isEmpty()) {
+        displayCourses = filterCourses;
+    } 
+    // 如果没有过滤结果，但提供了过滤参数（搜索操作），使用空数组
+    else if (!ui->lineEdit_searchId->text().isEmpty() ||
+             !ui->lineEdit_searchTeacher->text().isEmpty() ||
+             !ui->lineEdit_searchName->text().isEmpty()) {
+        displayCourses = QJsonArray();
+    }
+    // 否则（初始状态或没有搜索条件），使用全部课程
+    else if (courseData.contains("courses") && courseData["courses"].isArray()) {
+        displayCourses = courseData["courses"].toArray();
+    }
+    
+    // 2. 更新UI状态：显示/隐藏标签和表格
+    bool hasResults = !displayCourses.isEmpty();
+    ui->label_noResults->setVisible(!hasResults);  // 没有结果时显示标签
+    ui->courseTableWidget->setVisible(hasResults); // 有结果时显示表格
+    
+    // 3. 清除表格内容
+    ui->courseTableWidget->clearContents();
     ui->courseTableWidget->setRowCount(0);
-    if (!courseData.contains("courses") || !courseData["courses"].isArray()) return;
-
-    QJsonArray courses = courseData["courses"].toArray();
+    
+    // 4. 添加调试信息
+    qDebug() << "=== 显示课程数据 ===";
+    qDebug() << "传入过滤课程数:" << filterCourses.size();
+    qDebug() << "实际显示课程数:" << displayCourses.size();
+    qDebug() << "标签可见性:" << ui->label_noResults->isVisible();
+    qDebug() << "表格可见性:" << ui->courseTableWidget->isVisible();
+    
+    // 5. 如果没有结果，提前返回
+    if (!hasResults) {
+        qDebug() << "没有匹配结果，提前返回";
+        return;
+    }
+    
+    // 6. 填充表格数据
+    qDebug() << "开始填充表格数据...";
     int currentRow = 0;
     
-    for (int i = 0; i < courses.size(); ++i) {
-        QJsonObject course = courses[i].toObject();
+    for (int i = 0; i < displayCourses.size(); ++i) {
+        QJsonObject course = displayCourses[i].toObject();
         QJsonArray offerings = course["offerings"].toArray();
         
         // 为每个教学班添加一行
@@ -182,16 +228,15 @@ void MainWindow::displayCourseData()
                 ui->courseTableWidget->setItem(currentRow, 7, new QTableWidgetItem(prereqList.join(", ")));
             }
             
-            // 设置行高适应内容 - 使用固定行高
-            ui->courseTableWidget->setRowHeight(currentRow, 60); // 设置为60像素
-            
+            // 设置行高
+            ui->courseTableWidget->setRowHeight(currentRow, 60);
             currentRow++;
         }
         
-        // 合并课程基本信息单元格
+        // 合并单元格
         if (offerings.size() > 1) {
             int startRow = currentRow - offerings.size();
-            for (int col : {0, 1, 2, 3, 6, 7}) { // 需要合并的列
+            for (int col : {0, 1, 2, 3, 6, 7}) {
                 ui->courseTableWidget->setSpan(startRow, col, offerings.size(), 1);
             }
             
@@ -204,8 +249,13 @@ void MainWindow::displayCourseData()
         }
     }
     
-    // 调整列宽以适应内容
+    // 8. 调整列宽
     ui->courseTableWidget->resizeColumnsToContents();
+    
+    // 9. 再次刷新UI
+    ui->courseTableWidget->update();
+    QApplication::processEvents();
+    qDebug() << "表格填充完成";
 }
 
 void MainWindow::displayScheduleData()
@@ -344,6 +394,57 @@ int MainWindow::findActualCourseRow(int row) const
     }
     
     return -1;
+}
+
+void MainWindow::filterCourseData(const QString &id, const QString &teacher, const QString &name)
+{
+    QJsonArray filteredCourses;
+    QJsonArray allCourses = courseData["courses"].toArray();
+    // 添加调试输出
+    qDebug() << "开始过滤课程 - ID:" << id << "教师:" << teacher << "名称:" << name;
+    qDebug() << "总课程数:" << allCourses.size();
+    for (const QJsonValue &value : allCourses) {
+        QJsonObject course = value.toObject();
+        bool idMatch = id.isEmpty() || course["id"].toString().contains(id, Qt::CaseInsensitive);
+        bool nameMatch = name.isEmpty() || course["name"].toString().contains(name, Qt::CaseInsensitive);
+        
+        if (!idMatch || !nameMatch) {
+            continue;
+        }
+        
+        QJsonArray offerings = course["offerings"].toArray();
+        QJsonArray matchingOfferings;
+        
+        if (teacher.isEmpty()) {
+            matchingOfferings = offerings;
+        } else {
+            for (const QJsonValue &offering : offerings) {
+                if (offering.toObject()["teacher"].toString().contains(teacher, Qt::CaseInsensitive)) {
+                    matchingOfferings.append(offering);
+                }
+            }
+        }
+        
+        if (!matchingOfferings.isEmpty()) {
+            QJsonObject filteredCourse = course;
+            filteredCourse["offerings"] = matchingOfferings;
+            filteredCourses.append(filteredCourse);
+        }
+    }
+    // 添加调试输出
+    qDebug() << "过滤后课程数:" << filteredCourses.size();
+    displayCourseData(filteredCourses);
+}
+
+void MainWindow::on_pushButton_search_clicked()
+{
+    QString id = ui->lineEdit_searchId->text().trimmed();
+    QString teacher = ui->lineEdit_searchTeacher->text().trimmed();
+    QString name = ui->lineEdit_searchName->text().trimmed();
+    
+    qDebug() << "搜索参数 - ID:" << id << "教师:" << teacher << "名称:" << name;
+    
+    filterCourseData(id, teacher, name);
 }
 
 void MainWindow::onAddCourseDialogAccepted()
