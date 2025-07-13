@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                //"D:/program_files/Qt/6.9.1/msvc2022_64/include",
+                //"D:/program_files/Qt/6.9.1/msvc2022_64/include/QtCore",
+               // "D:/program_files/Qt/6.9.1/msvc2022_64/include/QtWidgets",
+                // "D:/program_files/Qt/6.9.1/msvc2022_64/include/QtGui",
+                "${workspaceFolder}/**",
+                "D:/program_files/Qt/6.9.1/mingw_64/include",
+                "D:/program_files/Qt/6.9.1/mingw_64/include/QtCore",
+                "D:/program_files/Qt/6.9.1/mingw_64/include/QtConcurrent",  // 关键！
+                "D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets",
+                "D:/program_files/Qt/6.9.1/mingw_64/include/QtGui"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c11",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}

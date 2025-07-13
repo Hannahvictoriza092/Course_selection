@@ -14,19 +14,24 @@ class CourseAlgorithm : public QObject
     Q_OBJECT
 public:
     explicit CourseAlgorithm(QObject *parent = nullptr);
+
+    //输入课程数据和学分上限，输出生成的课程表
     QJsonObject generateSchedule(const QJsonObject &courseData, int creditLimit);
 
 private:
+    
+    //定义一个课程结构体
     struct CourseInfo {
         QString id;
         QString name;
         int credit;
         int semester;
         bool required;
-        QSet<QString> prerequisites;
+        QSet<QString> prerequisites;//可以避免重复
         QJsonArray classes;
     };
 
+    //教学班信息
     struct ClassInfo {
         QString id;
         QString teacher;
@@ -34,16 +39,26 @@ private:
         int weeks;
     };
 
+    //课程名称对应，课程的信息
     QMap<QString, CourseInfo> courseMap;
+    //班级名称对应，班级信息
     QMap<QString, QVector<ClassInfo>> classMap;
-    QVector<QVector<QString>> semesterCourses; // 8个学期的课程安排
+     // 8个学期的课程安排
+    QVector<QVector<QString>> semesterCourses;//应有八个
+    //总学分
     int totalCredits;
-
+    
+    //函数，初始化课程数据
     bool initializeCourseData(const QJsonObject &courseData);
+    //拓扑排序
     bool topologicalSort();
+    //检查时间冲突
     bool checkTimeConflict(const QString &courseId, const QString &classId, int semester);
+    //选择课程
     bool selectCourses(int creditLimit);
+    //建立课程安排
     QJsonObject buildScheduleJson();
+    //计算总学分
     int calculateTotalCredits();
 };
 
