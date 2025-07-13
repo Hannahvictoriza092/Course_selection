@@ -1,3 +1,17 @@
+/**
+ * @file courseparser.cpp
+ * @brief 课程数据解析实现
+ *
+ * 实现以下核心功能：
+ * 1. 文件读取与JSON解析
+ * 2. 课程数据结构验证：
+ *   - 校验必填字段(id/name/credit等)
+ *   - 校验times数组长度(7天)和元素类型
+ *   - 校验周数掩码范围(1-18周)
+ * 3. 错误处理与日志输出
+ *
+ * @see CourseParser 类声明
+ */
 #include "courseparser.h"
 #include <QFile>
 #include <QJsonDocument>
