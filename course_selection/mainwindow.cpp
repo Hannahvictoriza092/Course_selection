@@ -21,8 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     currentEditingCourseId("") // 初始化为空字符串
 {
     ui->setupUi(this);
-    initCourseTable();
-    initScheduleTable();
+
     // 设置垂直表头右键菜单
     ui->courseTableWidget->verticalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->courseTableWidget->verticalHeader(), &QHeaderView::customContextMenuRequested,

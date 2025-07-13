@@ -41,7 +41,7 @@ private:
 
     //课程名称对应，课程的信息
     QMap<QString, CourseInfo> courseMap;
-    //班级名称对应，班级信息
+    //课程ID：各个老师的这门课信息
     QMap<QString, QVector<ClassInfo>> classMap;
      // 8个学期的课程安排
     QVector<QVector<QString>> semesterCourses;//应有八个
@@ -60,6 +60,8 @@ private:
     QJsonObject buildScheduleJson();
     //计算总学分
     int calculateTotalCredits();
+    //辅助函数，任checkTimeConflict调用，检查同学期的冲突
+    bool CourseAlgorithm::hasTimeConflict(const QVector<ClassInfo> &existingClasses, const ClassInfo &newClass) ;
 };
 
 #endif // COURSEALGORITHM_H

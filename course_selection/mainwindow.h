@@ -49,8 +49,6 @@ private:
     QJsonObject scheduleData;
     QString currentEditingCourseId;  // 用于编辑课程时记录当前编辑的课程ID
 
-    void initCourseTable();
-    void initScheduleTable();
     void loadCourseData(const QString &filePath);
     void displayCourseData(const QJsonArray &filterCourses = QJsonArray());
     void displayScheduleData();
