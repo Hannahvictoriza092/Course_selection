@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ClassTimeDialog</class>
+ <widget class="QDialog" name="ClassTimeDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>设置上课时间和周数</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_teacher">
+       <property name="text">
+        <string>教师:</string>
+       </property>
+      </widget>
+     </item>
+     <!-- 移除了formLayout中的多余闭合标签 -->
+     <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_teacher"/>
+     </item>
+     </layout>
+     <!-- 移除了tabWidget_weekdays后的多余闭合标签 -->
+   </item>
+   <item>
+    <widget class="QLabel" name="label_weekday">
+     <property name="text">
+      <string>选择每天课时:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget_weekdays">
+     <widget class="QWidget" name="tab_monday">
+      <attribute name="title">
+       <string>周一</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_monday">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_monday">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_monday">
+          <layout class="QGridLayout" name="gridLayout_monday">
+           <!-- 周一课时复选框 -->
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_tuesday">
+      <attribute name="title">
+       <string>周二</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_tuesday">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_tuesday">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_tuesday">
+          <layout class="QGridLayout" name="gridLayout_tuesday">
+           <!-- 周二课时复选框 -->
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_wednesday">
+      <attribute name="title">
+       <string>周三</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_wednesday">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_wednesday">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_wednesday">
+          <layout class="QGridLayout" name="gridLayout_wednesday">
+           <!-- 周三课时复选框 -->
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_thursday">
+      <attribute name="title">
+       <string>周四</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_thursday">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_thursday">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_thursday">
+          <layout class="QGridLayout" name="gridLayout_thursday">
+           <!-- 周四课时复选框 -->
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_friday">
+      <attribute name="title">
+       <string>周五</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_friday">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_friday">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_friday">
+          <layout class="QGridLayout" name="gridLayout_friday">
+           <!-- 周五课时复选框 -->
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_saturday">
+      <attribute name="title">
+       <string>周六</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_saturday">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_saturday">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_saturday">
+          <layout class="QGridLayout" name="gridLayout_saturday">
+           <!-- 周六课时复选框 -->
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_sunday">
+      <attribute name="title">
+       <string>周日</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_sunday">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_sunday">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_sunday">
+          <layout class="QGridLayout" name="gridLayout_sunday">
+           <!-- 周日课时复选框 -->
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_classes">
+     <property name="text">
+      <string>选择课时 (1-14节):</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="scrollArea_classes">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_classes">
+      <layout class="QGridLayout" name="gridLayout_classes">
+       <!-- 动态生成14个课时复选框 -->
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_weeks">
+     <property name="text">
+      <string>选择周数 (1-18周):</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="scrollArea_weeks">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_weeks">
+      <layout class="QGridLayout" name="gridLayout_weeks">
+       <!-- 动态生成18个周数复选框 -->
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok|QDialogButtonBox::Cancel</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

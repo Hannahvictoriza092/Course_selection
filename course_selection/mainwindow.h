@@ -4,6 +4,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QTableWidget>
 #include <QSpinBox>
 #include <QJsonObject>
@@ -51,7 +52,7 @@ private:
     void initCourseTable();
     void initScheduleTable();
     void loadCourseData(const QString &filePath);
-    void displayCourseData(const QJsonArray &courses = QJsonArray());
+    void displayCourseData(const QJsonArray &filterCourses = QJsonArray());
     void displayScheduleData();
     // 添加课程对话框
     void showAddCourseDialog();

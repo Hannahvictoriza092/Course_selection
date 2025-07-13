@@ -94,18 +94,23 @@
        <item>
         <widget class="QTableWidget" name="tableWidget_classes">
          <property name="columnCount">
-          <number>2</number>
-         </property>
+        <number>3</number>
+       </property>
          <column>
           <property name="text">
            <string>教师</string>
           </property>
          </column>
          <column>
-          <property name="text">
-           <string>上课时间</string>
-          </property>
-         </column>
+         <property name="text">
+          <string>上课时间</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>上课周数</string>
+         </property>
+        </column>
         </widget>
        </item>
        <item>

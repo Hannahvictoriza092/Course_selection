@@ -11,15 +11,18 @@ SOURCES += main.cpp \
     scheduleexporter.cpp \
     coursealgorithm.cpp \
     coursedialog.cpp \
+    classtimedialog.cpp \
 
 HEADERS  += mainwindow.h \
     courseparser.h \
     scheduleexporter.h \
     coursealgorithm.h \
-    coursedialog.h
+    coursedialog.h \
+    classtimedialog.h
 
 FORMS    += mainwindow.ui \
-    coursedialog.ui
+    coursedialog.ui \
+    classtimedialog.ui
 
 RESOURCES += 
 
