@@ -43,8 +43,8 @@ private:
     QMap<QString, CourseInfo> courseMap;
     //课程ID：各个老师的这门课信息
     QMap<QString, QVector<ClassInfo>> classMap;
-     // 8个学期的课程安排
-    QVector<QVector<QString>> semesterCourses;//应有八个
+     // 8个学期的课程安排，就是完成把课程分配到学期的任务（按照先导关系拓扑，与学分无关）
+    QVector<QVector<QString>> semesterCourses;
     //总学分
     int totalCredits;
     
@@ -61,7 +61,14 @@ private:
     //计算总学分
     int calculateTotalCredits();
     //辅助函数，任checkTimeConflict调用，检查同学期的冲突
-    bool hasTimeConflict(const QVector<ClassInfo> &existingClasses, const ClassInfo &newClass);
+    bool CourseAlgorithm::hasTimeConflict(int semester, const ClassInfo &newClass) ;
+
+    //辅助函数,查找课程已经被安排在哪个学期
+    int findCourseSemester(const QString &courseId);
+    // 辅助函数：检查课程能否加入某学期
+    bool canAddCourseToSemester(const QString &courseId, int semester,QString& classID);
+
+
 };
 
 #endif // COURSEALGORITHM_H

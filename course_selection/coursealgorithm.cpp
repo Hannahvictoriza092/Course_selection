@@ -2,7 +2,9 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QDebug>
+#include <algorithm>
 #include <queue>
+#include <bitset>
 
 
 //构造函数
@@ -41,12 +43,12 @@ QJsonObject CourseAlgorithm::generateSchedule(const QJsonObject &courseData, int
     return buildScheduleJson();
 }
 
-bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处理courseMap
+bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处理courseMap、classMap，所有的信息已经填充上车了
 {
     if (!courseData.contains("courses") || !courseData["courses"].isArray()) {
         return false;
     }
-
+    //单纯先填充所有课程名，然后每个课程下面的各种time、前驱什么的再填充
     QJsonArray courses = courseData["courses"].toArray();
     for (const auto &courseVal : courses) {
         QJsonObject courseObj = courseVal.toObject();
@@ -54,7 +56,10 @@ bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处�
         course.id = courseObj["id"].toString();
         course.name = courseObj["name"].toString();
         course.credit = courseObj["credit"].toInt();
-        course.semester = courseObj["semester"].toInt();
+        if(courseObj["semester"]=="spring"){
+                course.semester=1;
+        }
+        else course.semester=0;
         course.required = courseObj["required"].toBool();
         course.classes = courseObj["classes"].toArray();
 
@@ -84,6 +89,7 @@ bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处�
 
             classInfos.append(classInfo);
         }
+        //同一个课程对应这些教学班列表
         classMap[course.id] = classInfos;
     }
 
@@ -92,6 +98,7 @@ bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处�
 
 bool CourseAlgorithm::topologicalSort() //待修改
 {
+    int curCredits=0;//当前学分
     QMap<QString, int> inDegree;//入度
     QMap<QString, QVector<QString>> adjList; //邻接表<节点，邻居们>
 
@@ -126,28 +133,53 @@ bool CourseAlgorithm::topologicalSort() //待修改
         }
     }
 
+    
+
     // 检查是否存在循环依赖
     if (result.size() != courseMap.size()) { //是否所有点都被处理到
         return false;
     }
+        /*-----生成的result中的序列已经是所有课程的拓扑排序（不讨论教学班）-------*/
 
-    // 按拓扑顺序result安排课程到建议学期
-    for (const auto &courseId : result) {
-        const CourseInfo &course = courseMap[courseId]; //从courseMap里面匹配一个 CourseInfo
-        int suggestedSemester = course.semester;  //建议的学期
+    // 按拓扑顺序将课程分配学期
+    for (const QString &courseId : result) {
+        const CourseInfo &course = courseMap[courseId];
+        
+        // 计算前置课程的最晚学期,前置课程一定已经被安排过了
+        int earliestPossibleSemester = course.semester;//本来起点就是这样的，上学期0，下学期1
+        int lastPre=0;
+        for (const QString &prereq : course.prerequisites) {//这门课程的前置们
+            int prereqSemester = findCourseSemester(prereq);
+            lastPre = qMax(lastPre, prereqSemester);
+        }//找到最晚的学期
 
-        // 如果课程有建议学期，尝试安排在该学期
-        if (suggestedSemester >= 0 && suggestedSemester < 8) {
-            semesterCourses[suggestedSemester].append(courseId); //建议的学期里面添加一个
-        } else {
-            // 否则安排在第一个可用学期
-            for (int i = 0; i < 8; ++i) {
-                semesterCourses[i].append(courseId);
-                break;
+        // 结合建议学期和前置约束
+        
+        if (targetSemester < 0 || targetSemester < earliestPossibleSemester) {
+            targetSemester = earliestPossibleSemester;
+        }
+
+        // 寻找实际可安排的学期（考虑总学分上限和时间冲突，在同一个学期里面的课，周冲撞了，那么就不能天也冲撞）
+        bool placed = false;
+        for (int sem = targetSemester; sem < 8 && !placed; ++sem) {
+            QString classID;
+            //先判断时间会不会冲突
+            bool classID=canAddCourseToSemester(courseId, sem,classID); //如果能返回一个
+            //再判断学分会不会超
+            
+            if () {
+                semesterCourses[sem].append(classID);
+                placed = true;
+                curCredits+=2*courseMap[can]
             }
         }
-    }
 
+        if (!placed) {
+            qWarning() << "无法安排课程:" << courseId;
+           return false; //就是一个前置完成吧，但是如果已经满足学分
+        
+        }
+    }
     return true;
 }
 
@@ -170,7 +202,15 @@ bool CourseAlgorithm::checkTimeConflict(const QString &courseId, const QString &
     for (const auto &selectedCourseId : semesterCourses[semester]) { //该学期的这门课！！
         if (selectedCourseId == courseId) continue; //遇到自己就跳过
 
-
+        for (const auto &classInfo : classMap[selectedCourseId]) { //同一个课程里的所有课
+            // 简化的时间冲突检查逻辑
+            // 实际应用中需要根据times和weeks字段进行详细的时间冲突判断
+            // 这里仅作示例，返回false表示无冲突
+            //classInfo里面的week和time都是解析好的
+             if (hasTimeConflict(existingClasses, newClass)) {
+            return true; // 存在冲突
+        }
+        }
     }
 
     return false;
@@ -250,20 +290,42 @@ QJsonObject CourseAlgorithm::buildScheduleJson() //建立新的Json文件
 
 
 //辅助函数，用来判断是否冲突
-bool CourseAlgorithm::hasTimeConflict(const QVector<ClassInfo> &existing, const ClassInfo &newCls) {
-    for (const auto &existingClass : existing) {
+bool  CourseAlgorithm:: hasTimeConflict(int semester, const ClassInfo &newClass) { //判断这个课程的有没有可以加入不冲突的课程
+    for (const auto &existingClass : semesterCourses[semester]) {//对于当前已经放进当前学期的
         // 1. 检查周次是否重叠
-        if ((existingClass.weeks & newCls.weeks) == 0) {
+        if ((courseMap[existingClass].weeks & newClass.weeks) == 0) {
             continue; // 无周次重叠，跳过
         }
 
         // 2. 检查具体时间是否重叠
         for (int day = 0; day < 7; ++day) {
             // 如果某天至少有一节课重叠（按位与不为0）
-            if ((existingClass.times[day] & newCls.times[day]) != 0) {
+            if ((existingClass.times[day] & newClass.times[day]) != 0) {
                 return true; // 冲突！
             }
         }
     }
     return false; // 无冲突
+}
+
+// 查找课程已被安排在哪个学期
+int CourseAlgorithm::findCourseSemester(const QString &courseId) {
+    for (int sem = 0; sem < 8; ++sem) {
+        if (semesterCourses[sem].contains(courseId)) {
+            return sem;
+        }
+    }
+    return -1; // 未找到
+}
+
+// 检查课程能否加入某学期,只判断时间冲突
+bool CourseAlgorithm::canAddCourseToSemester(const QString &courseId, int semester,QString& classID) {
+
+    // 检查时间冲突
+    for (const ClassInfo &classInfo : classMap[courseId]) {
+        if (!hasTimeConflict(int semester, classInfo)) {
+            return true; // 至少有一个班级无冲突
+        }
+    }
+    return false;
 }
