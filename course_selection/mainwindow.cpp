@@ -21,8 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     currentEditingCourseId("") // 初始化为空字符串
 {
     ui->setupUi(this);
-    initCourseTable();
-    initScheduleTable();
+
     // 设置垂直表头右键菜单
     ui->courseTableWidget->verticalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->courseTableWidget->verticalHeader(), &QHeaderView::customContextMenuRequested,
@@ -38,69 +37,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::initCourseTable()
-{
-    // 禁用双击编辑
-    ui->courseTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    // 修改表头顺序和内容
-    QStringList headers = {"开课学期", "课程ID", "课程名称", "课程类别", "教师", "上课时间", "学分(两倍)", "前置课程"};
-    ui->courseTableWidget->setColumnCount(headers.size());
-    ui->courseTableWidget->setHorizontalHeaderLabels(headers);
-    
-    // 设置列宽均衡
-    ui->courseTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
-    ui->courseTableWidget->horizontalHeader()->setMinimumSectionSize(100);
-    // 设置上课时间列(索引7)宽度为其他列的1.5倍
-    ui->courseTableWidget->horizontalHeader()->resizeSection(7, 200);
-    ui->courseTableWidget->horizontalHeader()->resizeSection(8, 80);
-    ui->courseTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    // 设置像素级滚动以提高流畅度
-    ui->courseTableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-    ui->courseTableWidget->horizontalHeader()->setStretchLastSection(false);
-    // 启用单元格文本自动换行
-    ui->courseTableWidget->setWordWrap(true);
-    // 设置行高根据内容自动调整
-    ui->courseTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    
-    //初始化无搜索结果时的标签
-    ui->label_noResults->setVisible(false);
-    ui->label_noResults->setText("无匹配结果");
-    ui->label_noResults->setStyleSheet("font-size: 16pt; color: red; font-weight: bold;");
-    ui->label_noResults->setAlignment(Qt::AlignCenter);
-
-    // 设置交替行背景色和表头样式
-      ui->courseTableWidget->setAlternatingRowColors(true);
-      ui->courseTableWidget->setStyleSheet(
-          "QTableWidget { color: #333333; font-weight: 500; }"
-          "QTableWidget::item { background-color:rgb(153, 181, 222); }"
-          "QTableWidget::item:alternate { background-color:rgb(179, 198, 222); }"
-          "QHeaderView::section { background-color: #f0f0f0; color: #333333; padding: 4px; border: 1px solid #dddddd; }"
-      );
-}
-
-void MainWindow::initScheduleTable()
-{
-    // 设置行标签（1-14节课）
-    QStringList rowLabels;
-    for (int i = 1; i <= 14; ++i) {
-        rowLabels << QString::number(i);
-    }
-    ui->scheduleTableWidget->setVerticalHeaderLabels(rowLabels);
-    
-    // 设置列标签（周一到周日）
-    QStringList headers = {"周一", "周二", "周三", "周四", "周五", "周六", "周日"};
-    ui->scheduleTableWidget->setHorizontalHeaderLabels(headers);
-    
-    // 将表头移到下方
-    ui->scheduleTableWidget->horizontalHeader()->setStyleSheet("QHeaderView { qproperty-sectionPosition: QHeaderView::South; }");
-    
-    // 添加滚动条
-    ui->scheduleTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    ui->scheduleTableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    
-    // 设置列宽自适应
-    ui->scheduleTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-}
 
 void MainWindow::loadCourseData(const QString &filePath)
 {
