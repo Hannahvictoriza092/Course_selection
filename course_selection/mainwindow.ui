@@ -125,7 +125,7 @@
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
           <property name="columnCount">
-           <number>8</number>
+           <number>9</number>
           </property>
           <property name="styleSheet">
            <string notr="true">QTableWidget { color: black; font-weight: 500; }
@@ -183,11 +183,11 @@ QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; bo
           </column>
           <column>
            <property name="text">
-            <string>学分(两倍)</string>
+            <string>上课周数</string>
            </property>
            <property name="sizeHint">
             <size>
-             <width>80</width>
+             <width>100</width>
              <height>0</height>
             </size>
            </property>
@@ -195,6 +195,11 @@ QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; bo
           <column>
            <property name="text">
             <string>前置课程</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>优先级</string>
            </property>
           </column>
          </widget>

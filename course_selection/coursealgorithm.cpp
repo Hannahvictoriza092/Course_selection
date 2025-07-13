@@ -2,9 +2,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QDebug>
-#include <algorithm>
 #include <queue>
-#include <bitset>
 
 
 //构造函数
@@ -172,15 +170,7 @@ bool CourseAlgorithm::checkTimeConflict(const QString &courseId, const QString &
     for (const auto &selectedCourseId : semesterCourses[semester]) { //该学期的这门课！！
         if (selectedCourseId == courseId) continue; //遇到自己就跳过
 
-        for (const auto &classInfo : classMap[selectedCourseId]) { //同一个课程里的所有课
-            // 简化的时间冲突检查逻辑
-            // 实际应用中需要根据times和weeks字段进行详细的时间冲突判断
-            // 这里仅作示例，返回false表示无冲突
-            //classInfo里面的week和time都是解析好的
-             if (hasTimeConflict(existingClasses, newClass)) {
-            return true; // 存在冲突
-        }
-        }
+
     }
 
     return false;
@@ -260,17 +250,17 @@ QJsonObject CourseAlgorithm::buildScheduleJson() //建立新的Json文件
 
 
 //辅助函数，用来判断是否冲突
-bool  CourseAlgorithm:: hasTimeConflict(const QVector<ClassInfo> &existingClasses, const ClassInfo &newClass) {
-    for (const auto &existingClass : existingClasses) {
+bool CourseAlgorithm::hasTimeConflict(const QVector<ClassInfo> &existing, const ClassInfo &newCls) {
+    for (const auto &existingClass : existing) {
         // 1. 检查周次是否重叠
-        if ((existingClass.weeks & newClass.weeks) == 0) {
+        if ((existingClass.weeks & newCls.weeks) == 0) {
             continue; // 无周次重叠，跳过
         }
 
         // 2. 检查具体时间是否重叠
         for (int day = 0; day < 7; ++day) {
             // 如果某天至少有一节课重叠（按位与不为0）
-            if ((existingClass.times[day] & newClass.times[day]) != 0) {
+            if ((existingClass.times[day] & newCls.times[day]) != 0) {
                 return true; // 冲突！
             }
         }

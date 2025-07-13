@@ -66,6 +66,13 @@ QJsonObject CourseParser::parseCourseFile(const QString &filePath)
             return QJsonObject();
         }
 
+        // 设置默认优先级：必修课0，选修课1
+        if (!courseObj.contains("priority")) {
+            QString required = courseObj["required"].toString();
+            courseObj["priority"] = (required == "Compulsory") ? 0 : 1;
+            coursesArray[i] = courseObj;
+        }
+
         QJsonArray offeringsArray = courseObj["offerings"].toArray();
         for (int j = 0; j < offeringsArray.size(); ++j) {
             if (!offeringsArray[j].isObject()) {
@@ -80,7 +87,7 @@ QJsonObject CourseParser::parseCourseFile(const QString &filePath)
             }
         }
     }
-
+    rootObj["courses"] = coursesArray; 
     return rootObj;
 }
 

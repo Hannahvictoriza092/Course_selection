@@ -61,7 +61,7 @@ private:
     //计算总学分
     int calculateTotalCredits();
     //辅助函数，任checkTimeConflict调用，检查同学期的冲突
-    bool CourseAlgorithm::hasTimeConflict(const QVector<ClassInfo> &existingClasses, const ClassInfo &newClass) ;
+    bool hasTimeConflict(const QVector<ClassInfo> &existingClasses, const ClassInfo &newClass);
 };
 
 #endif // COURSEALGORITHM_H

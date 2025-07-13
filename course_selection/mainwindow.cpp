@@ -42,16 +42,18 @@ void MainWindow::initCourseTable()
     // 禁用双击编辑
     ui->courseTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     // 修改表头顺序和内容
-    QStringList headers = {"开课学期", "课程ID", "课程名称", "课程类别", "教师", "上课时间", "上课周数", "学分(两倍)", "前置课程"};
+    QStringList headers = {"开课学期", "课程ID", "课程名称", "课程类别", "教师", "上课时间", "上课周数", "前置课程", "优先级"};
     ui->courseTableWidget->setColumnCount(headers.size());
     ui->courseTableWidget->setHorizontalHeaderLabels(headers);
     
     // 设置列宽均衡
     ui->courseTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
     ui->courseTableWidget->horizontalHeader()->setMinimumSectionSize(100);
-    // 设置上课时间列(索引7)宽度为其他列的1.5倍
-    ui->courseTableWidget->horizontalHeader()->resizeSection(6, 100);
-    ui->courseTableWidget->horizontalHeader()->resizeSection(8, 200);
+    // 设置上课时间列宽度
+    ui->courseTableWidget->horizontalHeader()->resizeSection(5, 150); // 上课时间列宽度
+    ui->courseTableWidget->horizontalHeader()->resizeSection(6, 100); // 上课周数列宽度
+    ui->courseTableWidget->horizontalHeader()->resizeSection(7, 200); // 前置课程列宽度
+    ui->courseTableWidget->horizontalHeader()->resizeSection(8, 60); // 优先级列宽度
     ui->courseTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     // 设置像素级滚动以提高流畅度
     ui->courseTableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -225,19 +227,20 @@ void MainWindow::displayCourseData(const QJsonArray &filterCourses)
             }
             ui->courseTableWidget->setItem(currentRow, 6, new QTableWidgetItem(weekNumbers.join(",")));
 
-            // 学分(两倍) (第7列) - 只在第一行设置
-            if (j == 0) {
-                ui->courseTableWidget->setItem(currentRow, 7, new QTableWidgetItem(QString::number(course["credit"].toInt())));
-            }
-            
-            // 前置课程 (第8列) - 只在第一行设置
+            // 前置课程 (第7列) - 只在第一行设置
             if (j == 0) {
                 QJsonArray prereqs = course["prerequisites"].toArray();
                 QStringList prereqList;
                 for (const auto &prereq : prereqs) {
                     prereqList << prereq.toString();
                 }
-                ui->courseTableWidget->setItem(currentRow, 8, new QTableWidgetItem(prereqList.join(", ")));
+                ui->courseTableWidget->setItem(currentRow, 7, new QTableWidgetItem(prereqList.join(", ")));
+            }
+            
+            // 优先级 (第8列) - 只在第一行设置
+            //所有选修课默认优先级为1，可编辑，所有必修课默认优先级为0，不可编辑
+            if (j == 0) {
+                ui->courseTableWidget->setItem(currentRow, 8, new QTableWidgetItem(QString::number(course["priority"].toInt())));
             }
             
             // 设置行高

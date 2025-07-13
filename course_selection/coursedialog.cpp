@@ -21,6 +21,15 @@ CourseDialog::CourseDialog(QWidget *parent) :
     // 设置课程类型选项
     ui->comboBox_courseType->addItems({"必修", "选修"});
     
+    // 连接课程类型变化信号以控制优先级SpinBox显示
+    connect(ui->comboBox_courseType, &QComboBox::currentTextChanged, this, [this](const QString &type){
+    bool isElective = (type == "选修");
+    ui->spinBox_priority->setVisible(isElective);
+    if (!isEditMode) { // 添加模式下根据课程类型设置默认优先级
+        ui->spinBox_priority->setValue(isElective ? 1 : 0);
+    }
+});
+    
     // 设置表格双击编辑
     connect(ui->tableWidget_classes, &QTableWidget::itemDoubleClicked, this, &CourseDialog::on_tableWidget_classes_itemDoubleClicked);
     
@@ -44,6 +53,7 @@ void CourseDialog::setupTimeSlotWidgets()
 
 void CourseDialog::setAddMode() {
     isEditMode = false;
+    ui->spinBox_priority->setValue(0); // 默认必修，优先级0
     on_pushButton_addClass_clicked();  // 手动调用
 }
 
@@ -87,6 +97,14 @@ void CourseDialog::setCourseData(const QJsonObject &course)
     QString required = course["required"].toString();
     ui->comboBox_courseType->setCurrentText(required == "Compulsory" ? "必修" : "选修");
     
+    // 设置优先级SpinBox
+    if (ui->comboBox_courseType->currentText() == "选修") {
+        ui->spinBox_priority->setVisible(true);
+        ui->spinBox_priority->setValue(course["priority"].toInt());
+    } else {
+        ui->spinBox_priority->setVisible(false);
+    }
+    
     ui->doubleSpinBox_credits->setValue(course["credit"].toInt());
     
     // 填充前置课程
@@ -123,6 +141,9 @@ QJsonObject CourseDialog::getCourseData() const
     course["semester"] = ui->comboBox_semester->currentText();
     course["required"] = ui->comboBox_courseType->currentText() == "必修" ? "Compulsory" : "Elective";
     course["credit"] = ui->doubleSpinBox_credits->value();
+    
+    // 添加优先级（选修课程）
+    course["priority"] = (ui->comboBox_courseType->currentText() == "选修") ? ui->spinBox_priority->value() : 0;
     
     // 教学班数据
     QJsonArray offerings;

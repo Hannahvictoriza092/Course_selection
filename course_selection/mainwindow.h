@@ -1,9 +1,11 @@
 #ifndef MAINWINDOW_H
-#include <QJsonArray>
-#include <QJsonObject>
 #define MAINWINDOW_H
 
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QAction>
 #include <QMainWindow>
+#include <QtGui/QAction>
 #include <QMessageBox>
 #include <QTableWidget>
 #include <QSpinBox>
@@ -25,6 +27,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private:
+    void initCourseTable();
+    void initScheduleTable();
 private slots:
     void on_actionImportCourse_triggered();
     void on_actionExportSchedule_triggered();
