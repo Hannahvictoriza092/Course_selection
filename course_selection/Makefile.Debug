@@ -215,12 +215,13 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		D:/anaconda/Library/include/qt/QtCore/quuid.h \
 		D:/anaconda/Library/include/qt/QtCore/QJsonObject \
 		D:/anaconda/Library/include/qt/QtCore/qjsonobject.h \
-		D:/anaconda/Library/include/qt/QtWidgets/QMainWindow \
-		D:/anaconda/Library/include/qt/QtWidgets/qmainwindow.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QAction \
+		D:/anaconda/Library/include/qt/QtWidgets/qaction.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtwidgetsglobal.h \
 		D:/anaconda/Library/include/qt/QtGui/qtguiglobal.h \
 		D:/anaconda/Library/include/qt/QtGui/qtgui-config.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtwidgets-config.h \
+		D:/anaconda/Library/include/qt/QtGui/qkeysequence.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qwidget.h \
 		D:/anaconda/Library/include/qt/QtGui/qwindowdefs.h \
 		D:/anaconda/Library/include/qt/QtGui/qwindowdefs_win.h \
@@ -247,14 +248,19 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		D:/anaconda/Library/include/qt/QtGui/qfontinfo.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qsizepolicy.h \
 		D:/anaconda/Library/include/qt/QtGui/qcursor.h \
-		D:/anaconda/Library/include/qt/QtGui/qkeysequence.h \
 		D:/anaconda/Library/include/qt/QtGui/qevent.h \
 		D:/anaconda/Library/include/qt/QtCore/qfile.h \
 		D:/anaconda/Library/include/qt/QtCore/qfiledevice.h \
 		D:/anaconda/Library/include/qt/QtGui/qvector2d.h \
 		D:/anaconda/Library/include/qt/QtGui/qtouchdevice.h \
-		D:/anaconda/Library/include/qt/QtWidgets/qtabwidget.h \
 		D:/anaconda/Library/include/qt/QtGui/qicon.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qactiongroup.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMainWindow \
+		D:/anaconda/Library/include/qt/QtWidgets/qmainwindow.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qtabwidget.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMessageBox \
+		D:/anaconda/Library/include/qt/QtWidgets/qmessagebox.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qdialog.h \
 		D:/anaconda/Library/include/qt/QtWidgets/QTableWidget \
 		D:/anaconda/Library/include/qt/QtWidgets/qtablewidget.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtableview.h \
@@ -777,6 +783,8 @@ debug/moc_classtimedialog.cpp: classtimedialog.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qcheckbox.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qabstractbutton.h \
 		D:/anaconda/Library/include/qt/QtGui/qicon.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMessageBox \
+		D:/anaconda/Library/include/qt/QtWidgets/qmessagebox.h \
 		D:/anaconda/Library/include/qt/QtCore/QJsonObject \
 		D:/anaconda/Library/include/qt/QtCore/qjsonobject.h \
 		D:/anaconda/Library/include/qt/QtCore/qjsonvalue.h \
@@ -897,12 +905,13 @@ debug/main.o: main.cpp mainwindow.h \
 		D:/anaconda/Library/include/qt/QtCore/quuid.h \
 		D:/anaconda/Library/include/qt/QtCore/QJsonObject \
 		D:/anaconda/Library/include/qt/QtCore/qjsonobject.h \
-		D:/anaconda/Library/include/qt/QtWidgets/QMainWindow \
-		D:/anaconda/Library/include/qt/QtWidgets/qmainwindow.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QAction \
+		D:/anaconda/Library/include/qt/QtWidgets/qaction.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtwidgetsglobal.h \
 		D:/anaconda/Library/include/qt/QtGui/qtguiglobal.h \
 		D:/anaconda/Library/include/qt/QtGui/qtgui-config.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtwidgets-config.h \
+		D:/anaconda/Library/include/qt/QtGui/qkeysequence.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qwidget.h \
 		D:/anaconda/Library/include/qt/QtGui/qwindowdefs.h \
 		D:/anaconda/Library/include/qt/QtGui/qwindowdefs_win.h \
@@ -929,14 +938,19 @@ debug/main.o: main.cpp mainwindow.h \
 		D:/anaconda/Library/include/qt/QtGui/qfontinfo.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qsizepolicy.h \
 		D:/anaconda/Library/include/qt/QtGui/qcursor.h \
-		D:/anaconda/Library/include/qt/QtGui/qkeysequence.h \
 		D:/anaconda/Library/include/qt/QtGui/qevent.h \
 		D:/anaconda/Library/include/qt/QtCore/qfile.h \
 		D:/anaconda/Library/include/qt/QtCore/qfiledevice.h \
 		D:/anaconda/Library/include/qt/QtGui/qvector2d.h \
 		D:/anaconda/Library/include/qt/QtGui/qtouchdevice.h \
-		D:/anaconda/Library/include/qt/QtWidgets/qtabwidget.h \
 		D:/anaconda/Library/include/qt/QtGui/qicon.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qactiongroup.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMainWindow \
+		D:/anaconda/Library/include/qt/QtWidgets/qmainwindow.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qtabwidget.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMessageBox \
+		D:/anaconda/Library/include/qt/QtWidgets/qmessagebox.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qdialog.h \
 		D:/anaconda/Library/include/qt/QtWidgets/QTableWidget \
 		D:/anaconda/Library/include/qt/QtWidgets/qtablewidget.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtableview.h \
@@ -1042,12 +1056,13 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		D:/anaconda/Library/include/qt/QtCore/quuid.h \
 		D:/anaconda/Library/include/qt/QtCore/QJsonObject \
 		D:/anaconda/Library/include/qt/QtCore/qjsonobject.h \
-		D:/anaconda/Library/include/qt/QtWidgets/QMainWindow \
-		D:/anaconda/Library/include/qt/QtWidgets/qmainwindow.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QAction \
+		D:/anaconda/Library/include/qt/QtWidgets/qaction.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtwidgetsglobal.h \
 		D:/anaconda/Library/include/qt/QtGui/qtguiglobal.h \
 		D:/anaconda/Library/include/qt/QtGui/qtgui-config.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtwidgets-config.h \
+		D:/anaconda/Library/include/qt/QtGui/qkeysequence.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qwidget.h \
 		D:/anaconda/Library/include/qt/QtGui/qwindowdefs.h \
 		D:/anaconda/Library/include/qt/QtGui/qwindowdefs_win.h \
@@ -1074,14 +1089,19 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		D:/anaconda/Library/include/qt/QtGui/qfontinfo.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qsizepolicy.h \
 		D:/anaconda/Library/include/qt/QtGui/qcursor.h \
-		D:/anaconda/Library/include/qt/QtGui/qkeysequence.h \
 		D:/anaconda/Library/include/qt/QtGui/qevent.h \
 		D:/anaconda/Library/include/qt/QtCore/qfile.h \
 		D:/anaconda/Library/include/qt/QtCore/qfiledevice.h \
 		D:/anaconda/Library/include/qt/QtGui/qvector2d.h \
 		D:/anaconda/Library/include/qt/QtGui/qtouchdevice.h \
-		D:/anaconda/Library/include/qt/QtWidgets/qtabwidget.h \
 		D:/anaconda/Library/include/qt/QtGui/qicon.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qactiongroup.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMainWindow \
+		D:/anaconda/Library/include/qt/QtWidgets/qmainwindow.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qtabwidget.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMessageBox \
+		D:/anaconda/Library/include/qt/QtWidgets/qmessagebox.h \
+		D:/anaconda/Library/include/qt/QtWidgets/qdialog.h \
 		D:/anaconda/Library/include/qt/QtWidgets/QTableWidget \
 		D:/anaconda/Library/include/qt/QtWidgets/qtablewidget.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qtableview.h \
@@ -1103,9 +1123,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qspinbox.h \
 		coursedialog.h \
 		D:/anaconda/Library/include/qt/QtWidgets/QDialog \
-		D:/anaconda/Library/include/qt/QtWidgets/qdialog.h \
-		D:/anaconda/Library/include/qt/QtWidgets/QMessageBox \
-		D:/anaconda/Library/include/qt/QtWidgets/qmessagebox.h \
 		D:/anaconda/Library/include/qt/QtCore/QList \
 		D:/anaconda/Library/include/qt/QtWidgets/QTableWidgetItem \
 		D:/anaconda/Library/include/qt/QtCore/QString \
@@ -1125,7 +1142,9 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		D:/anaconda/Library/include/qt/QtCore/qdir.h \
 		D:/anaconda/Library/include/qt/QtCore/qfileinfo.h \
 		D:/anaconda/Library/include/qt/QtCore/QJsonDocument \
-		D:/anaconda/Library/include/qt/QtCore/qjsondocument.h
+		D:/anaconda/Library/include/qt/QtCore/qjsondocument.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QStyledItemDelegate \
+		D:/anaconda/Library/include/qt/QtWidgets/qstyleditemdelegate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
 debug/courseparser.o: courseparser.cpp courseparser.h \
@@ -1650,6 +1669,8 @@ debug/classtimedialog.o: classtimedialog.cpp classtimedialog.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qcheckbox.h \
 		D:/anaconda/Library/include/qt/QtWidgets/qabstractbutton.h \
 		D:/anaconda/Library/include/qt/QtGui/qicon.h \
+		D:/anaconda/Library/include/qt/QtWidgets/QMessageBox \
+		D:/anaconda/Library/include/qt/QtWidgets/qmessagebox.h \
 		D:/anaconda/Library/include/qt/QtCore/QJsonObject \
 		D:/anaconda/Library/include/qt/QtCore/qjsonobject.h \
 		D:/anaconda/Library/include/qt/QtCore/qjsonvalue.h \

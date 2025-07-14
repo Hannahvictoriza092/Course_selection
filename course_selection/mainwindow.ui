@@ -130,7 +130,7 @@ QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; bo
            <bool>true</bool>
           </property>
           <property name="columnCount">
-           <number>8</number>
+           <number>9</number>
           </property>
           <column>
            <property name="text">
@@ -380,8 +380,10 @@ QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; bo
         <item>
          <widget class="QTableWidget" name="scheduleTableWidget">
           <property name="styleSheet">
-           <string notr="true">QHeaderView::section { background-color: #ade6c5; padding: 4px; border: 1px solid #dddddd; color: black; } 
-QTableWidget { background-color: white; alternate-background-color: #f5f5f5; color: black; }</string>
+           <string notr="true">QHeaderView::section:horizontal { background-color: #cccccc; color: black; padding: 4px; border: 1px solid #dddddd; text-align: center; }
+QHeaderView::section:vertical { background-color: #eeeeee; color: black; padding: 4px; border: 1px solid #dddddd; text-align: right; }
+QTableWidget { background-color: #f0f0f0; color: black; }
+QTableWidget::item:empty { background-color: #f0f0f0; }</string>
           </property>
           <property name="verticalScrollBarPolicy">
            <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
@@ -556,7 +558,7 @@ QTableWidget { background-color: white; alternate-background-color: #f5f5f5; col
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -580,7 +582,9 @@ QTableWidget { background-color: white; alternate-background-color: #f5f5f5; col
     <property name="title">
      <string>选课</string>
     </property>
-    <addaction name="actionGenerateSchedule"/>
+    <addaction name="actionImportSchedule"/>
+   <addaction name="actionGenerateSchedule"/>
+    <addaction name="action"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuCourse"/>
@@ -628,9 +632,19 @@ QTableWidget { background-color: white; alternate-background-color: #f5f5f5; col
     <string>删除课程</string>
    </property>
   </action>
+  <action name="actionImportSchedule">
+   <property name="text">
+    <string>导入选课方案</string>
+   </property>
+  </action>
   <action name="actionGenerateSchedule">
    <property name="text">
     <string>生成选课方案</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>导入选课方案（调试用）</string>
    </property>
   </action>
  </widget>

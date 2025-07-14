@@ -33,6 +33,7 @@ private:
 private slots:
     void on_actionImportCourse_triggered();
     void on_actionExportSchedule_triggered();
+    void on_actionImportSchedule_triggered();
 
     void on_actionGenerateSchedule_triggered();
     // 添加右键菜单槽函数
@@ -44,6 +45,8 @@ private slots:
     void onAddCourseDialogAccepted();
     void on_pushButton_search_clicked();
     void filterCourseData(const QString &id, const QString &teacher, const QString &name);
+    void on_pushButton_switch_clicked();
+    void filterScheduleBySemesterAndWeek(const QString &semester, int weekNumber);
 
 private:
     Ui::MainWindow *ui;
@@ -51,8 +54,10 @@ private:
     ScheduleExporter *scheduleExporter;
     CourseAlgorithm *courseAlgorithm;
     QJsonObject courseData;
-    QJsonObject scheduleData;
+    QJsonArray scheduleData;
+    QJsonArray filteredScheduleData;
     QString currentEditingCourseId;  // 用于编辑课程时记录当前编辑的课程ID
+    QAction *actionImportSchedule;
 
     void loadCourseData(const QString &filePath);
     void displayCourseData(const QJsonArray &filterCourses = QJsonArray());

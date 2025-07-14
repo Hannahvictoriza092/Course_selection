@@ -169,7 +169,8 @@ bool CourseAlgorithm::simplesSelect(int courseIndex,int curCredits,int Limit){
         lastPre = qMax(lastPre, prereqSemester);
     }
     //调整学期到可以开始的起点
-    if((lastPre+1)%2==course.semester)//满足处于该学期的奇偶性
+    int targetSemesterType = (course.semester == 0) ? 1 : 0; // 反转原semester值以匹配用户需求
+    if((lastPre+1)%2 == targetSemesterType)//满足处于该学期的奇偶性
     {
         PossibleSemester=lastPre+1;
     }
@@ -242,8 +243,9 @@ bool CourseAlgorithm::tryArrangeCourse(const QString& courseId, int courseIndex,
         earliestSem = qMax(earliestSem, prereqSem + 1);
     }
 
-    // 调整学期奇偶性
-    if ((earliestSem % 2) != (course.semester % 2)) earliestSem++;
+    // 调整学期奇偶性（反转semester值以匹配用户需求）
+    int targetSemesterType = (course.semester == 0) ? 1 : 0;
+    if ((earliestSem % 2) != targetSemesterType) earliestSem++;
 
     // 尝试每个可能的学期
     for (int sem = earliestSem; sem < 8; sem += 2) {
