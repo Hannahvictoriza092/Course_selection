@@ -1,4 +1,4 @@
-QT       += core gui widgets
+QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +24,7 @@ FORMS    += mainwindow.ui \
     coursedialog.ui \
     classtimedialog.ui
 
-RESOURCES += 
+RESOURCES +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

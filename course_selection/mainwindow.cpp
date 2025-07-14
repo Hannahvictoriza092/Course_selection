@@ -861,7 +861,7 @@ QJsonObject MainWindow::findCourseById(const QString &courseId)
 void MainWindow::on_actionGenerateSchedule_triggered()
 {
     int creditLimit = ui->creditSpinBox->value();
-    scheduleData = courseAlgorithm->generateSchedule(courseData, creditLimit);
+    scheduleData = courseAlgorithm->genSimSchedule(courseData, creditLimit);
     if (!scheduleData.isEmpty()) {
         // 应用当前学期和周的筛选
         QString semester = ui->comboBox_semester->currentText();

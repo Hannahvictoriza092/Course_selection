@@ -14,7 +14,7 @@ CourseAlgorithm::CourseAlgorithm(QObject *parent) : QObject(parent), totalCredit
 }
 
 //生成课程安排
-QJsonObject CourseAlgorithm::generateSchedule(const QJsonObject &courseData, int creditLimit) //最终课程安排只是，依赖于总学分
+QJsonObject CourseAlgorithm::genSimSchedule(const QJsonObject &courseData, int creditLimit) //最终课程安排只是，依赖于总学分
 {
     // 重置状态
     courseMap.clear();
@@ -103,7 +103,7 @@ bool CourseAlgorithm::topologicalSort()
 {
     //先把拓扑排序给清空
     topoQueue.clear();
-    int curCredits=0;//当前学分
+
     QMap<QString, int> inDegree;//入度
     QMap<QString, QVector<QString>> adjList; //邻接表<节点，邻居们>
     // 初始化入度和邻接表
@@ -341,7 +341,33 @@ int CourseAlgorithm::findCourseSemester(const QString &courseId) {
     return -1; // 未找到
 }
 
-//
-bool CourseAlgorithm:: tryArrangeCourse(const QString& courseId, int courseIndex, int& curCredits, int Limit){
+//输入课程数据和学分上限，还有一个必修选修，输出生成的课程表
+QJsonObject CourseAlgorithm:: genCompulsorySchedule(const QJsonObject &courseData, int creditLimit){
+    // 重置状态
+    courseMap.clear();
+    classMap.clear();
+    classDetail.clear();
+    semesterCourses.assign(8, QVector<QString>());
+    totalCredits = 0;
 
+    // 初始化课程数据
+    if (!initializeCourseData(courseData)) { //如果不行
+        return QJsonObject(); //空对象
+    }
+
+    // 拓扑排序处理先后关系处理topoQueue
+    if (!topologicalSort()) {
+        qWarning() << "课程先修关系存在循环依赖，无法生成选课方案";
+        return QJsonObject();
+    }
+
+    // 选择课程以不冲突
+    
+    if (!compulsoryBasedSelect(0,0,creditLimit)) { //是否够学分安排
+        qWarning() << "无法选择足够的课程以满足学分要求";
+        return QJsonObject();
+    }
+
+    // 构建选课方案JSON
+    return buildScheduleJson();
 }

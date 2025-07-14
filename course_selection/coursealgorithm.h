@@ -16,7 +16,9 @@ public:
     explicit CourseAlgorithm(QObject *parent = nullptr);
 
     //输入课程数据和学分上限，输出生成的课程表
-    QJsonObject generateSchedule(const QJsonObject &courseData, int creditLimit);
+    QJsonObject genSimSchedule(const QJsonObject &courseData, int creditLimit);
+    //输入课程数据和学分上限，还有一个必修选修，输出生成的课程表
+    QJsonObject genCompulsorySchedule(const QJsonObject &courseData, int creditLimit);
 
 private:
     
@@ -65,12 +67,12 @@ private:
     //计算总学分
     int calculateTotalCredits();
     //辅助函数，任checkTimeConflict调用，检查同学期的冲突
-    bool CourseAlgorithm::hasTimeConflict(int semester, const ClassInfo &newClass) ;
+    bool hasTimeConflict(int semester, const ClassInfo &newClass) ;
 
     //辅助函数,查找课程已经被安排在哪个学期
     int findCourseSemester(const QString &courseId);
     //辅助函数，帮助递归寻找小课
-    bool CourseAlgorithm::tryArrangeCourse(const QString& courseId, int courseIndex, int& curCredits, int Limit);
+    bool tryArrangeCourse(const QString& courseId, int courseIndex, int& curCredits, int Limit);
 
 };
 
