@@ -584,7 +584,6 @@ QTableWidget::item:empty { background-color: #f0f0f0; }</string>
     </property>
     <addaction name="actionImportSchedule"/>
    <addaction name="actionGenerateSchedule"/>
-    <addaction name="action"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuCourse"/>
@@ -642,11 +641,7 @@ QTableWidget::item:empty { background-color: #f0f0f0; }</string>
     <string>生成选课方案</string>
    </property>
   </action>
-  <action name="action">
-   <property name="text">
-    <string>导入选课方案（调试用）</string>
-   </property>
-  </action>
+
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

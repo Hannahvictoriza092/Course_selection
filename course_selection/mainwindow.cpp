@@ -366,7 +366,7 @@ void MainWindow::displayScheduleData()
 
                 QTableWidgetItem *item = new QTableWidgetItem();
                 item->setData(Qt::DisplayRole, courseInfo);
-                item->setBackgroundColor(courseColor);
+                item->setBackground(courseColor);
                 item->setTextAlignment(Qt::AlignTop | Qt::AlignLeft);
                 ui->scheduleTableWidget->setItem(row, col, item);
                 ui->scheduleTableWidget->setSpan(row, col, rowSpan, 1);
@@ -408,8 +408,17 @@ void MainWindow::on_actionImportSchedule_triggered()
         return;
     }
 
-    scheduleData = doc.array();
-    QMessageBox::information(this, "成功", "选课方案导入成功，共导入" + QString::number(scheduleData.size()) + "门课程");
+    // 添加调试信息
+    qDebug() << "JSON解析结果 - 是否为数组:" << doc.isArray() << "数组大小:" << doc.array().size();
+    qDebug() << "JSON解析结果 - 是否为对象:" << doc.isObject() << "对象大小:" << doc.object().size();
+
+    scheduleData = doc.object();
+    // 显示调试信息的消息框
+    QString debugInfo = QString("调试信息:\nJSON类型: %1\n数据大小: %2\n对象键数量: %3")
+                        .arg(doc.isArray() ? "数组" : "对象")
+                        .arg(doc.isArray() ? doc.array().size() : doc.object().size())
+                        .arg(scheduleData.size());
+    QMessageBox::information(this, "成功", "选课方案导入成功，共导入" + QString::number(scheduleData.size()) + "门课程\n" + debugInfo);
     // 应用当前学期和周的筛选
     QString semester = ui->comboBox_semester->currentText();
     QString week = ui->comboBox_week->currentText();
@@ -435,7 +444,7 @@ void MainWindow::on_pushButton_switch_clicked()
 void MainWindow::filterScheduleBySemesterAndWeek(const QString &semester, int weekNumber)
 {
     // 清空当前筛选结果
-    filteredScheduleData.clear();
+    filteredScheduleData = QJsonArray();
 
     // 如果没有选课数据，直接返回
     if (scheduleData.isEmpty()) return;
@@ -470,7 +479,7 @@ void MainWindow::on_actionExportSchedule_triggered()
 {
     QString filePath = QFileDialog::getSaveFileName(this, "保存选课方案", ".", "JSON文件 (*.json)");
     if (!filePath.isEmpty()) {
-        bool success = scheduleExporter->exportSchedule(filePath, scheduleData);
+        bool success = scheduleExporter->exportSchedule(filePath, scheduleData["schedule"].toObject());
         if (success) {
             QMessageBox::information(this, "成功", "选课方案导出成功");
         } else {

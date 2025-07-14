@@ -54,7 +54,7 @@ private:
     ScheduleExporter *scheduleExporter;
     CourseAlgorithm *courseAlgorithm;
     QJsonObject courseData;
-    QJsonArray scheduleData;
+    QJsonObject scheduleData;
     QJsonArray filteredScheduleData;
     QString currentEditingCourseId;  // 用于编辑课程时记录当前编辑的课程ID
     QAction *actionImportSchedule;

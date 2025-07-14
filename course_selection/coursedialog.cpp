@@ -90,7 +90,7 @@ void CourseDialog::setCourseData(const QJsonObject &course)
     
     // 填充基本课程信息
     ui->lineEdit_courseId->setText(course["id"].toString());
-    ui->lineEdit_courseId->setReadOnly(true); // 编辑模式下课程ID不可修改
+    ui->lineEdit_courseId->setReadOnly(false); // 允许编辑课程ID
     ui->lineEdit_courseName->setText(course["name"].toString());
     ui->comboBox_semester->setCurrentText(course["semester"].toString());
     
@@ -193,7 +193,7 @@ void CourseDialog::on_pushButton_addClass_clicked()
 }
 
 void CourseDialog::on_tableWidget_classes_itemDoubleClicked(QTableWidgetItem *item)
-{
+  {
     int row = item->row();
     if (row >= 0 && row < classSections.size()) {
         // 将ClassSection转换为QJsonObject
