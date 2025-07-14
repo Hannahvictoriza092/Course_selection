@@ -1,10 +1,13 @@
 release/main.o
 release/mainwindow.o
-release/schedule.o
 release/courseparser.o
 release/scheduleexporter.o
 release/coursealgorithm.o
+release/coursedialog.o
+release/classtimedialog.o
 release/moc_mainwindow.o
 release/moc_courseparser.o
 release/moc_scheduleexporter.o
 release/moc_coursealgorithm.o
+release/moc_coursedialog.o
+release/moc_classtimedialog.o

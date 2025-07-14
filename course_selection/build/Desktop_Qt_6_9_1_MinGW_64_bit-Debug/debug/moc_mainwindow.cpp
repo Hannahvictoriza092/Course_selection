@@ -42,10 +42,17 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "on_actionImportCourse_triggered",
         "",
         "on_actionExportSchedule_triggered",
-        "on_actionAddCourse_triggered",
-        "on_actionEditCourse_triggered",
-        "on_actionDeleteCourse_triggered",
-        "on_actionGenerateSchedule_triggered"
+        "on_actionGenerateSchedule_triggered",
+        "onCourseTableContextMenu",
+        "pos",
+        "onEditCourseAction",
+        "onDeleteCourseAction",
+        "onAddCourseDialogAccepted",
+        "on_pushButton_search_clicked",
+        "filterCourseData",
+        "id",
+        "teacher",
+        "name"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -53,14 +60,24 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_actionExportSchedule_triggered'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionAddCourse_triggered'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionEditCourse_triggered'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionDeleteCourse_triggered'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_actionGenerateSchedule_triggered'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onCourseTableContextMenu'
+        QtMocHelpers::SlotData<void(const QPoint &)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QPoint, 6 },
+        }}),
+        // Slot 'onEditCourseAction'
         QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onDeleteCourseAction'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onAddCourseDialogAccepted'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButton_search_clicked'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'filterCourseData'
+        QtMocHelpers::SlotData<void(const QString &, const QString &, const QString &)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 12 }, { QMetaType::QString, 13 }, { QMetaType::QString, 14 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -86,14 +103,16 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->on_actionImportCourse_triggered(); break;
         case 1: _t->on_actionExportSchedule_triggered(); break;
-        case 2: _t->on_actionAddCourse_triggered(); break;
-        case 3: _t->on_actionEditCourse_triggered(); break;
-        case 4: _t->on_actionDeleteCourse_triggered(); break;
-        case 5: _t->on_actionGenerateSchedule_triggered(); break;
+        case 2: _t->on_actionGenerateSchedule_triggered(); break;
+        case 3: _t->onCourseTableContextMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 4: _t->onEditCourseAction(); break;
+        case 5: _t->onDeleteCourseAction(); break;
+        case 6: _t->onAddCourseDialogAccepted(); break;
+        case 7: _t->on_pushButton_search_clicked(); break;
+        case 8: _t->filterCourseData((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *MainWindow::metaObject() const
@@ -115,14 +134,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 9;
     }
     return _id;
 }
