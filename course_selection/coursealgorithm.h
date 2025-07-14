@@ -43,19 +43,23 @@ private:
     QMap<QString, CourseInfo> courseMap;
     //课程ID：各个老师的这门课信息
     QMap<QString, QVector<ClassInfo>> classMap;
+    //排课ID对应这个老师的课信息
+     QMap<QString,ClassInfo> classDetail;
      // 8个学期的课程安排，就是完成把课程分配到学期的任务（按照先导关系拓扑，与学分无关）
     QVector<QVector<QString>> semesterCourses;
     //总学分
     int totalCredits;
+    //拓扑排序后的结果
+    QVector<QString> topoQueue;
     
     //函数，初始化课程数据
     bool initializeCourseData(const QJsonObject &courseData);
     //拓扑排序
     bool topologicalSort();
-    //检查时间冲突
-    bool checkTimeConflict(const QString &courseId, const QString &classId, int semester);
+   
     //选择课程
-    bool selectCourses(int creditLimit);
+    bool simplesSelect(int courseIndex,int curCredits,int Limit);
+    bool compulsoryBasedSelect(int courseIndex,int curCredits,int Limit);
     //建立课程安排
     QJsonObject buildScheduleJson();
     //计算总学分
@@ -65,9 +69,8 @@ private:
 
     //辅助函数,查找课程已经被安排在哪个学期
     int findCourseSemester(const QString &courseId);
-    // 辅助函数：检查课程能否加入某学期
-    bool canAddCourseToSemester(const QString &courseId, int semester,QString& classID);
-
+    //辅助函数，帮助递归寻找小课
+    bool CourseAlgorithm::tryArrangeCourse(const QString& courseId, int courseIndex, int& curCredits, int Limit);
 
 };
 
