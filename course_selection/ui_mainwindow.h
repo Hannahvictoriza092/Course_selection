@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.2
+** Created by: Qt User Interface Compiler version 6.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,8 +10,9 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
@@ -22,6 +23,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -56,6 +58,13 @@ public:
     QTableWidget *courseTableWidget;
     QWidget *scheduleTab;
     QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *scheduleControlsLayout;
+    QLabel *label_semester;
+    QComboBox *comboBox_semester;
+    QLabel *label_week;
+    QComboBox *comboBox_week;
+    QPushButton *pushButton_switch;
+    QSpacerItem *horizontalSpacer;
     QTableWidget *scheduleTableWidget;
     QWidget *settingsTab;
     QVBoxLayout *verticalLayout_4;
@@ -73,66 +82,62 @@ public:
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+            MainWindow->setObjectName("MainWindow");
         MainWindow->resize(1024, 768);
         MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow { background-color:rgba(255, 255, 255, 0.72); }"));
         actionImportCourse = new QAction(MainWindow);
-        actionImportCourse->setObjectName(QString::fromUtf8("actionImportCourse"));
+        actionImportCourse->setObjectName("actionImportCourse");
         actionExportSchedule = new QAction(MainWindow);
-        actionExportSchedule->setObjectName(QString::fromUtf8("actionExportSchedule"));
+        actionExportSchedule->setObjectName("actionExportSchedule");
         actionExit = new QAction(MainWindow);
-        actionExit->setObjectName(QString::fromUtf8("actionExit"));
+        actionExit->setObjectName("actionExit");
         actionAddCourse = new QAction(MainWindow);
-        actionAddCourse->setObjectName(QString::fromUtf8("actionAddCourse"));
+        actionAddCourse->setObjectName("actionAddCourse");
         actionEditCourse = new QAction(MainWindow);
-        actionEditCourse->setObjectName(QString::fromUtf8("actionEditCourse"));
+        actionEditCourse->setObjectName("actionEditCourse");
         actionDeleteCourse = new QAction(MainWindow);
-        actionDeleteCourse->setObjectName(QString::fromUtf8("actionDeleteCourse"));
+        actionDeleteCourse->setObjectName("actionDeleteCourse");
         actionGenerateSchedule = new QAction(MainWindow);
-        actionGenerateSchedule->setObjectName(QString::fromUtf8("actionGenerateSchedule"));
+        actionGenerateSchedule->setObjectName("actionGenerateSchedule");
         centralWidget = new QWidget(MainWindow);
-        centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
+        centralWidget->setObjectName("centralWidget");
         centralWidget->setStyleSheet(QString::fromUtf8("background-color:rgba(255, 255, 255, 0.59);"));
         verticalLayout = new QVBoxLayout(centralWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName("verticalLayout");
         tabWidget = new QTabWidget(centralWidget);
-        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setObjectName("tabWidget");
         tabWidget->setStyleSheet(QString::fromUtf8("QTabBar::tab { background-color: #87abdd; color: black; padding: 8px; min-width: 80px; } QTabBar::tab:selected { background-color: #504cc4; color: black; }"));
         courseTab = new QWidget();
-        courseTab->setObjectName(QString::fromUtf8("courseTab"));
+        courseTab->setObjectName("courseTab");
         verticalLayout_2 = new QVBoxLayout(courseTab);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setObjectName("verticalLayout_2");
         searchLayout = new QHBoxLayout();
         searchLayout->setSpacing(6);
-        searchLayout->setObjectName(QString::fromUtf8("searchLayout"));
+        searchLayout->setObjectName("searchLayout");
         lineEdit_searchId = new QLineEdit(courseTab);
-        lineEdit_searchId->setObjectName(QString::fromUtf8("lineEdit_searchId"));
-        lineEdit_searchId->setMinimumHeight(30);
+        lineEdit_searchId->setObjectName("lineEdit_searchId");
         lineEdit_searchId->setStyleSheet(QString::fromUtf8("background-color: #ade6c5; color: black;"));
 
         searchLayout->addWidget(lineEdit_searchId);
 
         lineEdit_searchTeacher = new QLineEdit(courseTab);
-        lineEdit_searchTeacher->setObjectName(QString::fromUtf8("lineEdit_searchTeacher"));
-        lineEdit_searchTeacher->setMinimumHeight(30);
+        lineEdit_searchTeacher->setObjectName("lineEdit_searchTeacher");
         lineEdit_searchTeacher->setStyleSheet(QString::fromUtf8("background-color: #ade6c5; color: black;"));
 
         searchLayout->addWidget(lineEdit_searchTeacher);
 
         lineEdit_searchName = new QLineEdit(courseTab);
-        lineEdit_searchName->setObjectName(QString::fromUtf8("lineEdit_searchName"));
-        lineEdit_searchName->setMinimumHeight(30);
+        lineEdit_searchName->setObjectName("lineEdit_searchName");
         lineEdit_searchName->setStyleSheet(QString::fromUtf8("background-color: #ade6c5; color: black;"));
 
         searchLayout->addWidget(lineEdit_searchName);
 
         pushButton_search = new QPushButton(courseTab);
-        pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
-        pushButton_search->setMinimumHeight(30);
+        pushButton_search->setObjectName("pushButton_search");
         pushButton_search->setStyleSheet(QString::fromUtf8("background-color: #ade6c5; color: black;"));
 
         searchLayout->addWidget(pushButton_search);
@@ -141,20 +146,19 @@ public:
         verticalLayout_2->addLayout(searchLayout);
 
         label_noResults = new QLabel(courseTab);
-        label_noResults->setObjectName(QString::fromUtf8("label_noResults"));
-        QFont font;
-        font.setPointSize(16);
-        font.setBold(true);
-        font.setWeight(75);
-        label_noResults->setFont(font);
-        label_noResults->setStyleSheet(QString::fromUtf8("color: black;"));
-        label_noResults->setAlignment(Qt::AlignCenter);
-        label_noResults->setVisible(false);
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        label_noResults->setObjectName("label_noResults");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label_noResults->sizePolicy().hasHeightForWidth());
         label_noResults->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setPointSize(16);
+        font.setBold(true);
+        label_noResults->setFont(font);
+        label_noResults->setVisible(false);
+        label_noResults->setStyleSheet(QString::fromUtf8("color: black;"));
+        label_noResults->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout_2->addWidget(label_noResults);
 
@@ -177,27 +181,93 @@ public:
         courseTableWidget->setHorizontalHeaderItem(6, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
         courseTableWidget->setHorizontalHeaderItem(7, __qtablewidgetitem7);
-        courseTableWidget->setObjectName(QString::fromUtf8("courseTableWidget"));
-        courseTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        courseTableWidget->setColumnCount(8);
+        courseTableWidget->setObjectName("courseTableWidget");
         courseTableWidget->setStyleSheet(QString::fromUtf8("QTableWidget { color: black; font-weight: 500; }\n"
 "QTableWidget::item { background-color:rgb(153, 181, 222); color: black; }\n"
 "QTableWidget::item:alternate { background-color:rgb(179, 198, 222); color: black; }\n"
 "QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; border: 1px solid #dddddd; }"));
-        courseTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        courseTableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-        courseTableWidget->setWordWrap(true);
+        courseTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+        courseTableWidget->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
         courseTableWidget->setAlternatingRowColors(true);
+        courseTableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollMode::ScrollPerPixel);
+        courseTableWidget->setWordWrap(true);
+        courseTableWidget->setColumnCount(8);
 
         verticalLayout_2->addWidget(courseTableWidget);
 
         tabWidget->addTab(courseTab, QString());
         scheduleTab = new QWidget();
-        scheduleTab->setObjectName(QString::fromUtf8("scheduleTab"));
+        scheduleTab->setObjectName("scheduleTab");
         verticalLayout_3 = new QVBoxLayout(scheduleTab);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        scheduleControlsLayout = new QHBoxLayout();
+        scheduleControlsLayout->setSpacing(6);
+        scheduleControlsLayout->setObjectName("scheduleControlsLayout");
+        label_semester = new QLabel(scheduleTab);
+        label_semester->setObjectName("label_semester");
+        label_semester->setStyleSheet(QString::fromUtf8("color: black;"));
+
+        scheduleControlsLayout->addWidget(label_semester);
+
+        comboBox_semester = new QComboBox(scheduleTab);
+        comboBox_semester->addItem(QString());
+        comboBox_semester->addItem(QString());
+        comboBox_semester->addItem(QString());
+        comboBox_semester->addItem(QString());
+        comboBox_semester->addItem(QString());
+        comboBox_semester->addItem(QString());
+        comboBox_semester->addItem(QString());
+        comboBox_semester->addItem(QString());
+        comboBox_semester->setObjectName("comboBox_semester");
+        comboBox_semester->setStyleSheet(QString::fromUtf8("background-color: #ade6c5; color: black;"));
+
+        scheduleControlsLayout->addWidget(comboBox_semester);
+
+        label_week = new QLabel(scheduleTab);
+        label_week->setObjectName("label_week");
+        label_week->setStyleSheet(QString::fromUtf8("color: black;"));
+
+        scheduleControlsLayout->addWidget(label_week);
+
+        comboBox_week = new QComboBox(scheduleTab);
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->addItem(QString());
+        comboBox_week->setObjectName("comboBox_week");
+        comboBox_week->setStyleSheet(QString::fromUtf8("background-color: #ade6c5; color: black;"));
+
+        scheduleControlsLayout->addWidget(comboBox_week);
+
+        pushButton_switch = new QPushButton(scheduleTab);
+        pushButton_switch->setObjectName("pushButton_switch");
+        pushButton_switch->setStyleSheet(QString::fromUtf8("background-color: #ade6c5; color: black;"));
+
+        scheduleControlsLayout->addWidget(pushButton_switch);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        scheduleControlsLayout->addItem(horizontalSpacer);
+
+
+        verticalLayout_3->addLayout(scheduleControlsLayout);
+
         scheduleTableWidget = new QTableWidget(scheduleTab);
         if (scheduleTableWidget->columnCount() < 7)
             scheduleTableWidget->setColumnCount(7);
@@ -245,43 +315,43 @@ public:
         scheduleTableWidget->setVerticalHeaderItem(12, __qtablewidgetitem27);
         QTableWidgetItem *__qtablewidgetitem28 = new QTableWidgetItem();
         scheduleTableWidget->setVerticalHeaderItem(13, __qtablewidgetitem28);
-        scheduleTableWidget->setObjectName(QString::fromUtf8("scheduleTableWidget"));
-        scheduleTableWidget->setRowCount(14);
-        scheduleTableWidget->setColumnCount(7);
+        scheduleTableWidget->setObjectName("scheduleTableWidget");
         scheduleTableWidget->setStyleSheet(QString::fromUtf8("QHeaderView::section { background-color: #ade6c5; padding: 4px; border: 1px solid #dddddd; color: black; } \n"
 "QTableWidget { background-color: white; alternate-background-color: #f5f5f5; color: black; }"));
-        scheduleTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        scheduleTableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        scheduleTableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+        scheduleTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+        scheduleTableWidget->setRowCount(14);
+        scheduleTableWidget->setColumnCount(7);
 
         verticalLayout_3->addWidget(scheduleTableWidget);
 
         tabWidget->addTab(scheduleTab, QString());
         settingsTab = new QWidget();
-        settingsTab->setObjectName(QString::fromUtf8("settingsTab"));
+        settingsTab->setObjectName("settingsTab");
         verticalLayout_4 = new QVBoxLayout(settingsTab);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        verticalLayout_4->setObjectName("verticalLayout_4");
         creditGroupBox = new QGroupBox(settingsTab);
-        creditGroupBox->setObjectName(QString::fromUtf8("creditGroupBox"));
+        creditGroupBox->setObjectName("creditGroupBox");
         creditGroupBox->setStyleSheet(QString::fromUtf8("QGroupBox { color: black; font-weight: bold; border: 1px solid #ade6c5; border-radius: 4px; margin-top: 1ex; padding-top: 0.5ex; } QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 3px 0 3px; }"));
         formLayout = new QFormLayout(creditGroupBox);
         formLayout->setSpacing(6);
         formLayout->setContentsMargins(11, 11, 11, 11);
-        formLayout->setObjectName(QString::fromUtf8("formLayout"));
+        formLayout->setObjectName("formLayout");
         label = new QLabel(creditGroupBox);
-        label->setObjectName(QString::fromUtf8("label"));
+        label->setObjectName("label");
 
-        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+        formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, label);
 
         creditSpinBox = new QSpinBox(creditGroupBox);
-        creditSpinBox->setObjectName(QString::fromUtf8("creditSpinBox"));
+        creditSpinBox->setObjectName("creditSpinBox");
+        creditSpinBox->setStyleSheet(QString::fromUtf8("color: black;"));
         creditSpinBox->setMinimum(100);
         creditSpinBox->setMaximum(300);
         creditSpinBox->setValue(100);
-        creditSpinBox->setStyleSheet(QString::fromUtf8("color: black;"));
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, creditSpinBox);
+        formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, creditSpinBox);
 
 
         verticalLayout_4->addWidget(creditGroupBox);
@@ -292,22 +362,22 @@ public:
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1024, 21));
+        menuBar->setObjectName("menuBar");
+        menuBar->setGeometry(QRect(0, 0, 1024, 17));
         menuBar->setStyleSheet(QString::fromUtf8("background-color: #438b73; color: black;"));
         menuFile = new QMenu(menuBar);
-        menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuFile->setObjectName("menuFile");
         menuCourse = new QMenu(menuBar);
-        menuCourse->setObjectName(QString::fromUtf8("menuCourse"));
+        menuCourse->setObjectName("menuCourse");
         menuSchedule = new QMenu(menuBar);
-        menuSchedule->setObjectName(QString::fromUtf8("menuSchedule"));
+        menuSchedule->setObjectName("menuSchedule");
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
+        mainToolBar->setObjectName("mainToolBar");
         mainToolBar->setStyleSheet(QString::fromUtf8("QToolButton { background-color: #6acbac; color: black; border: none; padding: 6px 12px; border-radius: 4px; margin: 2px; } QToolButton:hover { background-color: #438b73; color: black; }"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
+        MainWindow->addToolBar(Qt::ToolBarArea::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QString::fromUtf8("statusBar"));
+        statusBar->setObjectName("statusBar");
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
@@ -321,7 +391,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -359,6 +429,37 @@ public:
         QTableWidgetItem *___qtablewidgetitem7 = courseTableWidget->horizontalHeaderItem(7);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("MainWindow", "\345\211\215\347\275\256\350\257\276\347\250\213", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(courseTab), QCoreApplication::translate("MainWindow", "\345\205\250\351\203\250\350\257\276\347\250\213", nullptr));
+        label_semester->setText(QCoreApplication::translate("MainWindow", "\345\210\207\346\215\242\345\255\246\346\234\237:", nullptr));
+        comboBox_semester->setItemText(0, QCoreApplication::translate("MainWindow", "\345\244\247\344\270\200\344\270\212", nullptr));
+        comboBox_semester->setItemText(1, QCoreApplication::translate("MainWindow", "\345\244\247\344\270\200\344\270\213", nullptr));
+        comboBox_semester->setItemText(2, QCoreApplication::translate("MainWindow", "\345\244\247\344\272\214\344\270\212", nullptr));
+        comboBox_semester->setItemText(3, QCoreApplication::translate("MainWindow", "\345\244\247\344\272\214\344\270\213", nullptr));
+        comboBox_semester->setItemText(4, QCoreApplication::translate("MainWindow", "\345\244\247\344\270\211\344\270\212", nullptr));
+        comboBox_semester->setItemText(5, QCoreApplication::translate("MainWindow", "\345\244\247\344\270\211\344\270\213", nullptr));
+        comboBox_semester->setItemText(6, QCoreApplication::translate("MainWindow", "\345\244\247\345\233\233\344\270\212", nullptr));
+        comboBox_semester->setItemText(7, QCoreApplication::translate("MainWindow", "\345\244\247\345\233\233\344\270\213", nullptr));
+
+        label_week->setText(QCoreApplication::translate("MainWindow", "\345\210\207\346\215\242\346\225\231\345\255\246\345\221\250:", nullptr));
+        comboBox_week->setItemText(0, QCoreApplication::translate("MainWindow", "\347\254\2541\345\221\250", nullptr));
+        comboBox_week->setItemText(1, QCoreApplication::translate("MainWindow", "\347\254\2542\345\221\250", nullptr));
+        comboBox_week->setItemText(2, QCoreApplication::translate("MainWindow", "\347\254\2543\345\221\250", nullptr));
+        comboBox_week->setItemText(3, QCoreApplication::translate("MainWindow", "\347\254\2544\345\221\250", nullptr));
+        comboBox_week->setItemText(4, QCoreApplication::translate("MainWindow", "\347\254\2545\345\221\250", nullptr));
+        comboBox_week->setItemText(5, QCoreApplication::translate("MainWindow", "\347\254\2546\345\221\250", nullptr));
+        comboBox_week->setItemText(6, QCoreApplication::translate("MainWindow", "\347\254\2547\345\221\250", nullptr));
+        comboBox_week->setItemText(7, QCoreApplication::translate("MainWindow", "\347\254\2548\345\221\250", nullptr));
+        comboBox_week->setItemText(8, QCoreApplication::translate("MainWindow", "\347\254\2549\345\221\250", nullptr));
+        comboBox_week->setItemText(9, QCoreApplication::translate("MainWindow", "\347\254\25410\345\221\250", nullptr));
+        comboBox_week->setItemText(10, QCoreApplication::translate("MainWindow", "\347\254\25411\345\221\250", nullptr));
+        comboBox_week->setItemText(11, QCoreApplication::translate("MainWindow", "\347\254\25412\345\221\250", nullptr));
+        comboBox_week->setItemText(12, QCoreApplication::translate("MainWindow", "\347\254\25413\345\221\250", nullptr));
+        comboBox_week->setItemText(13, QCoreApplication::translate("MainWindow", "\347\254\25414\345\221\250", nullptr));
+        comboBox_week->setItemText(14, QCoreApplication::translate("MainWindow", "\347\254\25415\345\221\250", nullptr));
+        comboBox_week->setItemText(15, QCoreApplication::translate("MainWindow", "\347\254\25416\345\221\250", nullptr));
+        comboBox_week->setItemText(16, QCoreApplication::translate("MainWindow", "\347\254\25417\345\221\250", nullptr));
+        comboBox_week->setItemText(17, QCoreApplication::translate("MainWindow", "\347\254\25418\345\221\250", nullptr));
+
+        pushButton_switch->setText(QCoreApplication::translate("MainWindow", "\345\210\207\346\215\242", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = scheduleTableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem8->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\270\200", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = scheduleTableWidget->horizontalHeaderItem(1);

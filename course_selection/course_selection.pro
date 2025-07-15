@@ -4,6 +4,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = course_selection
 TEMPLATE = app
+CONFIG += c++17
 
 SOURCES += main.cpp \
     mainwindow.cpp \
@@ -11,22 +12,29 @@ SOURCES += main.cpp \
     scheduleexporter.cpp \
     coursealgorithm.cpp \
     coursedialog.cpp \
-    classtimedialog.cpp \
+    classtimedialog.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS += mainwindow.h \
     courseparser.h \
     scheduleexporter.h \
     coursealgorithm.h \
     coursedialog.h \
     classtimedialog.h
 
-FORMS    += mainwindow.ui \
+FORMS += mainwindow.ui \
     coursedialog.ui \
     classtimedialog.ui
 
-RESOURCES +=
+# 部署规则（可选）
+unix:!android {
+    target.path = $$[QT_INSTALL_BINS]/$${TARGET}
+    INSTALLS += target
+}
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+# 调试/发布配置（可选）
+CONFIG += debug_and_release
+CONFIG(debug, debug|release) {
+    DEFINES += DEBUG_MODE
+} else {
+    DEFINES += RELEASE_MODE
+}

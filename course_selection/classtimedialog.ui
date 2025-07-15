@@ -23,12 +23,10 @@
        </property>
       </widget>
      </item>
-     <!-- 移除了formLayout中的多余闭合标签 -->
      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_teacher"/>
+      <widget class="QLineEdit" name="lineEdit_teacher"/>
      </item>
-     </layout>
-     <!-- 移除了tabWidget_weekdays后的多余闭合标签 -->
+    </layout>
    </item>
    <item>
     <widget class="QLabel" name="label_weekday">
@@ -39,6 +37,9 @@
    </item>
    <item>
     <widget class="QTabWidget" name="tabWidget_weekdays">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
      <widget class="QWidget" name="tab_monday">
       <attribute name="title">
        <string>周一</string>
@@ -50,9 +51,15 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents_monday">
-          <layout class="QGridLayout" name="gridLayout_monday">
-           <!-- 周一课时复选框 -->
-          </layout>
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_monday"/>
          </widget>
         </widget>
        </item>
@@ -69,9 +76,15 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents_tuesday">
-          <layout class="QGridLayout" name="gridLayout_tuesday">
-           <!-- 周二课时复选框 -->
-          </layout>
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_tuesday"/>
          </widget>
         </widget>
        </item>
@@ -88,9 +101,15 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents_wednesday">
-          <layout class="QGridLayout" name="gridLayout_wednesday">
-           <!-- 周三课时复选框 -->
-          </layout>
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_wednesday"/>
          </widget>
         </widget>
        </item>
@@ -107,9 +126,15 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents_thursday">
-          <layout class="QGridLayout" name="gridLayout_thursday">
-           <!-- 周四课时复选框 -->
-          </layout>
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_thursday"/>
          </widget>
         </widget>
        </item>
@@ -126,9 +151,15 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents_friday">
-          <layout class="QGridLayout" name="gridLayout_friday">
-           <!-- 周五课时复选框 -->
-          </layout>
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_friday"/>
          </widget>
         </widget>
        </item>
@@ -145,9 +176,15 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents_saturday">
-          <layout class="QGridLayout" name="gridLayout_saturday">
-           <!-- 周六课时复选框 -->
-          </layout>
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_saturday"/>
          </widget>
         </widget>
        </item>
@@ -164,9 +201,15 @@
           <bool>true</bool>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents_sunday">
-          <layout class="QGridLayout" name="gridLayout_sunday">
-           <!-- 周日课时复选框 -->
-          </layout>
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>470</width>
+            <height>57</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_sunday"/>
          </widget>
         </widget>
        </item>
@@ -187,9 +230,15 @@
       <bool>true</bool>
      </property>
      <widget class="QWidget" name="scrollAreaWidgetContents_classes">
-      <layout class="QGridLayout" name="gridLayout_classes">
-       <!-- 动态生成14个课时复选框 -->
-      </layout>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>486</width>
+        <height>92</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_classes"/>
      </widget>
     </widget>
    </item>
@@ -206,16 +255,22 @@
       <bool>true</bool>
      </property>
      <widget class="QWidget" name="scrollAreaWidgetContents_weeks">
-      <layout class="QGridLayout" name="gridLayout_weeks">
-       <!-- 动态生成18个周数复选框 -->
-      </layout>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>486</width>
+        <height>92</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_weeks"/>
      </widget>
     </widget>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
-      <set>QDialogButtonBox::Ok|QDialogButtonBox::Cancel</set>
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
      </property>
     </widget>
    </item>

@@ -5,6 +5,7 @@ debug/scheduleexporter.o
 debug/coursealgorithm.o
 debug/coursedialog.o
 debug/classtimedialog.o
+debug/qrc_resources.o
 debug/moc_mainwindow.o
 debug/moc_courseparser.o
 debug/moc_scheduleexporter.o

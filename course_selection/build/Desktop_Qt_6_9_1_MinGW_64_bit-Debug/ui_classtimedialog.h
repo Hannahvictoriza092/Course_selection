@@ -117,6 +117,7 @@ public:
         scrollArea_monday->setWidgetResizable(true);
         scrollAreaWidgetContents_monday = new QWidget();
         scrollAreaWidgetContents_monday->setObjectName("scrollAreaWidgetContents_monday");
+        scrollAreaWidgetContents_monday->setGeometry(QRect(0, 0, 470, 57));
         gridLayout_monday = new QGridLayout(scrollAreaWidgetContents_monday);
         gridLayout_monday->setObjectName("gridLayout_monday");
         scrollArea_monday->setWidget(scrollAreaWidgetContents_monday);
@@ -133,6 +134,7 @@ public:
         scrollArea_tuesday->setWidgetResizable(true);
         scrollAreaWidgetContents_tuesday = new QWidget();
         scrollAreaWidgetContents_tuesday->setObjectName("scrollAreaWidgetContents_tuesday");
+        scrollAreaWidgetContents_tuesday->setGeometry(QRect(0, 0, 470, 57));
         gridLayout_tuesday = new QGridLayout(scrollAreaWidgetContents_tuesday);
         gridLayout_tuesday->setObjectName("gridLayout_tuesday");
         scrollArea_tuesday->setWidget(scrollAreaWidgetContents_tuesday);
@@ -149,6 +151,7 @@ public:
         scrollArea_wednesday->setWidgetResizable(true);
         scrollAreaWidgetContents_wednesday = new QWidget();
         scrollAreaWidgetContents_wednesday->setObjectName("scrollAreaWidgetContents_wednesday");
+        scrollAreaWidgetContents_wednesday->setGeometry(QRect(0, 0, 470, 57));
         gridLayout_wednesday = new QGridLayout(scrollAreaWidgetContents_wednesday);
         gridLayout_wednesday->setObjectName("gridLayout_wednesday");
         scrollArea_wednesday->setWidget(scrollAreaWidgetContents_wednesday);
@@ -165,6 +168,7 @@ public:
         scrollArea_thursday->setWidgetResizable(true);
         scrollAreaWidgetContents_thursday = new QWidget();
         scrollAreaWidgetContents_thursday->setObjectName("scrollAreaWidgetContents_thursday");
+        scrollAreaWidgetContents_thursday->setGeometry(QRect(0, 0, 470, 57));
         gridLayout_thursday = new QGridLayout(scrollAreaWidgetContents_thursday);
         gridLayout_thursday->setObjectName("gridLayout_thursday");
         scrollArea_thursday->setWidget(scrollAreaWidgetContents_thursday);
@@ -181,6 +185,7 @@ public:
         scrollArea_friday->setWidgetResizable(true);
         scrollAreaWidgetContents_friday = new QWidget();
         scrollAreaWidgetContents_friday->setObjectName("scrollAreaWidgetContents_friday");
+        scrollAreaWidgetContents_friday->setGeometry(QRect(0, 0, 470, 57));
         gridLayout_friday = new QGridLayout(scrollAreaWidgetContents_friday);
         gridLayout_friday->setObjectName("gridLayout_friday");
         scrollArea_friday->setWidget(scrollAreaWidgetContents_friday);
@@ -197,6 +202,7 @@ public:
         scrollArea_saturday->setWidgetResizable(true);
         scrollAreaWidgetContents_saturday = new QWidget();
         scrollAreaWidgetContents_saturday->setObjectName("scrollAreaWidgetContents_saturday");
+        scrollAreaWidgetContents_saturday->setGeometry(QRect(0, 0, 470, 57));
         gridLayout_saturday = new QGridLayout(scrollAreaWidgetContents_saturday);
         gridLayout_saturday->setObjectName("gridLayout_saturday");
         scrollArea_saturday->setWidget(scrollAreaWidgetContents_saturday);
@@ -213,6 +219,7 @@ public:
         scrollArea_sunday->setWidgetResizable(true);
         scrollAreaWidgetContents_sunday = new QWidget();
         scrollAreaWidgetContents_sunday->setObjectName("scrollAreaWidgetContents_sunday");
+        scrollAreaWidgetContents_sunday->setGeometry(QRect(0, 0, 470, 57));
         gridLayout_sunday = new QGridLayout(scrollAreaWidgetContents_sunday);
         gridLayout_sunday->setObjectName("gridLayout_sunday");
         scrollArea_sunday->setWidget(scrollAreaWidgetContents_sunday);
@@ -233,6 +240,7 @@ public:
         scrollArea_classes->setWidgetResizable(true);
         scrollAreaWidgetContents_classes = new QWidget();
         scrollAreaWidgetContents_classes->setObjectName("scrollAreaWidgetContents_classes");
+        scrollAreaWidgetContents_classes->setGeometry(QRect(0, 0, 486, 92));
         gridLayout_classes = new QGridLayout(scrollAreaWidgetContents_classes);
         gridLayout_classes->setObjectName("gridLayout_classes");
         scrollArea_classes->setWidget(scrollAreaWidgetContents_classes);
@@ -249,6 +257,7 @@ public:
         scrollArea_weeks->setWidgetResizable(true);
         scrollAreaWidgetContents_weeks = new QWidget();
         scrollAreaWidgetContents_weeks->setObjectName("scrollAreaWidgetContents_weeks");
+        scrollAreaWidgetContents_weeks->setGeometry(QRect(0, 0, 486, 92));
         gridLayout_weeks = new QGridLayout(scrollAreaWidgetContents_weeks);
         gridLayout_weeks->setObjectName("gridLayout_weeks");
         scrollArea_weeks->setWidget(scrollAreaWidgetContents_weeks);
@@ -257,12 +266,15 @@ public:
 
         buttonBox = new QDialogButtonBox(ClassTimeDialog);
         buttonBox->setObjectName("buttonBox");
-        buttonBox->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+        buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
 
         verticalLayout->addWidget(buttonBox);
 
 
         retranslateUi(ClassTimeDialog);
+
+        tabWidget_weekdays->setCurrentIndex(1);
+
 
         QMetaObject::connectSlotsByName(ClassTimeDialog);
     } // setupUi

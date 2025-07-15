@@ -29,6 +29,7 @@ private slots:
     void on_actionImportCourse_triggered();
     void on_actionExportSchedule_triggered();
 
+    //进行选课
     void on_actionGenerateSchedule_triggered();
     // 添加右键菜单槽函数
     void onCourseTableContextMenu(const QPoint &pos);

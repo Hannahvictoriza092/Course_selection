@@ -37,11 +37,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-
-
-
 void MainWindow::loadCourseData(const QString &filePath)
 {
     courseData = courseParser->parseCourseFile(filePath);
@@ -586,9 +581,6 @@ void MainWindow::updateCourseInData(const QJsonObject &updatedCourse)
     courseData["courses"] = courses;
     qDebug() << "课程数据已更新";
 }
-
-
-
 
 // 根据ID查找课程
 QJsonObject MainWindow::findCourseById(const QString &courseId)

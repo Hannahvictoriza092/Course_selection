@@ -2,21 +2,31 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug my_program",
+            "name": "Qt Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/debug/course_selection.exe",
+            "program": "${workspaceFolder}/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/debug/course_selection.exe",
             "args": [],
-            "cwd": "${workspaceFolder}",
-            "environment": [],
+            "stopAtEntry": false,
+            "cwd": "D:\\SummerProject\\小组项目\\course_selection",
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "${env:PATH};D:/program_files/Qt/6.9.1/mingw_64/bin"
+                }
+            ],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb.exe",
+            "miDebuggerPath": "D:/program_files/Qt/6.9.1/mingw_64/bin/gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
+                },
+                {
+                    "description": "Load Qt symbols",
+                    "text": "set solib-search-path D:/Qt/6.9.1/mingw_64/bin"
                 }
             ]
         }

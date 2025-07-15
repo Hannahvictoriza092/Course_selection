@@ -31,16 +31,35 @@ private:
         bool required;
         QSet<QString> prerequisites;//可以避免重复
         QJsonArray classes;
+        int priority=2; // 0=高, 1=中, 2=低（仅选修课有效，默认为最低）
     };
 
     //教学班信息
     struct ClassInfo {
         QString id;
         QString teacher;
+        QString courseID;
         QVector<int> times;
         int weeks;
     };
-
+    //考虑优先级的节点结构
+    struct CourseNode {
+    CourseInfo course;
+    int inDegree; // 入度（依赖未完成的课程数）
+    bool operator<(const CourseNode &other) const {
+        // 必修课优先
+        if (course.required != other.course.required) {
+            return course.required; // true（必修）排前面
+        }
+        // 同为必修或选修时，按优先级排序
+        if (course.required) {
+            return false; // 必修课之间不区分优先级（或可按其他规则）
+        } else {
+            return course.priority > other.course.priority; // 选修课：priority小的优先
+        }
+    }
+    };
+    
     //课程名称对应，课程的信息
     QMap<QString, CourseInfo> courseMap;
     //课程ID：各个老师的这门课信息
@@ -53,14 +72,17 @@ private:
     int totalCredits;
     //拓扑排序后的结果
     QVector<QString> topoQueue;
+    //课程和学期的映射
+    QMap<QString,int> Course_in_sem;
     
     //函数，初始化课程数据
     bool initializeCourseData(const QJsonObject &courseData);
     //拓扑排序
     bool topologicalSort();
-   
+    //考虑优先级的拓朴排序
+    bool topoPriorSort();
     //选择课程
-    bool simplesSelect(int courseIndex,int curCredits,int Limit);
+    int simplesSelect(int Limit);
     bool compulsoryBasedSelect(int courseIndex,int curCredits,int Limit);
     //建立课程安排
     QJsonObject buildScheduleJson();

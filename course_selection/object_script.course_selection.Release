@@ -5,6 +5,7 @@ release/scheduleexporter.o
 release/coursealgorithm.o
 release/coursedialog.o
 release/classtimedialog.o
+release/qrc_resources.o
 release/moc_mainwindow.o
 release/moc_courseparser.o
 release/moc_scheduleexporter.o

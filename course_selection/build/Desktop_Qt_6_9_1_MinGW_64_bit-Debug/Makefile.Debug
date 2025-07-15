@@ -13,9 +13,9 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DDEBUG_MODE -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
-CXXFLAGS      = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
+CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
 INCPATH       = -I../../../course_selection -I. -ID:/program_files/Qt/6.9.1/mingw_64/include -ID:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets -ID:/program_files/Qt/6.9.1/mingw_64/include/QtGui -ID:/program_files/Qt/6.9.1/mingw_64/include/QtCore -Idebug -I. -I/include -ID:/program_files/Qt/6.9.1/mingw_64/mkspecs/win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
@@ -133,7 +133,7 @@ compiler_moc_predefs_make_all: debug/moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) debug\moc_predefs.h
 debug/moc_predefs.h: D:/program_files/Qt/6.9.1/mingw_64/mkspecs/features/data/dummy.cpp
-	g++ -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h D:\program_files\Qt\6.9.1\mingw_64\mkspecs\features\data\dummy.cpp
+	g++ -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h D:\program_files\Qt\6.9.1\mingw_64\mkspecs\features\data\dummy.cpp
 
 compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_courseparser.cpp debug/moc_scheduleexporter.cpp debug/moc_coursealgorithm.cpp debug/moc_coursedialog.cpp debug/moc_classtimedialog.cpp
 compiler_moc_header_clean:
@@ -1790,8 +1790,11 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		../../ui_mainwindow.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/QVariant \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/QAction \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QApplication \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qapplication.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QComboBox \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qcombobox.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QFormLayout \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qformlayout.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QLayout \
@@ -1820,6 +1823,7 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qmenubar.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QPushButton \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QSpacerItem \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QStatusBar \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qstatusbar.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QTabWidget \
@@ -2529,19 +2533,48 @@ debug/coursedialog.o: ../../coursedialog.cpp ../../coursedialog.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QCheckBox \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qcheckbox.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qabstractbutton.h \
-		ui_coursedialog.h \
-		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QPushButton \
-		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		../../ui_coursedialog.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/QVariant \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QAbstractButton \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QApplication \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qapplication.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QComboBox \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qcombobox.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QDialogButtonBox \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QDoubleSpinBox \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qspinbox.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QFormLayout \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qformlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QLayout \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qgridlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QHBoxLayout \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QHeaderView \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qheaderview.h \
-		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QInputDialog \
-		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qinputdialog.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QLabel \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlabel.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qpicture.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextdocument.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QLineEdit \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlineedit.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextcursor.h \
-		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextdocument.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextformat.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qpen.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextoption.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QListWidget \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlistwidget.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlistview.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QPushButton \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QSpacerItem \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QTabWidget \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QTableWidget \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QVBoxLayout \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QWidget \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QInputDialog \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qinputdialog.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/QJsonArray \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\coursedialog.o ..\..\coursedialog.cpp
@@ -2762,7 +2795,38 @@ debug/classtimedialog.o: ../../classtimedialog.cpp ../../classtimedialog.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/quuid.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsondocument.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonparseerror.h \
-		ui_classtimedialog.h \
+		../../ui_classtimedialog.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/QVariant \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QAbstractButton \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QApplication \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qapplication.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QDialogButtonBox \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QFormLayout \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qformlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QLayout \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qgridlayout.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QGridLayout \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QLabel \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlabel.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qframe.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qpicture.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextdocument.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QLineEdit \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qlineedit.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextcursor.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextformat.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qpen.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtGui/qtextoption.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QScrollArea \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qscrollarea.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QTabWidget \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtabwidget.h \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QVBoxLayout \
+		D:/program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QWidget \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/QJsonArray \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonarray.h \
 		D:/program_files/Qt/6.9.1/mingw_64/include/QtCore/QDebug
