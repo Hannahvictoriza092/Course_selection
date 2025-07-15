@@ -1,0 +1,403 @@
+{
+    "schedule": [
+        {
+            "class_id": "04",
+            "course_id": "COMS0031121009",
+            "credits": 9,
+            "name": "数据结构",
+            "required": false,
+            "semester": 1,
+            "teacher": "赵佳宝",
+            "times": [
+                0,
+                12,
+                0,
+                0,
+                108,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "04",
+            "course_id": "COMS0031121009",
+            "credits": 9,
+            "name": "数据结构",
+            "required": false,
+            "semester": 1,
+            "teacher": "赵佳宝",
+            "times": [
+                0,
+                12,
+                0,
+                0,
+                108,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "02",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "肖春芸讲师",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "02",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "肖春芸讲师",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "24",
+            "course_id": "SHKX0031111016",
+            "credits": 6,
+            "name": "思想道德与法治",
+            "required": false,
+            "semester": 1,
+            "teacher": "祝毅讲师",
+            "times": [
+                0,
+                7168,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 3,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 3,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 3,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "02",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 3,
+            "teacher": "肖春芸讲师",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 3,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        }
+    ]
+}

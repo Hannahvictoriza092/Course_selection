@@ -27,7 +27,7 @@
        <string notr="true">QTabBar::tab { background-color: #87abdd; color: black; padding: 8px; min-width: 80px; } QTabBar::tab:selected { background-color: #504cc4; color: black; }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="courseTab">
        <attribute name="title">
@@ -130,7 +130,7 @@ QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; bo
            <bool>true</bool>
           </property>
           <property name="columnCount">
-           <number>8</number>
+           <number>9</number>
           </property>
           <column>
            <property name="text">
@@ -164,12 +164,17 @@ QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; bo
           </column>
           <column>
            <property name="text">
-            <string>学分(两倍)</string>
+            <string>上课周数</string>
            </property>
           </column>
           <column>
            <property name="text">
             <string>前置课程</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>优先级</string>
            </property>
           </column>
          </widget>
@@ -375,8 +380,10 @@ QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; bo
         <item>
          <widget class="QTableWidget" name="scheduleTableWidget">
           <property name="styleSheet">
-           <string notr="true">QHeaderView::section { background-color: #ade6c5; padding: 4px; border: 1px solid #dddddd; color: black; } 
-QTableWidget { background-color: white; alternate-background-color: #f5f5f5; color: black; }</string>
+           <string notr="true">QHeaderView::section:horizontal { background-color: #cccccc; color: black; padding: 4px; border: 1px solid #dddddd; text-align: center; }
+QHeaderView::section:vertical { background-color: #eeeeee; color: black; padding: 4px; border: 1px solid #dddddd; text-align: right; }
+QTableWidget { background-color: #f0f0f0; color: black; }
+QTableWidget::item:empty { background-color: #f0f0f0; }</string>
           </property>
           <property name="verticalScrollBarPolicy">
            <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
@@ -575,6 +582,7 @@ QTableWidget { background-color: white; alternate-background-color: #f5f5f5; col
     <property name="title">
      <string>选课</string>
     </property>
+    <addaction name="actionImportSchedule"/>
     <addaction name="actionGenerateSchedule"/>
    </widget>
    <addaction name="menuFile"/>
@@ -621,6 +629,11 @@ QTableWidget { background-color: white; alternate-background-color: #f5f5f5; col
   <action name="actionDeleteCourse">
    <property name="text">
     <string>删除课程</string>
+   </property>
+  </action>
+  <action name="actionImportSchedule">
+   <property name="text">
+    <string>导入选课方案</string>
    </property>
   </action>
   <action name="actionGenerateSchedule">

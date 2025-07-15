@@ -278,24 +278,19 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonparseerror.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/QJsonObject \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonobject.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QMainWindow \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qmainwindow.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/QAction \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qaction.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtguiglobal.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtgui-config.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtguiexports.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qwidget.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs_win.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qmargins.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qaction.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qkeysequence.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qicon.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qsize.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qmargins.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpixmap.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpaintdevice.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs_win.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qrect.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qpoint.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qcolor.h \
@@ -309,6 +304,12 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qspan.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/q20iterator.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qline.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QMainWindow \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qmainwindow.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qwidget.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpalette.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qbrush.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qfont.h \
@@ -1444,24 +1445,19 @@ debug/main.o: main.cpp mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonparseerror.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/QJsonObject \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonobject.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QMainWindow \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qmainwindow.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/QAction \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qaction.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtguiglobal.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtgui-config.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtguiexports.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qwidget.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs_win.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qmargins.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qaction.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qkeysequence.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qicon.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qsize.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qmargins.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpixmap.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpaintdevice.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs_win.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qrect.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qpoint.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qcolor.h \
@@ -1475,6 +1471,12 @@ debug/main.o: main.cpp mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qspan.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/q20iterator.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qline.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QMainWindow \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qmainwindow.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qwidget.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpalette.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qbrush.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qfont.h \
@@ -1684,24 +1686,19 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonparseerror.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/QJsonObject \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qjsonobject.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QMainWindow \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qmainwindow.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/QAction \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qaction.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtguiglobal.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtgui-config.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qtguiexports.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qwidget.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs_win.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qmargins.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qaction.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qkeysequence.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qicon.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qsize.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qmargins.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpixmap.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpaintdevice.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qwindowdefs_win.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qrect.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qpoint.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qcolor.h \
@@ -1715,6 +1712,12 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qspan.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/q20iterator.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qline.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QMainWindow \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qmainwindow.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qwidget.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qpalette.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qbrush.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/qfont.h \
@@ -1790,7 +1793,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		ui_mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/QVariant \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtGui/QAction \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QApplication \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qapplication.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QComboBox \
@@ -1844,7 +1846,9 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qfile.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qfileinfo.h \
 		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/qtimezone.h \
-		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/QJsonDocument
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtCore/QJsonDocument \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/QStyledItemDelegate \
+		../../../program_files/Qt/6.9.1/mingw_64/include/QtWidgets/qstyleditemdelegate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
 debug/courseparser.o: courseparser.cpp courseparser.h \

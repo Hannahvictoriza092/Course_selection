@@ -34,8 +34,12 @@ bool ScheduleExporter::exportSchedule(const QString &filePath, const QJsonObject
 
 bool ScheduleExporter::validateScheduleStructure(const QJsonObject &scheduleObj)
 {
-    if (!scheduleObj.contains("schedule") || !scheduleObj["schedule"].isArray()) {
-        qWarning() << "选课方案缺少schedule数组";
+    if (!scheduleObj.contains("schedule") ) {
+        qWarning() << "选课方案缺少schedule标签";
+        return false;
+    }
+    if(!scheduleObj["schedule"].isArray()){
+        qWarning() << "选课方案schedule不是数组";
         return false;
     }
 
@@ -63,7 +67,7 @@ bool ScheduleExporter::validateScheduleStructure(const QJsonObject &scheduleObj)
         }
 
         int semester = itemObj["semester"].toInt();
-        if (semester != -1 && (semester < 0 || semester > 7)) {
+        if (semester != -1 && (semester < 1 || semester > 8)) {
             qWarning() << "选课方案项semester值无效，索引:" << i;
             return false;
         }

@@ -18,7 +18,7 @@ public:
     //输入课程数据和学分上限，输出生成的课程表
     QJsonObject genSimSchedule(const QJsonObject &courseData, int creditLimit);
     //输入课程数据和学分上限，还有一个必修选修，输出生成的课程表
-    QJsonObject genCompulsorySchedule(const QJsonObject &courseData, int creditLimit);
+    QJsonObject genPriorSchedule(const QJsonObject &courseData, int creditLimit);
 
 private:
     

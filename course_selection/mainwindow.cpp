@@ -11,6 +11,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QStyledItemDelegate>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -28,6 +29,12 @@ MainWindow::MainWindow(QWidget *parent) :
             this, &MainWindow::onCourseTableContextMenu);
     // 连接菜单动作
     connect(ui->actionAddCourse, &QAction::triggered, this, &MainWindow::showAddCourseDialog);
+
+    // 连接导入选课方案动作
+    connect(ui->actionImportSchedule, &QAction::triggered, this, &MainWindow::on_actionImportSchedule_triggered);
+
+    // 连接切换学期和教学周按钮
+    connect(ui->pushButton_switch, &QPushButton::clicked, this, &MainWindow::on_pushButton_switch_clicked);
 
 
 }
@@ -161,19 +168,20 @@ void MainWindow::displayCourseData(const QJsonArray &filterCourses)
             }
             ui->courseTableWidget->setItem(currentRow, 6, new QTableWidgetItem(weekNumbers.join(",")));
 
-            // 学分(两倍) (第7列) - 只在第一行设置
-            if (j == 0) {
-                ui->courseTableWidget->setItem(currentRow, 7, new QTableWidgetItem(QString::number(course["credit"].toInt())));
-            }
-            
-            // 前置课程 (第8列) - 只在第一行设置
+            // 前置课程 (第7列) - 只在第一行设置
             if (j == 0) {
                 QJsonArray prereqs = course["prerequisites"].toArray();
                 QStringList prereqList;
                 for (const auto &prereq : prereqs) {
                     prereqList << prereq.toString();
                 }
-                ui->courseTableWidget->setItem(currentRow, 8, new QTableWidgetItem(prereqList.join(", ")));
+                ui->courseTableWidget->setItem(currentRow, 7, new QTableWidgetItem(prereqList.join(", ")));
+            }
+            
+            // 优先级 (第8列) - 只在第一行设置
+            //所有选修课默认优先级为1，可编辑，所有必修课默认优先级为0，不可编辑
+            if (j == 0) {
+                ui->courseTableWidget->setItem(currentRow, 8, new QTableWidgetItem(QString::number(course["priority"].toInt())));
             }
             
             // 设置行高
@@ -208,7 +216,99 @@ void MainWindow::displayCourseData(const QJsonArray &filterCourses)
 
 void MainWindow::displayScheduleData()
 {
-    // 待实现：显示选课方案数据到表格
+    // 清空现有课程表数据
+    for (int row = 0; row < ui->scheduleTableWidget->rowCount(); ++row) {
+        for (int col = 0; col < ui->scheduleTableWidget->columnCount(); ++col) {
+            QTableWidgetItem *item = ui->scheduleTableWidget->item(row, col);
+            if (item) delete item;
+        }
+    }
+
+    // 课程颜色映射表
+    QMap<QString, QColor> courseColors;
+    QList<QColor> availableColors = {
+        QColor(0xade6c5), // 浅绿色
+        QColor(0xe6c5ad), // 浅棕色
+        QColor(0xc5ade6), // 浅紫色
+        QColor(0xade6e6), // 浅蓝色
+        QColor(0xe6ade6), // 浅粉色
+        QColor(0xe6e6ad), // 浅黄色
+        QColor(0xc5e6ad), // 淡绿色
+        QColor(0xade6c5), // 另一种绿色
+        QColor(0xe6c5c5), // 淡红色
+        QColor(0xc5e6e6)  // 淡青色
+    };
+
+    // 填充导入的课程数据
+    for (const QJsonValue &value : filteredScheduleData) {
+        QJsonObject course = value.toObject();
+        QJsonArray offerings = course["offerings"].toArray();
+        QString courseId = course["id"].toString();
+        QString courseName = course["name"].toString();
+        QString courseCode = course["id"].toString();
+
+        // 为课程分配颜色
+        if (!courseColors.contains(courseId)) {
+            int colorIndex = qHash(courseId) % availableColors.size();
+            courseColors[courseId] = availableColors[colorIndex];
+        }
+        QColor courseColor = courseColors[courseId];
+
+        for (const QJsonValue &offeringValue : offerings) {
+            QJsonObject offering = offeringValue.toObject();
+            QJsonArray times = offering["times"].toArray();
+            QString teacher = offering["teacher"].toString();
+            QString location = offering["location"].toString();
+            int totalStudents = offering["totalStudents"].toInt();
+            int enrolledStudents = offering["enrolledStudents"].toInt();
+
+            // 格式化课程信息为HTML
+            QString courseInfo = QString(
+                "<div style='text-align: left;'>"
+                "<b>%1</b><br/>"
+                "<span style='color: #666666; font-size: 8pt;'>%2</span><br/>"
+                "<span style='font-size: 8pt;'>%3</span>"
+                "<div style='text-align: right; font-size: 7pt;'>人数: %4/%5</div>"
+                "</div>"
+            ).arg(courseName, courseCode, location, QString::number(enrolledStudents), QString::number(totalStudents));
+
+            // 解析上课时间并填充到表格
+            for (int day = 0; day < times.size(); ++day) {
+                int timeMask = times[day].toInt();
+                if (timeMask == 0) continue;
+
+                // 查找连续的课时段
+                QList<int> periods;
+                for (int period = 0; period < 14; ++period) {
+                    if (timeMask & (1 << period)) {
+                        periods.append(period);
+                    }
+                }
+
+                if (periods.isEmpty()) continue;
+
+                // 合并连续的课时单元格
+                int startPeriod = periods.first();
+                int endPeriod = periods.last();
+                int rowSpan = endPeriod - startPeriod + 1;
+
+                int row = startPeriod;
+                int col = day;
+
+                QTableWidgetItem *item = new QTableWidgetItem();
+                item->setData(Qt::DisplayRole, courseInfo);
+                item->setBackground(courseColor);
+                item->setTextAlignment(Qt::AlignTop | Qt::AlignLeft);
+                ui->scheduleTableWidget->setItem(row, col, item);
+                ui->scheduleTableWidget->setSpan(row, col, rowSpan, 1);
+            }
+        }
+    }
+
+    // 设置表格为富文本格式
+    ui->scheduleTableWidget->setItemDelegate(new QStyledItemDelegate());
+    // 调整行高以适应内容
+    ui->scheduleTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void MainWindow::on_actionImportCourse_triggered()
@@ -219,11 +319,98 @@ void MainWindow::on_actionImportCourse_triggered()
     }
 }
 
+void MainWindow::on_actionImportSchedule_triggered()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, "选择选课方案文件", ".", "JSON文件 (*.json)");
+    if (filePath.isEmpty()) return;
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, "错误", "无法打开文件: " + file.errorString());
+        return;
+    }
+
+    QByteArray data = file.readAll();
+    QJsonParseError parseError;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &parseError);
+
+    if (parseError.error != QJsonParseError::NoError || !doc.isArray()) {
+        QMessageBox::warning(this, "错误", "JSON解析失败: " + parseError.errorString());
+        return;
+    }
+
+    // 添加调试信息
+    qDebug() << "JSON解析结果 - 是否为数组:" << doc.isArray() << "数组大小:" << doc.array().size();
+    qDebug() << "JSON解析结果 - 是否为对象:" << doc.isObject() << "对象大小:" << doc.object().size();
+
+    scheduleData = doc.object();
+    // 显示调试信息的消息框
+    QString debugInfo = QString("调试信息:\nJSON类型: %1\n数据大小: %2\n对象键数量: %3")
+                        .arg(doc.isArray() ? "数组" : "对象")
+                        .arg(doc.isArray() ? doc.array().size() : doc.object().size())
+                        .arg(scheduleData.size());
+    QMessageBox::information(this, "成功", "选课方案导入成功，共导入" + QString::number(scheduleData.size()) + "门课程\n" + debugInfo);
+    // 应用当前学期和周的筛选
+    QString semester = ui->comboBox_semester->currentText();
+    QString week = ui->comboBox_week->currentText();
+    week = week.replace("第", "").replace("周", "");
+    int weekNumber = week.toInt();
+    filterScheduleBySemesterAndWeek(semester, weekNumber);
+    displayScheduleData();
+}
+
+void MainWindow::on_pushButton_switch_clicked()
+{
+    // 获取当前选择的学期和教学周
+    QString semester = ui->comboBox_semester->currentText();
+    QString week = ui->comboBox_week->currentText();
+    week = week.replace("第", "").replace("周", "");
+    int weekNumber = week.toInt();
+
+    // 根据学期和教学周过滤课程数据并刷新课表
+    filterScheduleBySemesterAndWeek(semester, weekNumber);
+    displayScheduleData();
+}
+
+void MainWindow::filterScheduleBySemesterAndWeek(const QString &semester, int weekNumber)
+{
+    // 清空当前筛选结果
+    filteredScheduleData = QJsonArray();
+
+    // 如果没有选课数据，直接返回
+    if (scheduleData.isEmpty()) return;
+
+    // 根据学期和教学周筛选课程
+    for (const QJsonValue &value : scheduleData) {
+        QJsonObject course = value.toObject();
+        if (course["semester"].toString() != semester) continue;
+
+        QJsonArray offerings = course["offerings"].toArray();
+        QJsonArray filteredOfferings;
+
+        for (const QJsonValue &offeringValue : offerings) {
+            QJsonObject offering = offeringValue.toObject();
+            int weekMask = offering["weeks"].toInt();
+
+            // 检查当前周是否在课程周数掩码中
+            if (weekMask & (1 << (weekNumber - 1))) {
+                filteredOfferings.append(offering);
+            }
+        }
+
+        if (!filteredOfferings.isEmpty()) {
+            QJsonObject filteredCourse = course;
+            filteredCourse["offerings"] = filteredOfferings;
+            filteredScheduleData.append(filteredCourse);
+        }
+    }
+}
+
 void MainWindow::on_actionExportSchedule_triggered()
 {
     QString filePath = QFileDialog::getSaveFileName(this, "保存选课方案", ".", "JSON文件 (*.json)");
     if (!filePath.isEmpty()) {
-        bool success = scheduleExporter->exportSchedule(filePath, scheduleData);
+        bool success = scheduleExporter->exportSchedule(filePath,scheduleData);
         if (success) {
             QMessageBox::information(this, "成功", "选课方案导出成功");
         } else {
@@ -611,8 +798,15 @@ QJsonObject MainWindow::findCourseById(const QString &courseId)
 void MainWindow::on_actionGenerateSchedule_triggered()
 {
     int creditLimit = ui->creditSpinBox->value();
-    scheduleData = courseAlgorithm->genSimSchedule(courseData, creditLimit);
+    scheduleData = courseAlgorithm->genSimSchedule(courseData, creditLimit); //填充这个schedual
+    //scheduleData = courseAlgorithm->genPriorSchedule(courseData, creditLimit);
     if (!scheduleData.isEmpty()) {
+        // 应用当前学期和周的筛选
+        QString semester = ui->comboBox_semester->currentText();
+        QString week = ui->comboBox_week->currentText();
+        week = week.replace("第", "").replace("周", "");
+        int weekNumber = week.toInt();
+        filterScheduleBySemesterAndWeek(semester, weekNumber);
         displayScheduleData();
         QMessageBox::information(this, "成功", "选课方案生成成功");
     } else {

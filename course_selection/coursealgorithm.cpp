@@ -52,9 +52,9 @@ bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处�
     if (!courseData.contains("courses") || !courseData["courses"].isArray()) {
         return false;
     }
-    //单纯先填充所有课程名，然后每个课程下面的各种time、前驱什么的再填充
+    //单纯先填充所有课程名，然后每个课程下面的各种time、前驱、优先级什么的再填充
     QJsonArray courses = courseData["courses"].toArray();
-    for (const auto &courseVal : courses) {
+    for (const auto &courseVal : courses) {//单个课程
         QJsonObject courseObj = courseVal.toObject();
         CourseInfo course;
         course.id = courseObj["id"].toString();
@@ -66,7 +66,7 @@ bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处�
         else course.semester=1; //奇数学期
         course.required = courseObj["required"].toBool();
         course.classes = courseObj["offerings"].toArray();
-
+        course.priority=courseObj["priority"].toInt();
         // 解析前置课程
         QJsonArray prereqs = courseObj["prerequisites"].toArray();
         for (const auto &prereqVal : prereqs) {
@@ -78,7 +78,6 @@ bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处�
         // 解析上课时间信息
         QVector<ClassInfo> classInfos;
         for (const auto &classVal : course.classes) {
-            //qWarning()<<course.name <<"有排课！！！";
             QJsonObject classObj = classVal.toObject();
             ClassInfo classInfo;
             //排课id、老师、课程id
@@ -86,12 +85,14 @@ bool CourseAlgorithm::initializeCourseData(const QJsonObject &courseData) //处�
             classInfo.teacher = classObj["teacher"].toString();
             classInfo.courseID=course.id;
             //时间和周
-            QJsonObject timeObj = classObj["time"].toObject();
-            QJsonArray timesArray = timeObj["times"].toArray();
+
+            QJsonArray timesArray = classObj["times"].toArray();
             for (const auto &timeVal : timesArray) {
                 classInfo.times.append(timeVal.toInt());
+                qWarning()<<"time不为空了";
             }
-            classInfo.weeks = timeObj["weeks"].toInt();
+            
+            classInfo.weeks = classObj["weeks"].toInt();
             classDetail[classInfo.id]=classInfo;
             classInfos.append(classInfo);
         }
@@ -247,8 +248,9 @@ bool CourseAlgorithm::tryArrangeCourse(const QString& courseId, int courseIndex,
         earliestSem = qMax(earliestSem, prereqSem + 1);
     }
 
-    // 调整学期奇偶性
-    if ((earliestSem % 2) != (course.semester % 2)) earliestSem++;
+    // 调整学期奇偶性（反转semester值以匹配用户需求）
+    int targetSemesterType = (course.semester == 0) ? 1 : 0;
+    if ((earliestSem % 2) != targetSemesterType) earliestSem++;
 
     // 尝试每个可能的学期
     for (int sem = earliestSem; sem < 8; sem += 2) {
@@ -299,14 +301,16 @@ QJsonObject CourseAlgorithm::buildScheduleJson() //建立新的Json文件
             ClassInfo& ThisClass=classDetail[classID];
             scheduleItem["course_id"] = ThisClass.courseID;
             scheduleItem["class_id"] =  ThisClass.id;
-            scheduleItem["semester"] = semester;
+            scheduleItem["semester"] = semester+1;
             scheduleItem["teacher"] =  ThisClass.teacher;
-            scheduleItem["week"] = semester+1;//从0开始
-            scheduleItem["name"] = courseMap[ThisClass.id].name;
+            scheduleItem["week"] =ThisClass.weeks;//从0开始
+            scheduleItem["name"] = courseMap[ThisClass.courseID].name;
             scheduleItem["required"]=courseMap[ThisClass.id].required;
-            scheduleItem["credits"] = courseMap[ThisClass.id].credit;
+            scheduleItem["credits"] = courseMap[ThisClass.courseID].credit;
             QJsonArray jsonArray;
+            
             for (int time :ThisClass.times) {
+                    qWarning()<<time<<"排课时间";
                     jsonArray.append(time);
                 }
             scheduleItem["times"] = jsonArray; // 使用 "times" 作为键名
@@ -314,7 +318,7 @@ QJsonObject CourseAlgorithm::buildScheduleJson() //建立新的Json文件
             scheduleArray.append(scheduleItem);
         }
     }
-
+    qWarning()<<"是有这个的result[schedule] ";
     result["schedule"] = scheduleArray;
     return result;
 }
@@ -328,6 +332,7 @@ bool  CourseAlgorithm:: hasTimeConflict(int semester, const ClassInfo &newClass)
         }
         
         // 2. 检查具体时间是否重叠
+        if(classDetail[existingClassID ].times.isEmpty()){qWarning()<<"排课时间为空这是怎么回事";}
         for (int day = 0; day < 7; ++day) {
             // 如果某天至少有一节课重叠（按位与不为0）
             if ((classDetail[existingClassID ].times[day] & newClass.times[day]) != 0) {
@@ -345,8 +350,8 @@ int CourseAlgorithm::findCourseSemester(const QString &courseId) {
 }
 
 //输入课程数据和学分上限，还有一个必修选修，输出生成的课程表
-QJsonObject CourseAlgorithm:: genCompulsorySchedule(const QJsonObject &courseData, int creditLimit){
-    // 重置状态
+QJsonObject CourseAlgorithm:: genPriorSchedule(const QJsonObject &courseData, int creditLimit){
+   // 重置状态
     courseMap.clear();
     classMap.clear();
     classDetail.clear();
@@ -359,19 +364,21 @@ QJsonObject CourseAlgorithm:: genCompulsorySchedule(const QJsonObject &courseDat
     }
 
     // 拓扑排序处理先后关系处理topoQueue
-    if (!topologicalSort()) {
+    if (!topoPriorSort()) {
         qWarning() << "课程先修关系存在循环依赖，无法生成选课方案";
         return QJsonObject();
     }
 
     // 选择课程以不冲突
     
-    if (!compulsoryBasedSelect(0,0,creditLimit)) { //是否够学分安排
-        qWarning() << "无法选择足够的课程以满足学分要求";
-        return QJsonObject();
-    }
+    int totalCredits=simplesSelect(creditLimit);  //是否够学分安排
+        
+    if(totalCredits<creditLimit) 
+    {qWarning() << "无法选择足够的课程以满足学分要求"<<totalCredits;
+        return QJsonObject();}
 
     // 构建选课方案JSON
+    qWarning() << "已经选择足够的课程以满足学分要求:"<<totalCredits;
     return buildScheduleJson();
 }
 

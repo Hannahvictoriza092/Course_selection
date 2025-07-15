@@ -24,6 +24,7 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -46,8 +47,10 @@ public:
     QComboBox *comboBox_semester;
     QLabel *label_courseType;
     QComboBox *comboBox_courseType;
+    QSpinBox *spinBox_priority;
     QLabel *label_credits;
     QDoubleSpinBox *doubleSpinBox_credits;
+    QLabel *label_priority;
     QWidget *classesTab;
     QVBoxLayout *verticalLayout_2;
     QTableWidget *tableWidget_classes;
@@ -115,10 +118,18 @@ public:
 
         formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, comboBox_courseType);
 
+        spinBox_priority = new QSpinBox(basicInfoTab);
+        spinBox_priority->setObjectName("spinBox_priority");
+        spinBox_priority->setVisible(false);
+        spinBox_priority->setMinimum(1);
+        spinBox_priority->setMaximum(99);
+
+        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, spinBox_priority);
+
         label_credits = new QLabel(basicInfoTab);
         label_credits->setObjectName("label_credits");
 
-        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_credits);
+        formLayout->setWidget(5, QFormLayout::ItemRole::LabelRole, label_credits);
 
         doubleSpinBox_credits = new QDoubleSpinBox(basicInfoTab);
         doubleSpinBox_credits->setObjectName("doubleSpinBox_credits");
@@ -126,7 +137,12 @@ public:
         doubleSpinBox_credits->setMaximum(10.000000000000000);
         doubleSpinBox_credits->setSingleStep(0.500000000000000);
 
-        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, doubleSpinBox_credits);
+        formLayout->setWidget(5, QFormLayout::ItemRole::FieldRole, doubleSpinBox_credits);
+
+        label_priority = new QLabel(basicInfoTab);
+        label_priority->setObjectName("label_priority");
+
+        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_priority);
 
         tabWidget->addTab(basicInfoTab, QString());
         classesTab = new QWidget();
@@ -189,7 +205,7 @@ public:
 
         buttonBox = new QDialogButtonBox(CourseDialog);
         buttonBox->setObjectName("buttonBox");
-        buttonBox->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+        buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
 
         horizontalLayout_2->addWidget(buttonBox);
 
@@ -215,6 +231,7 @@ public:
         label_semester->setText(QCoreApplication::translate("CourseDialog", "\345\255\246\346\234\237:", nullptr));
         label_courseType->setText(QCoreApplication::translate("CourseDialog", "\350\257\276\347\250\213\347\261\273\345\236\213:", nullptr));
         label_credits->setText(QCoreApplication::translate("CourseDialog", "\345\255\246\345\210\206:", nullptr));
+        label_priority->setText(QCoreApplication::translate("CourseDialog", "\344\274\230\345\205\210\347\272\247:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(basicInfoTab), QCoreApplication::translate("CourseDialog", "\345\237\272\346\234\254\344\277\241\346\201\257", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget_classes->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("CourseDialog", "\346\225\231\345\270\210", nullptr));

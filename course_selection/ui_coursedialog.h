@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'coursedialog.ui'
 **
-** Created by: Qt User Interface Compiler version 6.9.1
+** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,6 @@
 #define UI_COURSEDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
@@ -24,6 +23,7 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -46,8 +46,10 @@ public:
     QComboBox *comboBox_semester;
     QLabel *label_courseType;
     QComboBox *comboBox_courseType;
+    QSpinBox *spinBox_priority;
     QLabel *label_credits;
     QDoubleSpinBox *doubleSpinBox_credits;
+    QLabel *label_priority;
     QWidget *classesTab;
     QVBoxLayout *verticalLayout_2;
     QTableWidget *tableWidget_classes;
@@ -65,74 +67,87 @@ public:
     void setupUi(QDialog *CourseDialog)
     {
         if (CourseDialog->objectName().isEmpty())
-            CourseDialog->setObjectName("CourseDialog");
+            CourseDialog->setObjectName(QString::fromUtf8("CourseDialog"));
         CourseDialog->resize(600, 500);
         verticalLayout = new QVBoxLayout(CourseDialog);
-        verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         tabWidget = new QTabWidget(CourseDialog);
-        tabWidget->setObjectName("tabWidget");
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         basicInfoTab = new QWidget();
-        basicInfoTab->setObjectName("basicInfoTab");
+        basicInfoTab->setObjectName(QString::fromUtf8("basicInfoTab"));
         formLayout = new QFormLayout(basicInfoTab);
-        formLayout->setObjectName("formLayout");
+        formLayout->setObjectName(QString::fromUtf8("formLayout"));
         label_courseId = new QLabel(basicInfoTab);
-        label_courseId->setObjectName("label_courseId");
+        label_courseId->setObjectName(QString::fromUtf8("label_courseId"));
 
-        formLayout->setWidget(0, QFormLayout::ItemRole::LabelRole, label_courseId);
+        formLayout->setWidget(0, QFormLayout::LabelRole, label_courseId);
 
         lineEdit_courseId = new QLineEdit(basicInfoTab);
-        lineEdit_courseId->setObjectName("lineEdit_courseId");
+        lineEdit_courseId->setObjectName(QString::fromUtf8("lineEdit_courseId"));
 
-        formLayout->setWidget(0, QFormLayout::ItemRole::FieldRole, lineEdit_courseId);
+        formLayout->setWidget(0, QFormLayout::FieldRole, lineEdit_courseId);
 
         label_courseName = new QLabel(basicInfoTab);
-        label_courseName->setObjectName("label_courseName");
+        label_courseName->setObjectName(QString::fromUtf8("label_courseName"));
 
-        formLayout->setWidget(1, QFormLayout::ItemRole::LabelRole, label_courseName);
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_courseName);
 
         lineEdit_courseName = new QLineEdit(basicInfoTab);
-        lineEdit_courseName->setObjectName("lineEdit_courseName");
+        lineEdit_courseName->setObjectName(QString::fromUtf8("lineEdit_courseName"));
 
-        formLayout->setWidget(1, QFormLayout::ItemRole::FieldRole, lineEdit_courseName);
+        formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit_courseName);
 
         label_semester = new QLabel(basicInfoTab);
-        label_semester->setObjectName("label_semester");
+        label_semester->setObjectName(QString::fromUtf8("label_semester"));
 
-        formLayout->setWidget(2, QFormLayout::ItemRole::LabelRole, label_semester);
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_semester);
 
         comboBox_semester = new QComboBox(basicInfoTab);
-        comboBox_semester->setObjectName("comboBox_semester");
+        comboBox_semester->setObjectName(QString::fromUtf8("comboBox_semester"));
 
-        formLayout->setWidget(2, QFormLayout::ItemRole::FieldRole, comboBox_semester);
+        formLayout->setWidget(2, QFormLayout::FieldRole, comboBox_semester);
 
         label_courseType = new QLabel(basicInfoTab);
-        label_courseType->setObjectName("label_courseType");
+        label_courseType->setObjectName(QString::fromUtf8("label_courseType"));
 
-        formLayout->setWidget(3, QFormLayout::ItemRole::LabelRole, label_courseType);
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_courseType);
 
         comboBox_courseType = new QComboBox(basicInfoTab);
-        comboBox_courseType->setObjectName("comboBox_courseType");
+        comboBox_courseType->setObjectName(QString::fromUtf8("comboBox_courseType"));
 
-        formLayout->setWidget(3, QFormLayout::ItemRole::FieldRole, comboBox_courseType);
+        formLayout->setWidget(3, QFormLayout::FieldRole, comboBox_courseType);
+
+        spinBox_priority = new QSpinBox(basicInfoTab);
+        spinBox_priority->setObjectName(QString::fromUtf8("spinBox_priority"));
+        spinBox_priority->setVisible(false);
+        spinBox_priority->setMinimum(1);
+        spinBox_priority->setMaximum(99);
+
+        formLayout->setWidget(4, QFormLayout::FieldRole, spinBox_priority);
 
         label_credits = new QLabel(basicInfoTab);
-        label_credits->setObjectName("label_credits");
+        label_credits->setObjectName(QString::fromUtf8("label_credits"));
 
-        formLayout->setWidget(4, QFormLayout::ItemRole::LabelRole, label_credits);
+        formLayout->setWidget(5, QFormLayout::LabelRole, label_credits);
 
         doubleSpinBox_credits = new QDoubleSpinBox(basicInfoTab);
-        doubleSpinBox_credits->setObjectName("doubleSpinBox_credits");
+        doubleSpinBox_credits->setObjectName(QString::fromUtf8("doubleSpinBox_credits"));
         doubleSpinBox_credits->setMinimum(0.500000000000000);
         doubleSpinBox_credits->setMaximum(10.000000000000000);
         doubleSpinBox_credits->setSingleStep(0.500000000000000);
 
-        formLayout->setWidget(4, QFormLayout::ItemRole::FieldRole, doubleSpinBox_credits);
+        formLayout->setWidget(5, QFormLayout::FieldRole, doubleSpinBox_credits);
+
+        label_priority = new QLabel(basicInfoTab);
+        label_priority->setObjectName(QString::fromUtf8("label_priority"));
+
+        formLayout->setWidget(4, QFormLayout::LabelRole, label_priority);
 
         tabWidget->addTab(basicInfoTab, QString());
         classesTab = new QWidget();
-        classesTab->setObjectName("classesTab");
+        classesTab->setObjectName(QString::fromUtf8("classesTab"));
         verticalLayout_2 = new QVBoxLayout(classesTab);
-        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         tableWidget_classes = new QTableWidget(classesTab);
         if (tableWidget_classes->columnCount() < 3)
             tableWidget_classes->setColumnCount(3);
@@ -142,35 +157,35 @@ public:
         tableWidget_classes->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         tableWidget_classes->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        tableWidget_classes->setObjectName("tableWidget_classes");
+        tableWidget_classes->setObjectName(QString::fromUtf8("tableWidget_classes"));
         tableWidget_classes->setColumnCount(3);
 
         verticalLayout_2->addWidget(tableWidget_classes);
 
         pushButton_addClass = new QPushButton(classesTab);
-        pushButton_addClass->setObjectName("pushButton_addClass");
+        pushButton_addClass->setObjectName(QString::fromUtf8("pushButton_addClass"));
 
         verticalLayout_2->addWidget(pushButton_addClass);
 
         tabWidget->addTab(classesTab, QString());
         prerequisitesTab = new QWidget();
-        prerequisitesTab->setObjectName("prerequisitesTab");
+        prerequisitesTab->setObjectName(QString::fromUtf8("prerequisitesTab"));
         verticalLayout_3 = new QVBoxLayout(prerequisitesTab);
-        verticalLayout_3->setObjectName("verticalLayout_3");
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         listWidget_prerequisites = new QListWidget(prerequisitesTab);
-        listWidget_prerequisites->setObjectName("listWidget_prerequisites");
+        listWidget_prerequisites->setObjectName(QString::fromUtf8("listWidget_prerequisites"));
 
         verticalLayout_3->addWidget(listWidget_prerequisites);
 
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         pushButton_addPrerequisite = new QPushButton(prerequisitesTab);
-        pushButton_addPrerequisite->setObjectName("pushButton_addPrerequisite");
+        pushButton_addPrerequisite->setObjectName(QString::fromUtf8("pushButton_addPrerequisite"));
 
         horizontalLayout->addWidget(pushButton_addPrerequisite);
 
         pushButton_removePrerequisite = new QPushButton(prerequisitesTab);
-        pushButton_removePrerequisite->setObjectName("pushButton_removePrerequisite");
+        pushButton_removePrerequisite->setObjectName(QString::fromUtf8("pushButton_removePrerequisite"));
 
         horizontalLayout->addWidget(pushButton_removePrerequisite);
 
@@ -182,14 +197,14 @@ public:
         verticalLayout->addWidget(tabWidget);
 
         horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
         buttonBox = new QDialogButtonBox(CourseDialog);
-        buttonBox->setObjectName("buttonBox");
-        buttonBox->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
+        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
 
         horizontalLayout_2->addWidget(buttonBox);
 
@@ -198,8 +213,8 @@ public:
 
 
         retranslateUi(CourseDialog);
-        QObject::connect(buttonBox, &QDialogButtonBox::accepted, CourseDialog, qOverload<>(&QDialog::accept));
-        QObject::connect(buttonBox, &QDialogButtonBox::rejected, CourseDialog, qOverload<>(&QDialog::reject));
+        QObject::connect(buttonBox, SIGNAL(accepted()), CourseDialog, SLOT(accept()));
+        QObject::connect(buttonBox, SIGNAL(rejected()), CourseDialog, SLOT(reject()));
 
         tabWidget->setCurrentIndex(0);
 
@@ -215,6 +230,7 @@ public:
         label_semester->setText(QCoreApplication::translate("CourseDialog", "\345\255\246\346\234\237:", nullptr));
         label_courseType->setText(QCoreApplication::translate("CourseDialog", "\350\257\276\347\250\213\347\261\273\345\236\213:", nullptr));
         label_credits->setText(QCoreApplication::translate("CourseDialog", "\345\255\246\345\210\206:", nullptr));
+        label_priority->setText(QCoreApplication::translate("CourseDialog", "\344\274\230\345\205\210\347\272\247:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(basicInfoTab), QCoreApplication::translate("CourseDialog", "\345\237\272\346\234\254\344\277\241\346\201\257", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget_classes->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("CourseDialog", "\346\225\231\345\270\210", nullptr));

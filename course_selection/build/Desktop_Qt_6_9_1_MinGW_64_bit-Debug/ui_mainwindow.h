@@ -43,6 +43,7 @@ public:
     QAction *actionAddCourse;
     QAction *actionEditCourse;
     QAction *actionDeleteCourse;
+    QAction *actionImportSchedule;
     QAction *actionGenerateSchedule;
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout;
@@ -97,6 +98,8 @@ public:
         actionEditCourse->setObjectName("actionEditCourse");
         actionDeleteCourse = new QAction(MainWindow);
         actionDeleteCourse->setObjectName("actionDeleteCourse");
+        actionImportSchedule = new QAction(MainWindow);
+        actionImportSchedule->setObjectName("actionImportSchedule");
         actionGenerateSchedule = new QAction(MainWindow);
         actionGenerateSchedule->setObjectName("actionGenerateSchedule");
         centralWidget = new QWidget(MainWindow);
@@ -163,8 +166,8 @@ public:
         verticalLayout_2->addWidget(label_noResults);
 
         courseTableWidget = new QTableWidget(courseTab);
-        if (courseTableWidget->columnCount() < 8)
-            courseTableWidget->setColumnCount(8);
+        if (courseTableWidget->columnCount() < 9)
+            courseTableWidget->setColumnCount(9);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         courseTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
@@ -181,6 +184,8 @@ public:
         courseTableWidget->setHorizontalHeaderItem(6, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
         courseTableWidget->setHorizontalHeaderItem(7, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        courseTableWidget->setHorizontalHeaderItem(8, __qtablewidgetitem8);
         courseTableWidget->setObjectName("courseTableWidget");
         courseTableWidget->setStyleSheet(QString::fromUtf8("QTableWidget { color: black; font-weight: 500; }\n"
 "QTableWidget::item { background-color:rgb(153, 181, 222); color: black; }\n"
@@ -191,7 +196,7 @@ public:
         courseTableWidget->setAlternatingRowColors(true);
         courseTableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollMode::ScrollPerPixel);
         courseTableWidget->setWordWrap(true);
-        courseTableWidget->setColumnCount(8);
+        courseTableWidget->setColumnCount(9);
 
         verticalLayout_2->addWidget(courseTableWidget);
 
@@ -271,53 +276,55 @@ public:
         scheduleTableWidget = new QTableWidget(scheduleTab);
         if (scheduleTableWidget->columnCount() < 7)
             scheduleTableWidget->setColumnCount(7);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        scheduleTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem8);
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        scheduleTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem9);
+        scheduleTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem9);
         QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        scheduleTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem10);
+        scheduleTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem10);
         QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        scheduleTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem11);
+        scheduleTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem11);
         QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        scheduleTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem12);
+        scheduleTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem12);
         QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        scheduleTableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem13);
+        scheduleTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem13);
         QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        scheduleTableWidget->setHorizontalHeaderItem(6, __qtablewidgetitem14);
+        scheduleTableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem14);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        scheduleTableWidget->setHorizontalHeaderItem(6, __qtablewidgetitem15);
         if (scheduleTableWidget->rowCount() < 14)
             scheduleTableWidget->setRowCount(14);
-        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(0, __qtablewidgetitem15);
         QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(1, __qtablewidgetitem16);
+        scheduleTableWidget->setVerticalHeaderItem(0, __qtablewidgetitem16);
         QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(2, __qtablewidgetitem17);
+        scheduleTableWidget->setVerticalHeaderItem(1, __qtablewidgetitem17);
         QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(3, __qtablewidgetitem18);
+        scheduleTableWidget->setVerticalHeaderItem(2, __qtablewidgetitem18);
         QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(4, __qtablewidgetitem19);
+        scheduleTableWidget->setVerticalHeaderItem(3, __qtablewidgetitem19);
         QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(5, __qtablewidgetitem20);
+        scheduleTableWidget->setVerticalHeaderItem(4, __qtablewidgetitem20);
         QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(6, __qtablewidgetitem21);
+        scheduleTableWidget->setVerticalHeaderItem(5, __qtablewidgetitem21);
         QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(7, __qtablewidgetitem22);
+        scheduleTableWidget->setVerticalHeaderItem(6, __qtablewidgetitem22);
         QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(8, __qtablewidgetitem23);
+        scheduleTableWidget->setVerticalHeaderItem(7, __qtablewidgetitem23);
         QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(9, __qtablewidgetitem24);
+        scheduleTableWidget->setVerticalHeaderItem(8, __qtablewidgetitem24);
         QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(10, __qtablewidgetitem25);
+        scheduleTableWidget->setVerticalHeaderItem(9, __qtablewidgetitem25);
         QTableWidgetItem *__qtablewidgetitem26 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(11, __qtablewidgetitem26);
+        scheduleTableWidget->setVerticalHeaderItem(10, __qtablewidgetitem26);
         QTableWidgetItem *__qtablewidgetitem27 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(12, __qtablewidgetitem27);
+        scheduleTableWidget->setVerticalHeaderItem(11, __qtablewidgetitem27);
         QTableWidgetItem *__qtablewidgetitem28 = new QTableWidgetItem();
-        scheduleTableWidget->setVerticalHeaderItem(13, __qtablewidgetitem28);
+        scheduleTableWidget->setVerticalHeaderItem(12, __qtablewidgetitem28);
+        QTableWidgetItem *__qtablewidgetitem29 = new QTableWidgetItem();
+        scheduleTableWidget->setVerticalHeaderItem(13, __qtablewidgetitem29);
         scheduleTableWidget->setObjectName("scheduleTableWidget");
-        scheduleTableWidget->setStyleSheet(QString::fromUtf8("QHeaderView::section { background-color: #ade6c5; padding: 4px; border: 1px solid #dddddd; color: black; } \n"
-"QTableWidget { background-color: white; alternate-background-color: #f5f5f5; color: black; }"));
+        scheduleTableWidget->setStyleSheet(QString::fromUtf8("QHeaderView::section:horizontal { background-color: #cccccc; color: black; padding: 4px; border: 1px solid #dddddd; text-align: center; }\n"
+"QHeaderView::section:vertical { background-color: #eeeeee; color: black; padding: 4px; border: 1px solid #dddddd; text-align: right; }\n"
+"QTableWidget { background-color: #f0f0f0; color: black; }\n"
+"QTableWidget::item:empty { background-color: #f0f0f0; }"));
         scheduleTableWidget->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
         scheduleTableWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
         scheduleTableWidget->setRowCount(14);
@@ -387,11 +394,12 @@ public:
         menuFile->addAction(actionExportSchedule);
         menuFile->addAction(actionExit);
         menuCourse->addAction(actionAddCourse);
+        menuSchedule->addAction(actionImportSchedule);
         menuSchedule->addAction(actionGenerateSchedule);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -406,6 +414,7 @@ public:
         actionAddCourse->setText(QCoreApplication::translate("MainWindow", "\346\267\273\345\212\240\350\257\276\347\250\213", nullptr));
         actionEditCourse->setText(QCoreApplication::translate("MainWindow", "\347\274\226\350\276\221\350\257\276\347\250\213", nullptr));
         actionDeleteCourse->setText(QCoreApplication::translate("MainWindow", "\345\210\240\351\231\244\350\257\276\347\250\213", nullptr));
+        actionImportSchedule->setText(QCoreApplication::translate("MainWindow", "\345\257\274\345\205\245\351\200\211\350\257\276\346\226\271\346\241\210", nullptr));
         actionGenerateSchedule->setText(QCoreApplication::translate("MainWindow", "\347\224\237\346\210\220\351\200\211\350\257\276\346\226\271\346\241\210", nullptr));
         lineEdit_searchId->setPlaceholderText(QCoreApplication::translate("MainWindow", "\350\257\276\347\250\213ID", nullptr));
         lineEdit_searchTeacher->setPlaceholderText(QCoreApplication::translate("MainWindow", "\346\225\231\345\270\210", nullptr));
@@ -425,9 +434,11 @@ public:
         QTableWidgetItem *___qtablewidgetitem5 = courseTableWidget->horizontalHeaderItem(5);
         ___qtablewidgetitem5->setText(QCoreApplication::translate("MainWindow", "\344\270\212\350\257\276\346\227\266\351\227\264", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = courseTableWidget->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QCoreApplication::translate("MainWindow", "\345\255\246\345\210\206(\344\270\244\345\200\215)", nullptr));
+        ___qtablewidgetitem6->setText(QCoreApplication::translate("MainWindow", "\344\270\212\350\257\276\345\221\250\346\225\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = courseTableWidget->horizontalHeaderItem(7);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("MainWindow", "\345\211\215\347\275\256\350\257\276\347\250\213", nullptr));
+        QTableWidgetItem *___qtablewidgetitem8 = courseTableWidget->horizontalHeaderItem(8);
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("MainWindow", "\344\274\230\345\205\210\347\272\247", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(courseTab), QCoreApplication::translate("MainWindow", "\345\205\250\351\203\250\350\257\276\347\250\213", nullptr));
         label_semester->setText(QCoreApplication::translate("MainWindow", "\345\210\207\346\215\242\345\255\246\346\234\237:", nullptr));
         comboBox_semester->setItemText(0, QCoreApplication::translate("MainWindow", "\345\244\247\344\270\200\344\270\212", nullptr));
@@ -460,48 +471,48 @@ public:
         comboBox_week->setItemText(17, QCoreApplication::translate("MainWindow", "\347\254\25418\345\221\250", nullptr));
 
         pushButton_switch->setText(QCoreApplication::translate("MainWindow", "\345\210\207\346\215\242", nullptr));
-        QTableWidgetItem *___qtablewidgetitem8 = scheduleTableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\270\200", nullptr));
-        QTableWidgetItem *___qtablewidgetitem9 = scheduleTableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem9->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\272\214", nullptr));
-        QTableWidgetItem *___qtablewidgetitem10 = scheduleTableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem10->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\270\211", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = scheduleTableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem11->setText(QCoreApplication::translate("MainWindow", "\345\221\250\345\233\233", nullptr));
-        QTableWidgetItem *___qtablewidgetitem12 = scheduleTableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\272\224", nullptr));
-        QTableWidgetItem *___qtablewidgetitem13 = scheduleTableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem13->setText(QCoreApplication::translate("MainWindow", "\345\221\250\345\205\255", nullptr));
-        QTableWidgetItem *___qtablewidgetitem14 = scheduleTableWidget->horizontalHeaderItem(6);
-        ___qtablewidgetitem14->setText(QCoreApplication::translate("MainWindow", "\345\221\250\346\227\245", nullptr));
-        QTableWidgetItem *___qtablewidgetitem15 = scheduleTableWidget->verticalHeaderItem(0);
-        ___qtablewidgetitem15->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
-        QTableWidgetItem *___qtablewidgetitem16 = scheduleTableWidget->verticalHeaderItem(1);
-        ___qtablewidgetitem16->setText(QCoreApplication::translate("MainWindow", "2", nullptr));
-        QTableWidgetItem *___qtablewidgetitem17 = scheduleTableWidget->verticalHeaderItem(2);
-        ___qtablewidgetitem17->setText(QCoreApplication::translate("MainWindow", "3", nullptr));
-        QTableWidgetItem *___qtablewidgetitem18 = scheduleTableWidget->verticalHeaderItem(3);
-        ___qtablewidgetitem18->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
-        QTableWidgetItem *___qtablewidgetitem19 = scheduleTableWidget->verticalHeaderItem(4);
-        ___qtablewidgetitem19->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
-        QTableWidgetItem *___qtablewidgetitem20 = scheduleTableWidget->verticalHeaderItem(5);
-        ___qtablewidgetitem20->setText(QCoreApplication::translate("MainWindow", "6", nullptr));
-        QTableWidgetItem *___qtablewidgetitem21 = scheduleTableWidget->verticalHeaderItem(6);
-        ___qtablewidgetitem21->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
-        QTableWidgetItem *___qtablewidgetitem22 = scheduleTableWidget->verticalHeaderItem(7);
-        ___qtablewidgetitem22->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
-        QTableWidgetItem *___qtablewidgetitem23 = scheduleTableWidget->verticalHeaderItem(8);
-        ___qtablewidgetitem23->setText(QCoreApplication::translate("MainWindow", "9", nullptr));
-        QTableWidgetItem *___qtablewidgetitem24 = scheduleTableWidget->verticalHeaderItem(9);
-        ___qtablewidgetitem24->setText(QCoreApplication::translate("MainWindow", "10", nullptr));
-        QTableWidgetItem *___qtablewidgetitem25 = scheduleTableWidget->verticalHeaderItem(10);
-        ___qtablewidgetitem25->setText(QCoreApplication::translate("MainWindow", "11", nullptr));
-        QTableWidgetItem *___qtablewidgetitem26 = scheduleTableWidget->verticalHeaderItem(11);
-        ___qtablewidgetitem26->setText(QCoreApplication::translate("MainWindow", "12", nullptr));
-        QTableWidgetItem *___qtablewidgetitem27 = scheduleTableWidget->verticalHeaderItem(12);
-        ___qtablewidgetitem27->setText(QCoreApplication::translate("MainWindow", "13", nullptr));
-        QTableWidgetItem *___qtablewidgetitem28 = scheduleTableWidget->verticalHeaderItem(13);
-        ___qtablewidgetitem28->setText(QCoreApplication::translate("MainWindow", "14", nullptr));
+        QTableWidgetItem *___qtablewidgetitem9 = scheduleTableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem9->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\270\200", nullptr));
+        QTableWidgetItem *___qtablewidgetitem10 = scheduleTableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem10->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\272\214", nullptr));
+        QTableWidgetItem *___qtablewidgetitem11 = scheduleTableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem11->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\270\211", nullptr));
+        QTableWidgetItem *___qtablewidgetitem12 = scheduleTableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "\345\221\250\345\233\233", nullptr));
+        QTableWidgetItem *___qtablewidgetitem13 = scheduleTableWidget->horizontalHeaderItem(4);
+        ___qtablewidgetitem13->setText(QCoreApplication::translate("MainWindow", "\345\221\250\344\272\224", nullptr));
+        QTableWidgetItem *___qtablewidgetitem14 = scheduleTableWidget->horizontalHeaderItem(5);
+        ___qtablewidgetitem14->setText(QCoreApplication::translate("MainWindow", "\345\221\250\345\205\255", nullptr));
+        QTableWidgetItem *___qtablewidgetitem15 = scheduleTableWidget->horizontalHeaderItem(6);
+        ___qtablewidgetitem15->setText(QCoreApplication::translate("MainWindow", "\345\221\250\346\227\245", nullptr));
+        QTableWidgetItem *___qtablewidgetitem16 = scheduleTableWidget->verticalHeaderItem(0);
+        ___qtablewidgetitem16->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
+        QTableWidgetItem *___qtablewidgetitem17 = scheduleTableWidget->verticalHeaderItem(1);
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("MainWindow", "2", nullptr));
+        QTableWidgetItem *___qtablewidgetitem18 = scheduleTableWidget->verticalHeaderItem(2);
+        ___qtablewidgetitem18->setText(QCoreApplication::translate("MainWindow", "3", nullptr));
+        QTableWidgetItem *___qtablewidgetitem19 = scheduleTableWidget->verticalHeaderItem(3);
+        ___qtablewidgetitem19->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
+        QTableWidgetItem *___qtablewidgetitem20 = scheduleTableWidget->verticalHeaderItem(4);
+        ___qtablewidgetitem20->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
+        QTableWidgetItem *___qtablewidgetitem21 = scheduleTableWidget->verticalHeaderItem(5);
+        ___qtablewidgetitem21->setText(QCoreApplication::translate("MainWindow", "6", nullptr));
+        QTableWidgetItem *___qtablewidgetitem22 = scheduleTableWidget->verticalHeaderItem(6);
+        ___qtablewidgetitem22->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
+        QTableWidgetItem *___qtablewidgetitem23 = scheduleTableWidget->verticalHeaderItem(7);
+        ___qtablewidgetitem23->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
+        QTableWidgetItem *___qtablewidgetitem24 = scheduleTableWidget->verticalHeaderItem(8);
+        ___qtablewidgetitem24->setText(QCoreApplication::translate("MainWindow", "9", nullptr));
+        QTableWidgetItem *___qtablewidgetitem25 = scheduleTableWidget->verticalHeaderItem(9);
+        ___qtablewidgetitem25->setText(QCoreApplication::translate("MainWindow", "10", nullptr));
+        QTableWidgetItem *___qtablewidgetitem26 = scheduleTableWidget->verticalHeaderItem(10);
+        ___qtablewidgetitem26->setText(QCoreApplication::translate("MainWindow", "11", nullptr));
+        QTableWidgetItem *___qtablewidgetitem27 = scheduleTableWidget->verticalHeaderItem(11);
+        ___qtablewidgetitem27->setText(QCoreApplication::translate("MainWindow", "12", nullptr));
+        QTableWidgetItem *___qtablewidgetitem28 = scheduleTableWidget->verticalHeaderItem(12);
+        ___qtablewidgetitem28->setText(QCoreApplication::translate("MainWindow", "13", nullptr));
+        QTableWidgetItem *___qtablewidgetitem29 = scheduleTableWidget->verticalHeaderItem(13);
+        ___qtablewidgetitem29->setText(QCoreApplication::translate("MainWindow", "14", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(scheduleTab), QCoreApplication::translate("MainWindow", "\351\200\211\350\257\276\346\226\271\346\241\210", nullptr));
         creditGroupBox->setTitle(QCoreApplication::translate("MainWindow", "\345\255\246\345\210\206\350\256\276\347\275\256", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" color:#000000;\">\346\200\273\345\255\246\345\210\206\344\270\213\351\231\220(\344\270\244\345\200\215\345\200\274):</span></p></body></html>", nullptr));

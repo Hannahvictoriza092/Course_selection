@@ -42,6 +42,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "on_actionImportCourse_triggered",
         "",
         "on_actionExportSchedule_triggered",
+        "on_actionImportSchedule_triggered",
         "on_actionGenerateSchedule_triggered",
         "onCourseTableContextMenu",
         "pos",
@@ -52,7 +53,11 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "filterCourseData",
         "id",
         "teacher",
-        "name"
+        "name",
+        "on_pushButton_switch_clicked",
+        "filterScheduleBySemesterAndWeek",
+        "semester",
+        "weekNumber"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -60,23 +65,31 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'on_actionExportSchedule_triggered'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionGenerateSchedule_triggered'
+        // Slot 'on_actionImportSchedule_triggered'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_actionGenerateSchedule_triggered'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onCourseTableContextMenu'
-        QtMocHelpers::SlotData<void(const QPoint &)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QPoint, 6 },
+        QtMocHelpers::SlotData<void(const QPoint &)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QPoint, 7 },
         }}),
         // Slot 'onEditCourseAction'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onDeleteCourseAction'
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onAddCourseDialogAccepted'
+        // Slot 'onDeleteCourseAction'
         QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_pushButton_search_clicked'
+        // Slot 'onAddCourseDialogAccepted'
         QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_pushButton_search_clicked'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'filterCourseData'
-        QtMocHelpers::SlotData<void(const QString &, const QString &, const QString &)>(11, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QString, 12 }, { QMetaType::QString, 13 }, { QMetaType::QString, 14 },
+        QtMocHelpers::SlotData<void(const QString &, const QString &, const QString &)>(12, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 13 }, { QMetaType::QString, 14 }, { QMetaType::QString, 15 },
+        }}),
+        // Slot 'on_pushButton_switch_clicked'
+        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'filterScheduleBySemesterAndWeek'
+        QtMocHelpers::SlotData<void(const QString &, int)>(17, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 18 }, { QMetaType::Int, 19 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -103,13 +116,16 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->on_actionImportCourse_triggered(); break;
         case 1: _t->on_actionExportSchedule_triggered(); break;
-        case 2: _t->on_actionGenerateSchedule_triggered(); break;
-        case 3: _t->onCourseTableContextMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
-        case 4: _t->onEditCourseAction(); break;
-        case 5: _t->onDeleteCourseAction(); break;
-        case 6: _t->onAddCourseDialogAccepted(); break;
-        case 7: _t->on_pushButton_search_clicked(); break;
-        case 8: _t->filterCourseData((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 2: _t->on_actionImportSchedule_triggered(); break;
+        case 3: _t->on_actionGenerateSchedule_triggered(); break;
+        case 4: _t->onCourseTableContextMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 5: _t->onEditCourseAction(); break;
+        case 6: _t->onDeleteCourseAction(); break;
+        case 7: _t->onAddCourseDialogAccepted(); break;
+        case 8: _t->on_pushButton_search_clicked(); break;
+        case 9: _t->filterCourseData((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 10: _t->on_pushButton_switch_clicked(); break;
+        case 11: _t->filterScheduleBySemesterAndWeek((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         default: ;
         }
     }
@@ -134,14 +150,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 12;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 12;
     }
     return _id;
 }
