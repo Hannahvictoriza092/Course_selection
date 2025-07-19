@@ -1,0 +1,80 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QAction>
+#include <QMainWindow>
+#include <QtGui/QAction>
+#include <QMessageBox>
+#include <QTableWidget>
+#include <QSpinBox>
+#include <QJsonObject>
+
+namespace Ui {
+class MainWindow;
+}
+
+class CourseParser;
+class ScheduleExporter;
+
+class CourseAlgorithm;
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+private slots:
+    void on_actionImportCourse_triggered();
+    void on_actionExportSchedule_triggered();
+    void on_actionImportSchedule_triggered();
+
+    //进行选课
+    void on_actionGenerateSchedule_triggered();
+    void on_actionGeneratePriorSchedule_triggered();
+    // 添加右键菜单槽函数
+    void onCourseTableContextMenu(const QPoint &pos);
+    void onEditCourseAction();
+    void onDeleteCourseAction();
+    
+    // 添加课程对话框槽函数
+    void onAddCourseDialogAccepted();
+    void on_pushButton_search_clicked();
+    void filterCourseData(const QString &id, const QString &teacher, const QString &name);
+    void on_pushButton_switch_clicked();
+    void filterScheduleBySemesterAndWeek(const QString &semester, int weekNumber);
+
+private:
+    Ui::MainWindow *ui;
+    CourseParser *courseParser;
+    ScheduleExporter *scheduleExporter;
+    CourseAlgorithm *courseAlgorithm;
+    QJsonObject courseData;
+    QJsonObject scheduleData;
+    QJsonArray filteredScheduleData;
+    QString currentEditingCourseId;  // 用于编辑课程时记录当前编辑的课程ID
+    QAction *actionImportSchedule;
+
+    void loadCourseData(const QString &filePath);
+    void displayCourseData(const QJsonArray &filterCourses = QJsonArray());
+    void displayScheduleData();
+    // 添加课程对话框
+    void showAddCourseDialog();
+    void showEditCourseDialog(int row);
+    
+    
+    // 课程操作函数
+    void addCourseToData(const QJsonObject &newCourse);
+    void updateCourseInData(const QJsonObject &updatedCourse);
+    void removeOfferingFromData(const QString &courseId, const QString &teacher);
+    int findActualCourseRow(int row) const;
+    QJsonObject findCourseById(const QString &id);
+    QMap<QString,int> toIntSem={
+        {"大一上",1},{"大一下",2},{"大二上",3},{"大二下",4},{"大三上",5},{"大三下",6},{"大四上",7},{"大四下",8}
+    };
+};
+
+#endif // MAINWINDOW_H

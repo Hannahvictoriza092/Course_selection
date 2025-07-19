@@ -1,0 +1,346 @@
+{
+    "schedule": [
+        {
+            "class_id": "04",
+            "course_id": "COEN0031161991",
+            "credits": 4,
+            "name": "通用学术英语听说（高级）",
+            "required": false,
+            "semester": 1,
+            "teacher": "李征",
+            "times": [
+                0,
+                0,
+                0,
+                0,
+                3,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121004",
+            "credits": 6,
+            "name": "程序设计原理与C语言",
+            "required": false,
+            "semester": 1,
+            "teacher": "陆幼利副教授",
+            "times": [
+                0,
+                0,
+                0,
+                15,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031131032",
+            "credits": 6,
+            "name": "线性代数",
+            "required": false,
+            "semester": 1,
+            "teacher": "王峰副研究员",
+            "times": [
+                3,
+                0,
+                12,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031131026",
+            "credits": 4,
+            "name": "计算机导论",
+            "required": false,
+            "semester": 1,
+            "teacher": "周爱民教授",
+            "times": [
+                0,
+                12,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "04",
+            "course_id": "COEN0031161992",
+            "credits": 4,
+            "name": "通用学术英语读写（高级）",
+            "required": false,
+            "semester": 1,
+            "teacher": "李辉",
+            "times": [
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "04",
+            "course_id": "SHKX0031111017",
+            "credits": 6,
+            "name": "中国近现代史纲要",
+            "required": false,
+            "semester": 1,
+            "teacher": "宋宏副教授",
+            "times": [
+                224,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "24",
+            "course_id": "SHKX0031111016",
+            "credits": 6,
+            "name": "思想道德与法治",
+            "required": false,
+            "semester": 1,
+            "teacher": "祝毅讲师",
+            "times": [
+                0,
+                7168,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121013",
+            "credits": 10,
+            "name": "数学分析I",
+            "required": false,
+            "semester": 1,
+            "teacher": "李智教授",
+            "times": [
+                12,
+                0,
+                3,
+                0,
+                12,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031161001",
+            "credits": 4,
+            "name": "大学物理B（一）",
+            "required": false,
+            "semester": 1,
+            "teacher": "李波教授",
+            "times": [
+                0,
+                0,
+                0,
+                96,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031131042",
+            "credits": 6,
+            "name": "人工智能",
+            "required": false,
+            "semester": 3,
+            "teacher": "周爱民教授",
+            "times": [
+                0,
+                480,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031131043",
+            "credits": 4,
+            "name": "编程思维与实践",
+            "required": false,
+            "semester": 3,
+            "teacher": "肖春芸讲师",
+            "times": [
+                224,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "13",
+            "course_id": "COEN0031111109",
+            "credits": 4,
+            "name": "学术英语写作（高级）",
+            "required": false,
+            "semester": 3,
+            "teacher": "JingChenWeng",
+            "times": [
+                0,
+                3,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "02",
+            "course_id": "COMS0031131013",
+            "credits": 6,
+            "name": "离散数学",
+            "required": false,
+            "semester": 3,
+            "teacher": "石东昱讲师",
+            "times": [
+                7,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "04",
+            "course_id": "SHKX0031111008",
+            "credits": 6,
+            "name": "毛泽东思想和中国特色社会主义理论体系概论",
+            "required": false,
+            "semester": 3,
+            "teacher": "胡航讲师",
+            "times": [
+                0,
+                7168,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "02",
+            "course_id": "COMS0031161000",
+            "credits": 8,
+            "name": "大学物理B（二）",
+            "required": false,
+            "semester": 3,
+            "teacher": "李亚巍副教授",
+            "times": [
+                0,
+                12,
+                0,
+                12,
+                0,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031131047",
+            "credits": 2,
+            "name": "信息工程伦理",
+            "required": false,
+            "semester": 5,
+            "teacher": "陈蕾副教授",
+            "times": [
+                0,
+                12,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "week": 511
+        },
+        {
+            "class_id": "01",
+            "course_id": "COMS0031121014",
+            "credits": 10,
+            "name": "数学分析II",
+            "required": false,
+            "semester": 5,
+            "teacher": "沈超敏副教授",
+            "times": [
+                12,
+                0,
+                3,
+                0,
+                12,
+                0,
+                0
+            ],
+            "week": 262143
+        },
+        {
+            "class_id": "02",
+            "course_id": "COMS0031121009",
+            "credits": 9,
+            "name": "数据结构",
+            "required": false,
+            "semester": 7,
+            "teacher": "贺樑教授",
+            "times": [
+                0,
+                12,
+                0,
+                0,
+                108,
+                0,
+                0
+            ],
+            "week": 262143
+        }
+    ]
+}

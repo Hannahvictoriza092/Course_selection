@@ -1,0 +1,2470 @@
+[
+  {
+    "credit": 4,
+    "id": "COEN0031112043",
+    "name": "体育赛事英语",
+    "offerings": [
+      {
+        "id": "04",
+        "teacher": "韦玮",
+        "times": [
+          0,
+          96,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COEN0031111109"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031111003",
+    "name": "英文歌曲文化赏析",
+    "offerings": [
+      {
+        "id": "02",
+        "teacher": "张海明",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COEN0031111109"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "SHKX0031111008",
+    "name": "毛泽东思想和中国特色社会主义理论体系概论",
+    "offerings": [
+      {
+        "id": "04",
+        "teacher": "胡航讲师",
+        "times": [
+          0,
+          7168,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "88",
+        "teacher": "徐锋副教授",
+        "times": [
+          0,
+          0,
+          0,
+          7168,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "SHKX0031111017",
+      "SHKX0031111016"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "SHKX0031111016",
+    "name": "思想道德与法治",
+    "offerings": [
+      {
+        "id": "24",
+        "teacher": "祝毅讲师",
+        "times": [
+          0,
+          7168,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "06",
+        "teacher": "白雪源讲师",
+        "times": [
+          7168,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 8,
+    "id": "COMS0031161000",
+    "name": "大学物理B（二）",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李波教授",
+        "times": [
+          0,
+          96,
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "李亚巍副教授",
+        "times": [
+          0,
+          12,
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "商丽燕副教授",
+        "times": [
+          0,
+          12,
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031161001"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031161992",
+    "name": "通用学术英语读写（高级）",
+    "offerings": [
+      {
+        "id": "04",
+        "teacher": "李辉",
+        "times": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "05",
+        "teacher": "李辉",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132994",
+    "name": "计算机动画",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "高岩副教授",
+        "times": [
+          384,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031132103"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132991",
+    "name": "可信机器学习",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "赵静副研究员",
+        "times": [
+          0,
+          384,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031111109",
+    "name": "学术英语写作（高级）",
+    "offerings": [
+      {
+        "id": "13",
+        "teacher": "JingChenWeng",
+        "times": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "14",
+        "teacher": "JingChenWeng",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "15",
+        "teacher": "夏萍讲师",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "16",
+        "teacher": "夏萍讲师",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COEN0031161991",
+      "COEN0031161992"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132126",
+    "name": "现代CAD技术（B）",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "宋海川副教授",
+        "times": [
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 174762
+      }
+    ],
+    "prerequisites": [
+      "COMS0031132125"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 5,
+    "id": "COMS0031132120",
+    "name": "最优化方法",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "王祥丰教授",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          15,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131032"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132118",
+    "name": "智能推荐系统",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "张伟教授",
+        "times": [
+          0,
+          0,
+          0,
+          3072,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121009",
+      "COMS0031131042"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031161991",
+    "name": "通用学术英语听说（高级）",
+    "offerings": [
+      {
+        "id": "04",
+        "teacher": "李征",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "05",
+        "teacher": "李征",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132111",
+    "name": "大数据系统",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "高岩副教授",
+        "times": [
+          96,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031132110"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132096",
+    "name": "模式识别与机器学习",
+    "offerings": [
+      {
+        "id": "02",
+        "teacher": "赵静副研究员",
+        "times": [
+          96,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 5,
+    "id": "COMS0031132087",
+    "name": "算法分析与设计",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "肖春芸讲师",
+        "times": [
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "何高奇教授",
+        "times": [
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131043"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132076",
+    "name": "面向对象程序设计（基于Java）",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "吴苑斌副教授",
+        "times": [
+          0,
+          0,
+          0,
+          99,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121004"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "SHKX0031111015",
+    "name": "马克思主义基本原理",
+    "offerings": [
+      {
+        "id": "20",
+        "teacher": "苏尚副教授",
+        "times": [
+          0,
+          7168,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "26",
+        "teacher": "谢静副教授",
+        "times": [
+          7168,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "SHKX0031111008"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 5,
+    "id": "COMS0031132110",
+    "name": "数据可视化",
+    "offerings": [
+      {
+        "id": "02",
+        "teacher": "李晨辉副教授",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          15,
+          0,
+          0
+        ],
+        "weeks": 87381
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132050",
+    "name": "存储技术基础",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "陈蕾副教授",
+        "times": [
+          0,
+          96,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131026"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132033",
+    "name": "网络安全基础",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "黄新力教授",
+        "times": [
+          0,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131036"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132011",
+    "name": "计算机网络工程",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "陆刚副教授",
+        "times": [
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131036"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 8,
+    "id": "COMS0031131048",
+    "name": "编译原理与实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "谢瑾奎副教授",
+        "times": [
+          0,
+          0,
+          31,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "钱莹副教授",
+        "times": [
+          0,
+          0,
+          31,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "04",
+        "teacher": "窦亮副教授",
+        "times": [
+          0,
+          0,
+          31,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121009"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132106",
+    "name": "数学建模",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "石东昱讲师",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131013"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132077",
+    "name": "面向对象程序设计（基于C++）",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "陆幼利副教授",
+        "times": [
+          0,
+          0,
+          0,
+          480,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "肖春芸讲师",
+        "times": [
+          0,
+          0,
+          0,
+          480,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121004"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031131043",
+    "name": "编程思维与实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "肖春芸讲师",
+        "times": [
+          224,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "04",
+        "teacher": "陆幼利副教授",
+        "times": [
+          224,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "05",
+        "teacher": "张伟教授",
+        "times": [
+          224,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131026"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031131039",
+    "name": "数据挖掘",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "兰曼教授",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          15,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121009"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031111058",
+    "name": "英语短篇小说赏析",
+    "offerings": [
+      {
+        "id": "03",
+        "teacher": "张佳秋",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COEN0031111109"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 10,
+    "id": "COMS0031121014",
+    "name": "数学分析II",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "沈超敏副教授",
+        "times": [
+          12,
+          0,
+          3,
+          0,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "刘俊平讲师",
+        "times": [
+          12,
+          0,
+          3,
+          0,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121013"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031232000",
+    "name": "创新创业基础与实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "童卫青副教授",
+        "times": [
+          7168,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 511
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132104",
+    "name": "人机交互技术",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "王长波教授、孙玉灵",
+        "times": [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031161001",
+    "name": "大学物理B（一）",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李波教授",
+        "times": [
+          0,
+          0,
+          0,
+          96,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "胡志高教授",
+        "times": [
+          0,
+          0,
+          0,
+          96,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "李亚巍副教授",
+        "times": [
+          0,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031162002",
+    "name": "中西文化比较",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "应琼",
+        "times": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COEN0031111109"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 5,
+    "id": "COMS0031132121",
+    "name": "视觉感知与前沿技术",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李洋副教授",
+        "times": [
+          0,
+          0,
+          0,
+          240,
+          0,
+          0,
+          0
+        ],
+        "weeks": 174762
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132993",
+    "name": "游戏项目实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李晨辉副教授",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          480,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121009"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132102",
+    "name": "数字图像处理",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "张倩副研究员",
+        "times": [
+          480,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031132103"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132128",
+    "name": "计算机视觉",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "全红艳副教授",
+        "times": [
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "01",
+        "teacher": "徐飞教授",
+        "times": [
+          0,
+          0,
+          15,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031132103"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132059",
+    "name": "多媒体技术",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "杨静副教授",
+        "times": [
+          0,
+          0,
+          0,
+          480,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 8,
+    "id": "COMS0031131990",
+    "name": "操作系统",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "石亮教授",
+        "times": [
+          0,
+          0,
+          31,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "04",
+        "teacher": "李东副教授",
+        "times": [
+          0,
+          0,
+          31,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121009",
+      "COMS0031131026"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132125",
+    "name": "现代CAD技术（A）",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李东副教授",
+        "times": [
+          0,
+          0,
+          15,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "SHKX0031111017",
+    "name": "中国近现代史纲要",
+    "offerings": [
+      {
+        "id": "04",
+        "teacher": "宋宏副教授",
+        "times": [
+          224,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "34",
+        "teacher": "杨丽萍教授",
+        "times": [
+          0,
+          0,
+          0,
+          7168,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132113",
+    "name": "操作系统实践（进阶）",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "吴苑斌副教授",
+        "times": [
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131990"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 2,
+    "id": "COMS0031132112",
+    "name": "强化学习基础",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "王祥丰教授",
+        "times": [
+          96,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131026",
+      "COMS0031131013"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 2,
+    "id": "COMS0031132107",
+    "name": "写作与表达",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "何高奇教授",
+        "times": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 511
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132095",
+    "name": "自然语言处理导论",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "杨燕副教授",
+        "times": [
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131026",
+      "COMS0031131013"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031131049",
+    "name": "计算机组成与实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "金健副教授",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          480,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "高杨研究员",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          480,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121015"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132105",
+    "name": "深度学习基础与导论",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "谢源教授",
+        "times": [
+          0,
+          0,
+          0,
+          96,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131026",
+      "COMS0031131013"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031132080",
+    "name": "并行计算",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "钱莹副教授",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          480,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121009"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031111997",
+    "name": "英语演说课",
+    "offerings": [
+      {
+        "id": "05",
+        "teacher": "王志宏",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COEN0031111109"
+    ],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 5,
+    "id": "COMS0031132123",
+    "name": "统计学习算法导论",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "张志忠",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          480,
+          0,
+          0
+        ],
+        "weeks": 174762
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031131032",
+    "name": "线性代数",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "王峰副研究员",
+        "times": [
+          3,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "钱鸿",
+        "times": [
+          3,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "张凯教授",
+        "times": [
+          3,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 8,
+    "id": "COMS0031131051",
+    "name": "数据库系统原理与实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "徐飞教授",
+        "times": [
+          992,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "王晓玲教授",
+        "times": [
+          992,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "朱丹丹",
+        "times": [
+          992,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131990"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 8,
+    "id": "COMS0031131050",
+    "name": "计算机系统结构",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "魏同权副教授",
+        "times": [
+          0,
+          0,
+          0,
+          12,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "诸葛晴凤教授",
+        "times": [
+          0,
+          0,
+          0,
+          12,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131049"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 2,
+    "id": "COMS0031131047",
+    "name": "信息工程伦理",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "陈蕾副教授",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 511
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131042"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 8,
+    "id": "COMS0031131037",
+    "name": "嵌入式系统原理与实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "沈建华副教授",
+        "times": [
+          0,
+          15,
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "李昌龙副教授",
+        "times": [
+          0,
+          15,
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131049"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031131042",
+    "name": "人工智能",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "周爱民教授",
+        "times": [
+          0,
+          480,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "陈琴研究员",
+        "times": [
+          0,
+          480,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "周杰",
+        "times": [
+          0,
+          480,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131026"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 7,
+    "id": "COMS0031131036",
+    "name": "计算机网络",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "陈蕾副教授",
+        "times": [
+          0,
+          224,
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "陆刚副教授",
+        "times": [
+          0,
+          992,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131990"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031131026",
+    "name": "计算机导论",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "周爱民教授",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "沙行勉教授",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "STAT0031121004",
+    "name": "概率论与数理统计A",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "赵静副研究员",
+        "times": [
+          224,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "李海晟副教授",
+        "times": [
+          224,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "武萍副教授",
+        "times": [
+          224,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131032",
+      "COMS0031121014"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031131022",
+    "name": "信息系统安全概论",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李东副教授",
+        "times": [
+          0,
+          0,
+          0,
+          284,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131042"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 5,
+    "id": "COMS0031132103",
+    "name": "计算机图形学",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李海晟副教授",
+        "times": [
+          3072,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 261888
+      }
+    ],
+    "prerequisites": [
+      "COMS0031132077",
+      "COMS0031121014",
+      "COMS0031121009"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132041",
+    "name": "生物信息学",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "江振然副教授",
+        "times": [
+          0,
+          0,
+          0,
+          96,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131026"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031131013",
+    "name": "离散数学",
+    "offerings": [
+      {
+        "id": "02",
+        "teacher": "石东昱讲师",
+        "times": [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "卢兴见副教授",
+        "times": [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 8,
+    "id": "COMS0031121015",
+    "name": "数字逻辑电路",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "续晋华副教授",
+        "times": [
+          0,
+          0,
+          0,
+          103,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "吕岳教授",
+        "times": [
+          0,
+          0,
+          0,
+          391,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "谭鑫",
+        "times": [
+          0,
+          0,
+          0,
+          7,
+          384,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031161000"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "SHKX00311611000",
+    "name": "习近平新时代中国特色社会主义思想概论",
+    "offerings": [
+      {
+        "id": "20",
+        "teacher": "胡航讲师",
+        "times": [
+          0,
+          7168,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "26",
+        "teacher": "汪奎助理研究员",
+        "times": [
+          0,
+          0,
+          0,
+          896,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "SHKX0031111015"
+    ],
+    "required": "Compulsory",
+    "semester": "Spring"
+  },
+  {
+    "credit": 10,
+    "id": "COMS0031121013",
+    "name": "数学分析I",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "李智教授",
+        "times": [
+          12,
+          0,
+          3,
+          0,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "林绍辉研究员",
+        "times": [
+          12,
+          0,
+          3,
+          0,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "刘俊平讲师",
+        "times": [
+          12,
+          0,
+          3,
+          0,
+          12,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COEN0031112046",
+    "name": "英语畅谈中国文化",
+    "offerings": [
+      {
+        "id": "04",
+        "teacher": "胡婧",
+        "times": [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COEN0031111109"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 2,
+    "id": "COMS0031132127",
+    "name": "计算机新技术前沿",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "王骏教授",
+        "times": [
+          96,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 261888
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Spring"
+  },
+  {
+    "credit": 9,
+    "id": "COMS0031121009",
+    "name": "数据结构",
+    "offerings": [
+      {
+        "id": "02",
+        "teacher": "贺樑教授",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          108,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "杨静副教授",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          108,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "04",
+        "teacher": "赵佳宝",
+        "times": [
+          0,
+          12,
+          0,
+          0,
+          108,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031131043"
+    ],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 4,
+    "id": "COMS0031132060",
+    "name": "信号与系统",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "谭鑫",
+        "times": [
+          0,
+          96,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [
+      "COMS0031121014"
+    ],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 2,
+    "id": "COMS0031131046",
+    "name": "计算机基础实践",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "金健副教授",
+        "times": [
+          0,
+          0,
+          0,
+          0,
+          96,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Elective",
+    "semester": "Autumn"
+  },
+  {
+    "credit": 6,
+    "id": "COMS0031121004",
+    "name": "程序设计原理与C语言",
+    "offerings": [
+      {
+        "id": "01",
+        "teacher": "陆幼利副教授",
+        "times": [
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "02",
+        "teacher": "肖春芸讲师",
+        "times": [
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      },
+      {
+        "id": "03",
+        "teacher": "王峰副研究员",
+        "times": [
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        "weeks": 262143
+      }
+    ],
+    "prerequisites": [],
+    "required": "Compulsory",
+    "semester": "Autumn"
+  }
+]

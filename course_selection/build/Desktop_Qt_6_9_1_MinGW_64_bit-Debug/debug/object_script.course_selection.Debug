@@ -1,0 +1,13 @@
+debug/main.o
+debug/mainwindow.o
+debug/courseparser.o
+debug/scheduleexporter.o
+debug/coursealgorithm.o
+debug/coursedialog.o
+debug/classtimedialog.o
+debug/moc_mainwindow.o
+debug/moc_courseparser.o
+debug/moc_scheduleexporter.o
+debug/moc_coursealgorithm.o
+debug/moc_coursedialog.o
+debug/moc_classtimedialog.o

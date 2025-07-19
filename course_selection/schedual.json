@@ -1,0 +1,107 @@
+[
+    {
+        "class_id": "04",
+        "course_id": "COEN0031161991",
+        "semester": 0
+    },
+    {
+        "class_id": "04",
+        "course_id": "COEN0031161992",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031121004",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031121013",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031131026",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031131046",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031161001",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031232000",
+        "semester": 0
+    },
+    {
+        "class_id": "24",
+        "course_id": "SHKX0031111016",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031131032",
+        "semester": 1
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132059",
+        "semester": 1
+    },
+    {
+        "class_id": "02",
+        "course_id": "COMS0031132096",
+        "semester": 1
+    },
+    {
+        "class_id": "02",
+        "course_id": "COMS0031132110",
+        "semester": 1
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132123",
+        "semester": 1
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132991",
+        "semester": 1
+    },
+    {
+        "class_id": "02",
+        "course_id": "COMS0031131013",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132107",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132125",
+        "semester": 0
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132104",
+        "semester": 1
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132121",
+        "semester": 1
+    },
+    {
+        "class_id": "01",
+        "course_id": "COMS0031132127",
+        "semester": 1
+    }
+]

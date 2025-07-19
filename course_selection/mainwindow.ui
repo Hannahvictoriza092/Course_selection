@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>智能选课系统</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow { background-color:rgba(255, 255, 255, 0.72); }</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">background-color:rgba(255, 255, 255, 0.59);</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">QTabBar::tab { background-color: #87abdd; color: black; padding: 8px; min-width: 80px; } QTabBar::tab:selected { background-color: #504cc4; color: black; }</string>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="courseTab">
+       <attribute name="title">
+        <string>全部课程</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="searchLayout">
+          <item>
+           <widget class="QLineEdit" name="lineEdit_searchId">
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: black;</string>
+            </property>
+            <property name="placeholderText">
+             <string>课程ID</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_searchTeacher">
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: black;</string>
+            </property>
+            <property name="placeholderText">
+             <string>教师</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_searchName">
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: black;</string>
+            </property>
+            <property name="placeholderText">
+             <string>课程名</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_search">
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: black;</string>
+            </property>
+            <property name="text">
+             <string>查询</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_noResults">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="visible">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: black;</string>
+          </property>
+          <property name="text">
+           <string>无匹配结果</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="courseTableWidget">
+          <property name="styleSheet">
+           <string notr="true">QTableWidget { color: black; font-weight: 500; }
+QTableWidget::item { background-color:rgb(153, 181, 222); color: black; }
+QTableWidget::item:alternate { background-color:rgb(179, 198, 222); color: black; }
+QHeaderView::section { background-color: #f0f0f0; color: black; padding: 4px; border: 1px solid #dddddd; }</string>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="horizontalScrollMode">
+           <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="columnCount">
+           <number>9</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>开课学期</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>课程ID</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>课程名称</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>课程类别</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>教师</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>上课时间</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>上课周数</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>前置课程</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>优先级</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="scheduleTab">
+       <attribute name="title">
+        <string>选课方案</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QHBoxLayout" name="scheduleControlsLayout">
+          <item>
+           <widget class="QLabel" name="label_semester">
+            <property name="styleSheet">
+             <string notr="true">color: black;</string>
+            </property>
+            <property name="text">
+             <string>切换学期:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_semester">
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: black;</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>大一上</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>大一下</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>大二上</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>大二下</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>大三上</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>大三下</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>大四上</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>大四下</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_week">
+            <property name="styleSheet">
+             <string notr="true">color: black;</string>
+            </property>
+            <property name="text">
+             <string>切换教学周:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_week">
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: black;</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>第1周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第2周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第3周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第4周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第5周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第6周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第7周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第8周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第9周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第10周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第11周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第12周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第13周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第14周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第15周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第16周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第17周</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>第18周</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_switch">
+            <property name="styleSheet">
+             <string notr="true">background-color: #ade6c5; color: black;</string>
+            </property>
+            <property name="text">
+             <string>切换</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="scheduleTableWidget">
+          <property name="styleSheet">
+           <string notr="true">QHeaderView::section:horizontal { background-color: #cccccc; color: black; padding: 4px; border: 1px solid #dddddd; text-align: center; }
+QHeaderView::section:vertical { background-color: #eeeeee; color: black; padding: 4px; border: 1px solid #dddddd; text-align: right; }
+QTableWidget { background-color: #f0f0f0; color: black; }
+QTableWidget::item:empty { background-color: #f0f0f0; }</string>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="rowCount">
+           <number>14</number>
+          </property>
+          <property name="columnCount">
+           <number>7</number>
+          </property>
+          <row>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>3</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>5</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>6</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>7</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>8</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>9</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>10</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>11</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>12</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>13</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>14</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>周一</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>周二</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>周三</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>周四</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>周五</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>周六</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>周日</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="settingsTab">
+       <attribute name="title">
+        <string>系统设置</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QGroupBox" name="creditGroupBox">
+          <property name="styleSheet">
+           <string notr="true">QGroupBox { color: black; font-weight: bold; border: 1px solid #ade6c5; border-radius: 4px; margin-top: 1ex; padding-top: 0.5ex; } QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 3px 0 3px; }</string>
+          </property>
+          <property name="title">
+           <string>学分设置</string>
+          </property>
+          <layout class="QFormLayout" name="formLayout">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;总学分下限(两倍值):&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="creditSpinBox">
+             <property name="styleSheet">
+              <string notr="true">color: black;</string>
+             </property>
+             <property name="minimum">
+              <number>100</number>
+             </property>
+             <property name="maximum">
+              <number>300</number>
+             </property>
+             <property name="value">
+              <number>100</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #438b73; color: black;</string>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="actionImportCourse"/>
+    <addaction name="actionExportSchedule"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuCourse">
+    <property name="title">
+     <string>课程</string>
+    </property>
+    <addaction name="actionAddCourse"/>
+   </widget>
+   <widget class="QMenu" name="menuSchedule">
+    <property name="title">
+     <string>选课</string>
+    </property>
+    <addaction name="actionImportSchedule"/>
+    <addaction name="actionGenerateSchedule"/>
+    <addaction name="actionGeneratePriorSchedule"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuCourse"/>
+   <addaction name="menuSchedule"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="styleSheet">
+    <string notr="true">QToolButton { background-color: #6acbac; color: black; border: none; padding: 6px 12px; border-radius: 4px; margin: 2px; } QToolButton:hover { background-color: #438b73; color: black; }</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionImportCourse">
+   <property name="text">
+    <string>导入课程数据</string>
+   </property>
+  </action>
+  <action name="actionExportSchedule">
+   <property name="text">
+    <string>导出选课方案</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actionAddCourse">
+   <property name="text">
+    <string>添加课程</string>
+   </property>
+  </action>
+  <action name="actionEditCourse">
+   <property name="text">
+    <string>编辑课程</string>
+   </property>
+  </action>
+  <action name="actionDeleteCourse">
+   <property name="text">
+    <string>删除课程</string>
+   </property>
+  </action>
+  <action name="actionImportSchedule">
+   <property name="text">
+    <string>导入选课方案</string>
+   </property>
+  </action>
+  <action name="actionGenerateSchedule">
+   <property name="text">
+    <string>生成选课方案</string>
+   </property>
+  </action>
+  <action name="actionGeneratePriorSchedule">
+   <property name="text">
+    <string>生成优先级选课方案</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
